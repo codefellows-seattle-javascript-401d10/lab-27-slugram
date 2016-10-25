@@ -3,7 +3,7 @@
 //components are configured as objects
 module.exports = {
   template: require('./login.html'),
-  controller: ['$log', 'authService', LoginController],
+  controller: ['$log', '$location', 'authService', LoginController],
   controllerAs: 'loginCtrl',
 };
 

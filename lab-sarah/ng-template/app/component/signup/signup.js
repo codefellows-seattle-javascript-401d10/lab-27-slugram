@@ -2,7 +2,7 @@
 
 module.exports = {
   template: require('./signup.html'),
-  controller: ['$log', 'authService', SignupController],
+  controller: ['$log', '$location', 'authService', SignupController],
   controllerAs: 'signupCtrl',
 };
 

@@ -3,7 +3,7 @@
     ng-submit="loginCtrl.login(loginCtrl.user)"
     novalidate>
 
-    <!-- signupCtrl.user.username does not yet exist, angular is going to create it -->
+    <!-- signupCtrl.user.username does not yet exist, angular is going to create it when user types in input, the variable ng-model will be created -->
     <input class="form-control"
     ng-minlength="6" required
     type="text" placeholder="Username" ng-model="loginCtrl.user.username">

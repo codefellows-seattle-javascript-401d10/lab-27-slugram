@@ -6,8 +6,8 @@ require('./_landing.scss');
 
 module.exports = ['$log', '$location', 'authService', LandingController];
 
-function LandingController($log, $location, authService ){
+function LandingController($log, $location, authService){
   $log.log('LandingController in landingView');
-  authService;
   //toggle between showing and hiding signup and login
+  this.showSignup = true;
 }

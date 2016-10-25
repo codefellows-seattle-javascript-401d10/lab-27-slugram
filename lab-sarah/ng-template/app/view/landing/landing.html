@@ -1,4 +1,8 @@
 <main class="landing">
-  <signup></signup>
-  <login></login>
+  <signup ng-show="landingCtrl.showSignup"></signup>
+  <button ng-click="landingCtrl.showSignup = false"
+  ng-hide="!landingCtrl.showSignup">Go to Login</button>
+
+  <login ng-show="!landingCtrl.showSignup"></login>
+  <button ng-click="landingCtrl.showSignup = true" ng-hide="landingCtrl.showSignup">Go to Signup</button>
 </main>

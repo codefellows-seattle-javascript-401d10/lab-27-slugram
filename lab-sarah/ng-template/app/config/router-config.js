@@ -3,8 +3,7 @@
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
-  // $urlRouterProvider.when('' , '/home');
-  // $urlRouterProvider.when('/' , '/home');
+  $urlRouterProvider.when('' , '/');
   // state == route
   let states = [
     {
