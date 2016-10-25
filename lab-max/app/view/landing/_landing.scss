@@ -2,4 +2,9 @@
 
 .landing {
   background-color: $app-white;
+
+  .landing-banner {
+    text-align: center;
+    background-color: $app-info;
+  }
 }
