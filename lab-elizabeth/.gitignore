@@ -2,7 +2,72 @@
 build
 coverage
 html-report
-# Created by https://www.gitignore.io/api/osx,windows,vim,node,linux
+
+# Created by https://www.gitignore.io/api/sublimetext,vim,windows,osx,linux,node
+
+### SublimeText ###
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
+# sftp configuration file
+sftp-config.json
+
+# Package control specific files
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
+bh_unicode_properties.cache
+
+# Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+
+
+### Vim ###
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
 
 ### OSX ###
 *.DS_Store
@@ -29,38 +94,19 @@ Temporary Items
 .apdisk
 
 
-### Windows ###
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+### Linux ###
 
-# Folder config file
-Desktop.ini
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# KDE directory preferences
+.directory
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
 
-# Windows shortcuts
-*.lnk
-
-
-### Vim ###
-# swap
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-# session
-Session.vim
-# temporary
-.netrwhist
-*~
-# auto-generated tag files
-tags
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
 
 
 ### Node ###
@@ -108,18 +154,3 @@ jspm_packages
 
 # Output of 'npm pack'
 *.tgz
-
-
-### Linux ###
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*

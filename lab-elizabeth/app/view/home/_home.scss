@@ -1,16 +1,24 @@
 @import "theme";
 
 .home {
+  width: 70%;
+
   .panel-heading {
     background-color: $app-primary;
+    font-family: $app-block;
+
     span {
       font-weight: bold;
-      color: $app-secondary;
+      color: $app-black;
     }
 
     span:hover {
-      color: $app-black;
+      color: $app-white;
     }
   }
-}
 
+  .panel-body {
+    background-color: $app-info;
+    font-family: $app-accent;
+  }
+}

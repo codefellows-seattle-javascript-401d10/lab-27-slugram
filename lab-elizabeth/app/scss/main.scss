@@ -2,6 +2,27 @@
 @import "theme";
 
 html, body {
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
+  background-color: $app-secondary;
+  color: $app-black;
+
+  h1 {
+    font-family: $app-title;
+  }
+
+  main {
+    width: 70%;
+    margin: 1em;
+    border-radius: .25em;
+    padding: 1em;
+
+    * {
+      margin-top: .5em;
+    }
+  }
+
+  input {
+    font-family: $app-accent;
+  }
 }
