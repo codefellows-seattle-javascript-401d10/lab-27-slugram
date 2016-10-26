@@ -30,7 +30,7 @@ Today you will implement full curd of the gallery resource using the slugram API
 > Use these docs a a refrence to make your requests to the slugram api  
 
 ### POST `/api/gallery`
-* this route to create a gallery
+* use this route to create a gallery
 * headers required
  * `Authorization` :  `Bearer <token>`
  * `Accept` :  `application/json`
