@@ -36,9 +36,9 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
-  service.deleteGallerys = function (galleryID, galleryData){
+  service.deleteGallery = function (gallery, galleryID){
     return authService.getToken()
-    .then( token => {
+    .then(token => {
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
       let config = {
         headers: {
@@ -46,6 +46,17 @@ function galleryService($q, $log, $http, authService){
           Authorization: `Bearer ${token}`,
         },
       };
+      return $http.delete(url, config);
+    })
+    .then(() => {
+      $log.log('sucessful deletion');
+      let i =service.galleries.indexOf(gallery);
+      service.galleries.splice(i,1);
+      return $q.resolve('success');
+    })
+    .catch( err => {
+      $log.error(err.message);
+      return $q.reject(err);
     });
   };
 
@@ -53,7 +64,7 @@ function galleryService($q, $log, $http, authService){
     $log.debug('galleryService.fetchGalleries()');
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/gallery/`;
+      let url = `${__API_URL__}/api/gallery`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -67,6 +78,36 @@ function galleryService($q, $log, $http, authService){
       $log.log('successful fetch user galleries');
       service.galleries = res.data;
       return service.galleries;
+    })
+    .catch(err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
+  service.updateGallery = function(gallery, galleryID){
+    $log.debug('galleryService.updateGalleries()');
+    return authService.getToken()
+    .then( token => {
+      let url = `${__API_URL__}/api/gallery/${galleryID}`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      return $http.put(url, gallery, config);
+    })
+    .then( res => {
+      for(var i = 0; i < service.galleries.length; i++){
+        if (service.galleries[i]._id === galleryID) {
+          service.galleries[i] = res.data;
+        }
+      }
+
+      $log.log('successful update user gallery');
+      return $q.resolve('updated');
     })
     .catch(err => {
       $log.error(err.message);

@@ -12,9 +12,9 @@ function HomeController($log, $rootScope, galleryService){
     galleryService.fetchGalleries()
     .then( galleries => {
       this.galleries = galleries;
+      $log.log('Succesfully found gallery');
     });
   };
-
   // when the controller gets created fetchGalleries
   this.fetchGalleries();
 
@@ -23,4 +23,17 @@ function HomeController($log, $rootScope, galleryService){
     this.fetchGalleries();
   });
 
+  this.deleteGallery = function(gallery, galleryID) {
+    galleryService.deleteGallery(gallery, galleryID)
+    .then(() => {
+      $log.log('Successfully deleted gallery');
+    });
+  };
+
+  this.updateGallery = function(gallery, galleryID) {
+    galleryService.updateGallery(gallery, galleryID)
+    .then( () => {
+      $log.log('Successfully updated gallery');
+    });
+  };
 }

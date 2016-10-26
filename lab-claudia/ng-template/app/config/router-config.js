@@ -4,7 +4,7 @@ module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('' , '/join#signup');
-  $urlRouterProvider.when('/' , '/join#signup');
+  $urlRouterProvider.when('' , '/join#signup');
   $urlRouterProvider.when('/signup' , '/join#signup');
   $urlRouterProvider.when('/login' , '/join#login');
 
@@ -21,7 +21,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
       url: '/join',
       controllerAs: 'landingCtrl',
       controller: 'LandingController',
-      template: require('../view/landing/landing.html'),
+      template: require('../view/landing/landing.html'), //shows this at /join
     },
   ];
 
