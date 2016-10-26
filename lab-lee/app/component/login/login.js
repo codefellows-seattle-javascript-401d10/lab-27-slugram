@@ -1,19 +1,19 @@
 'use strict';
 
 module.exports = {
-  template: require('./signup.html'),
-  controller: ['$log', '$location', 'authService', SignupController],
-  controllerAs: 'signupCtrl',
+  template: require('./login.html'),
+  controller: ['$log', '$location', 'authService', LoginController],
+  controllerAs: 'loginCtrl',
 };
 
-function SignupController($log, $location, authService) {
-  this.signup = function(user) {
-    authService.signup(user)
+function LoginController($log, $location, authService) {
+  this.login = function(user) {
+    authService.login(user)
     .then( () => {
       $location.path('/home');
     })
     .catch ( () => {
-      console.error('failed to signup');
+      console.error('failed to login');
     });
   };
 }

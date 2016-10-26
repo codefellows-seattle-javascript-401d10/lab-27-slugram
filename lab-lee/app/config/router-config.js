@@ -9,15 +9,15 @@ function routerConfig($stateProvider, $urlRouterProvider){
     {
       name: 'home',
       url: '/home',
-      controllerAs: 'homeCtrl',
       controller: 'HomeController',
+      controllerAs: 'homeCtrl',
       template: require('../view/home/home.html'),
     },
     {
       name: 'landing',
       url: '/',
-      controllerAs: 'landingCtrl',
       controller: 'LandingController',
+      controllerAs: 'landingCtrl',
       template: require('../view/landing/landing.html'),
     },
   ];
