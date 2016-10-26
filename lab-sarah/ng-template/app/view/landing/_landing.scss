@@ -1,5 +1,10 @@
 @import  "theme";
 
 .landing {
-  background-color: $app-success;
+  .form {
+    border: 1px solid black;
+    width: 40%;
+    margin: 5% auto;
+    background-color: $app-success;
+  }
 }
