@@ -1,17 +1,33 @@
+
 <main class="container-fluid home">
   <create-gallery> </create-gallery>
   <div class="col-md-6 list-group">
-    <a href="javascript: void(0)" class="list-group-item clearfix" ng-repeat="gallery in homeCtrl.galleries">
+    <a href="javascript: void(0)" class="list-group-item clearfix" 
+       ng-repeat="gallery in homeCtrl.galleries">
+
       <span class="glyphicon glyphicon-file"></span>
-      {{gallery.name}} - {{gallery.desc}}
+      {{ gallery.name | uppercase }} - {{ gallery.desc }}
       <span class="pull-right">
-        <button class="btn btn-sm btn-info" >
+        <button class="btn btn-sm btn-info" 
+                ng-click="showUpdateForm?showUpdateForm=false:showUpdateForm=true" 
+                ng-init="showUpdateForm=false">
           <span class="glyphicon glyphicon-pencil"></span>
         </button>
-        <button class="btn btn-sm btn-warning" ng-click="homeCtrl.deleteGallery(gallery._id)">
+
+        <button class="btn btn-sm btn-danger" ng-click="homeCtrl.deleteGallery(gallery._id)">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
+
       </span>
+      <form ng-if="showUpdateForm"
+        name="updateForm"
+        class="form-inline"
+        ng-sumibt="//call update with gallery._id, updateForm"
+        novalidate>
+        <input name="name" type="text" class="form-control input-sm" ng-model="homeCtrl.updateDate.name" placeholder="name"> 
+        <input name="desc" type="text" class="form-control input-sm" ng-model="homeCtrl.updateDate.desc" placeholder="description">
+        <button class="btn btn-warning btn-sm" ng-click="homeCtrl.updateGallery(gallery._id)"> update </button>
+      </form>
     </a>
   </div>
   <div class="com-md-6">

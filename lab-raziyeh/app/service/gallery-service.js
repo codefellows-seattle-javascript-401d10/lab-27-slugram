@@ -84,5 +84,29 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
     });
   };
 
+  service.updateGallery = function (galleryID, galleryData){ 
+    $log.debug('galleryService.updateGallery()');
+    return authService.getToken()
+    .then( token => {
+      let url = `${__API_URL__}/api/gallery/${galleryID}`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      return $http.put(url, galleryData, config);
+    })
+    .then( () => {
+      $log.log('successful delete user galleries');
+      return service.galleries;
+    })
+    .catch(err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
   return service;
 }];

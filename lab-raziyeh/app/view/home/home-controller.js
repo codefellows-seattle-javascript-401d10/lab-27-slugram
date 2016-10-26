@@ -7,6 +7,7 @@ module.exports = ['$log', '$rootScope', 'galleryService', HomeController ];
 function HomeController($log, $rootScope, galleryService){
   $log.debug('init homeCtrl');
   this.galleries = [];
+  this.updateDate = { name:'', desc:''};
 
   this.fetchGalleries = function(){
     galleryService.fetchGalleries()
@@ -20,6 +21,14 @@ function HomeController($log, $rootScope, galleryService){
     .then( () => {
       this.fetchGalleries();
       $log.debug('delete gallery by Id');
+    });
+  };
+
+  this.updateGallery = function(galleyId) {
+    galleryService.updateGallery(galleyId, this.updateDate)
+    .then( () => {
+      $log.debug('update gallery by Id');
+      this.fetchGalleries();
     });
   };
 
