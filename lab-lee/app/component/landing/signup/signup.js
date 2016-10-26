@@ -7,13 +7,18 @@ module.exports = {
 };
 
 function SignupController($log, $location, authService) {
-  this.signup = function(user) {
+  $log.debug('init signupCtrl');
+
+  authService.getToken()
+  .then( () => {
+    $location.url('/home');
+  });
+
+  this.signup = function(user){
+    $log.debug('signupCtrl.signup()');
     authService.signup(user)
     .then( () => {
-      $location.path('/home');
-    })
-    .catch( () => {
-      console.error('failed to signup');
+      $location.url('/home');
     });
   };
 }

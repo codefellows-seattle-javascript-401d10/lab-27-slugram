@@ -1,5 +1,7 @@
 'use strict';
 
+require('./_login.scss');
+
 module.exports = {
   template: require('./login.html'),
   controller: ['$log', '$location', 'authService', LoginController],
@@ -7,13 +9,18 @@ module.exports = {
 };
 
 function LoginController($log, $location, authService) {
-  this.login = function(user) {
-    authService.login(user)
+  $log.debug('init loginCtrl');
+
+  authService.getToken()
+  .then( () => {
+    $location.url('/home');
+  });
+
+  this.login = function() {
+    $log.log('loginCtrl.login()');
+    authService.login(this.user)
     .then( () => {
-      $location.path('/home');
-    })
-    .catch ( () => {
-      console.error('failed to login');
+      $location.url('/home');
     });
   };
 }

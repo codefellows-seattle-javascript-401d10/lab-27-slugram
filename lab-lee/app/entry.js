@@ -4,7 +4,7 @@
 require('./scss/main.scss');
 
 // require node modules
-const path = require('path'); 
+const path = require('path');
 
 // require npm modules
 const angular = require('angular');
@@ -18,7 +18,7 @@ const uiRouter = require('angular-ui-router');
 const uiBootstrap = require('angular-ui-bootstrap');
 
 // create angular module
-const leeGram = angular.module('leeGram', [ngTouch, ngAnimate, uiRouter, uiBootstrap]);
+const leeGram = angular.module('leeGram', [ngTouch, ngAnimate,  uiRouter, uiBootstrap]);
 
 // load config
 let context = require.context('./config/', true, /.js$/);
@@ -34,7 +34,7 @@ context.keys().forEach( key => {
   leeGram.controller(name, module);
 });
 
-// load services 
+// load services
 context = require.context('./service/', true, /.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
@@ -42,7 +42,7 @@ context.keys().forEach( key => {
   leeGram.service(name, module);
 });
 
-// load components 
+// load components
 context = require.context('./component/', true, /.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
