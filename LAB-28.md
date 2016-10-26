@@ -27,3 +27,41 @@ Today you will implement full curd of the gallery resource using the slugram API
  * add the abbilty to delete and update each gallery
 
 ## Route Docs
+> Use these docs a a refrence to make your requests to the slugram api
+### POST `/api/gallery`
+* this route to create a gallery
+* headers required
+ * `Authorization` :  `Bearer <token>`
+ * `Accept` :  `application/json`
+ * `Content-Type` :  `application/json`
+* Body requirements
+ * name: **String**
+ * desc: **String**  
+* 200 response
+ * an object with the data for the gallery that was just created
+ 
+### GET `/api/gallery`
+* use this route to get an array of all of a users galleries
+* headers required
+ * `Authorization` :  `Bearer <token>`
+ * `Accept` :  `application/json`
+* 200 response
+ * an array of the last 50 gallerys created by the user   
+
+### PUT `/api/gallery/<galleryID>`
+* use this route to update an gallery with new info
+* headers required
+ * `Authorization` :  `Bearer <token>`
+ * `Accept` :  `application/json`
+ * `Content-Type` :  `application/json`
+* there are no body requirements
+* 200 response
+ * an object with the data for the gallery that was just updated
+
+### DELETE  `/api/gallery/<galleryID>`
+* use this route to delete a gallery
+* headers required
+ * `Authorization` :  `Bearer <token>`
+ * `Accept` :  `application/json`
+* 204 response
+ * no content
