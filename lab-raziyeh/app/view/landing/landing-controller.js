@@ -6,15 +6,9 @@ module.exports = ['$log', function LandingController($log){
   $log.debug('Landing controller');
 
   this.showsignin = false;
-  this.showsignup = false;
 
   this.signin = function() {
-    this.showsignin = true;
-    this.showsignup = false;
+    this.showsignin? this.showsignin = false : this.showsignin = true;
   };
   
-  this.signup = function() {
-    this.showsignin = false;
-    this.showsignup = true;
-  };
 }];
