@@ -27,7 +27,8 @@ Today you will implement full curd of the gallery resource using the slugram API
  * add the abbilty to delete and update each gallery
 
 ## Route Docs
-> Use these docs a a refrence to make your requests to the slugram api
+> Use these docs a a refrence to make your requests to the slugram api  
+
 ### POST `/api/gallery`
 * this route to create a gallery
 * headers required
