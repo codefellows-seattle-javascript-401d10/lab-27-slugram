@@ -1,14 +1,19 @@
-
-<main class="home">
-  <uib-accordion close-others="homeCtrl.oneAtATime">
-    <div uib-accordion-group class="panel-default" heading="In box A is magic">
-      Empty.
-    </div>
-    <div uib-accordion-group class="panel-default" heading="In box B is money">
-      Empty.
-    </div>
-    <div uib-accordion-group class="panel-default" heading="In box C is a job">
-      Magic, Money, Food.
-    </div>
-  </uib-accordion>
+<main class="container-fluid home">
+  <create-gallery> </create-gallery>
+  <div class="col-md-6 list-group">
+    <a href="javascript: void(0)" class="list-group-item clearfix" ng-repeat="gallery in homeCtrl.galleries">
+      <span class="glyphicon glyphicon-file"></span>
+      {{gallery.name}} - {{gallery.desc}}
+      <span class="pull-right">
+        <button class="btn btn-sm btn-info" >
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button class="btn btn-sm btn-warning" ng-click="homeCtrl.deleteGallery(gallery._id)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </span>
+    </a>
+  </div>
+  <div class="com-md-6">
+  </div>
 </main>
