@@ -25,4 +25,9 @@ function HomeController($log, $rootScope, galleryService){
   this.deleteGallery = function(galleryID){
     galleryService.deleteGallery(galleryID);
   };
+
+  this.updateGallery = function(galleryID, gallery){
+    galleryService.updateGallery(galleryID, gallery);
+  };
+
 }

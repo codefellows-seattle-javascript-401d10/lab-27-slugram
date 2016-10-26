@@ -6,12 +6,13 @@
       <p>{{gallery.desc}}</p>
       <p>{{gallery._id}}</p>
       <form
-        name="updateForm"
-        ng-submit="call">
-        <input name="name" type="text" placeholder="name">
-        <input name="desc" type="text" placeholder="description">
+        name="updateForm">
+        <input ng-model="updateForm.gallery.name" name="name" type="text" placeholder="name">
+        <input ng-model="updateForm.gallery.desc" name="desc" type="text" placeholder="description">
         <button class="btn btn-primary"
         ng-click="homeCtrl.deleteGallery(gallery._id)">Delete</button>
+        <button class="btn btn-primary"
+        ng-click="homeCtrl.updateGallery(gallery._id, updateForm.gallery)">Update</button>
     </li>
   </ul>
 </main>

@@ -62,6 +62,35 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
+  service.updateGallery = function(galleryID, gallery){
+    $log.debug('galleryService.updateGallery()');
+    return authService.getToken()
+    .then( token => {
+      let url = `${__API_URL__}/api/gallery/${galleryID}`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      };
+      return $http.put(url, gallery, config);
+    })
+    .then( res => {
+      let gallery = res.data;
+      for(var i = 0; i < service.galleries.length; i++){
+        if(galleryID === service.galleries[i]._id){
+          service.galleries[i] = gallery;
+        }
+      }
+      return gallery;
+    })
+    .catch( err => {
+      $log.err(err.message);
+      return $q.reject(err);
+    });
+  };
+
   service.fetchGalleries = function(){
     $log.debug('galleryService.fetchGalleries()');
     return authService.getToken()
