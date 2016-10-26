@@ -2,6 +2,7 @@
 build
 coverage
 html-report
+
 # Created by https://www.gitignore.io/api/osx,windows,vim,node,linux
 
 ### OSX ###
