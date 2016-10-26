@@ -1,6 +1,7 @@
-<section class="signin">
+<div class="signin">
   <form
     ng-submit="signinCtrl.signin(signinCtrl.user)"
+    class="form-inline"
     novalidate>
 
     <input class="form-control" 
@@ -11,6 +12,6 @@
     required type="password" ng-minlength="8"
     placeholder="Password" ng-model="signinCtrl.user.password">
     
-    <input type="submit" class="btn btn-primary" value="Sign In">
+    <input type="submit" class="btn btn-warning" value="Sign In">
   </form>
-</section>
+</div>

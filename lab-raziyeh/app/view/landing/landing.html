@@ -1,9 +1,29 @@
-<section>
-  
-  <a href="#" class="btn btn-info" role="button" ng-click="landingCtrl.signin()">Sign in</a>
-  <a href="#" class="btn btn-info" role="button" ng-click="landingCtrl.signup()" ng-hide="landingCtrl.showsignin">Sign up</a>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">My Website</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active">  
+        <a href="#" 
+        class="btn" 
+        ole="button" 
+        ng-click="landingCtrl.signin()" 
+        ng-hide="landingCtrl.showsignin">Sign in</a>
+      </li>
 
+      <li>
+        <a href="#" 
+        class="btn" 
+        role="button" 
+        ng-click="landingCtrl.signup()" 
+        ng-hide="landingCtrl.showsignup">Sign up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="">
   <signin ng-if="landingCtrl.showsignin"></signin>
   <signup ng-if="landingCtrl.showsignup"></signup>
-</section>
+</div>
 
