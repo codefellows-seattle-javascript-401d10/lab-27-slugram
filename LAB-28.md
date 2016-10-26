@@ -1,4 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) lab-27-slugram
+![cf](http://i.imgur.com/7v5ASc8.png) lab-28-slugram
 ====
 
 # To Submit this Assignment
