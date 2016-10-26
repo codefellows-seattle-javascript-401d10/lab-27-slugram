@@ -1,7 +1,7 @@
 <main class="home">
   <gallery></gallery>
   <ul>
-    <li ng-repeat="gallery in homeCtrl.galleries">
+    <li name="gallery" ng-repeat="gallery in homeCtrl.galleries">
       <p>{{gallery.name}}</p>
       <p>{{gallery.desc}}</p>
       <p>{{gallery._id}}</p>
@@ -11,7 +11,7 @@
         <input name="name" type="text" placeholder="name">
         <input name="desc" type="text" placeholder="description">
         <button class="btn btn-primary"
-        ng-model="homeCtrl.gallery.id">Delete</button>
+        ng-click="homeCtrl.deleteGallery(gallery._id)">Delete</button>
     </li>
   </ul>
 </main>

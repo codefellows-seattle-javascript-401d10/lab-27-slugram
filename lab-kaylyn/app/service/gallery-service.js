@@ -46,13 +46,12 @@ function galleryService($q, $log, $http, authService){
           Authorization: `Bearer ${token}`,
         },
       };
-      return $http.delete(url, galleryID, config);
+      return $http.delete(url, config);
     })
     .then( () => {
-      let currentIndex = service.galleries.indexOf(i);
       for(var i = 0; i < service.galleries.length; i++){
         if(galleryID === service.galleries[i]._id){
-          service.galleries.splice(currentIndex, 1);
+          service.galleries.splice(i, 1);
         }
       }
       return service.galleries;
