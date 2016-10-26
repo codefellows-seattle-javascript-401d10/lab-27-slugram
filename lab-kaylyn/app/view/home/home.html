@@ -1,0 +1,15 @@
+<main class="home">
+  <gallery></gallery>
+  <ul>
+    <li ng-repeat="gallery in homeCtrl.galleries">
+      <p>{{gallery.name}}</p>
+      <p>{{gallery.desc}}</p>
+      <p>{{gallery._id}}</p>
+      <form
+        name="updateForm"
+        ng-submit="call">
+        <input name="name" type="text" placeholder="name">
+        <input name="desc" type="text" placeholder="description">
+    </li>
+  </ul>
+</main>

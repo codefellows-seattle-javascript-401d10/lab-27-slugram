@@ -1,0 +1,6 @@
+<section>
+  <a href="#" class="btn btn-info" role="button" ng-click="landingCtrl.login()" ng-hide="landingCtrl.showSignup">Login</a>
+  <a href="#" class="btn btn-info" role="button" ng-click="landingCtrl.signup()" ng-hide="landingCtrl.showLogin">Signup</a>
+  <signup ng-if="landingCtrl.showSignup"></signup>
+  <login ng-if="landingCtrl.showLogin"></login>
+</section>
