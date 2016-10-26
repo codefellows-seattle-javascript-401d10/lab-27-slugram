@@ -1,0 +1,19 @@
+<main class="home">
+  <create-gallery> </create-gallery>
+  <ul >
+    <li ng-repeat="gallery in homeCtrl.galleries">
+      <p> {{gallery.name}}</p>
+      <p> {{gallery.desc}}</p>
+      <p> {{gallery._id}}</p>
+      <button ng-click="// delete with id"> - </button>
+      <form
+        name="updateForm"
+        ng-sumibt="//call update with gallery._id, updateForm"
+        novalidate>
+        <input name="name" type="text" placeholder="name">
+        <input name="desc" type="text" placeholder="description">
+        <button> update </button>
+      </form>
+    </li>
+  </ul>
+</main>
