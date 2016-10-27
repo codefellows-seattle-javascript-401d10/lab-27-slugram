@@ -4,11 +4,9 @@
     name="editGallery"
     novalidate>
     <div class="form-group">
-      <label for="name" class="form-control">Name:</label>
-      <input name="name" ng-model="editGalleryCtrl.gallery.name">
-      <label for="desc" class="form-control">Description:</label>
+      <input name="name" placeholder="name" ng-model="editGalleryCtrl.gallery.name">
       <input name="desc" ng-model="editGalleryCtrl.gallery.desc">
     </div>
-    <button ng-click="editGalleryCtrl.updateGallery(this.gallery._id)" class="btn btn-warning">Update</button>
+    <button ng-click="editGalleryCtrl.updateGallery(this.gallery._id)" class="btn btn-warning btn-xs">Update</button>
   </form>
 </div>

@@ -95,7 +95,7 @@ function galleryService($q, $log, $http, authService){
     $log.debug('galleryService.fetchGalleries()');
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/gallery/`; // going to make a POST req to this url
+      let url = `${__API_URL__}/api/gallery/?sort=dsc`; // going to make a POST req to this url
       let config = {
         headers: {
           Accept: 'application/json', // what is being sent back from server

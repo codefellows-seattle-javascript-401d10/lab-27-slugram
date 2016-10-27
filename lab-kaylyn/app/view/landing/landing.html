@@ -1,6 +1,12 @@
-<section>
-  <a href="#" class="btn btn-info" role="button" ng-click="landingCtrl.login()" ng-hide="landingCtrl.showSignup">Login</a>
-  <a href="#" class="btn btn-info" role="button" ng-click="landingCtrl.signup()" ng-hide="landingCtrl.showLogin">Signup</a>
-  <signup ng-if="landingCtrl.showSignup"></signup>
-  <login ng-if="landingCtrl.showLogin"></login>
-</section>
+<main class="landing">
+  <div class="landing-inner-container">
+    <p>Already a member?</p>
+    <a href="#" ng-click="landingCtrl.login()" ng-hide="landingCtrl.showSignup">Login</a>
+    <login ng-if="landingCtrl.showLogin"></login>
+  </div>
+  <div class="landing-inner-container">
+    <p>Not yet a member?</p>
+    <a href="#" ng-click="landingCtrl.signup()" ng-hide="landingCtrl.showLogin">Signup</a>
+    <signup ng-if="landingCtrl.showSignup"></signup>
+  </div>
+</main>

@@ -12,6 +12,8 @@ module.exports = {
 function GalleryLiController($log, galleryService){
   $log.debug('init galleryLiCtrl');
 
+  this.showEditGallery = false;
+
   this.deleteGallery = function(){
     galleryService.deleteGallery(this.gallery._id);
   };

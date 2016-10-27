@@ -6,9 +6,18 @@ html, body {
   height: 100%;
 }
 
-form {
-  input {
-    border-radius: 0px;
-    border-width: 4px;
+.home {
+
+  .gallery-list-container {
+    width: 30%;
+    background-color: $app-primary;
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
   }
 }
