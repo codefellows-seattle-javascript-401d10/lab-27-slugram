@@ -1,4 +1,5 @@
 <section class="create-gallery-container">
+
   <form
     name="createGalleryForm"
     class="form-inline"
@@ -7,26 +8,41 @@
     <div class="form-group">
       <label for="name"> Name: </label>
       <input
+        type="text"
         name="name"
         class="form-control"
-        type="text"
-        uib-tooltip="name required"
+        required
+        placeholder="Name"
         ng-model="createGalleryCtrl.gallery.name"
-        require>
+        uib-tooltip="Name required"
+        tooltip-trigger="'focus'"
+        tooltip-placement="top-right"
+        tooltip-enable="createGalleryForm.Submitted && createGalleryForm.name.$invalid"
+        tooltip-is-open="createGalleryForm.$submitted && createGalleryForm.name.$invalid && createGalleryForm.name.$focus">
     </div>
 
     <div class="form-group">
       <label for="desc"> Description: </label>
       <input
-        desc="desc"
-        class="form-control"
         type="text"
+        name="desc"
+        class="form-control"
+        required
+        placeholder="Description"
         ng-model="createGalleryCtrl.gallery.desc"
-        uib-tooltip="description required"
-        require>
+        uib-tooltip="Description required"
+        tooltip-trigger="'focus'"
+        tooltip-placement="bottom-right"
+        tooltip-enable="createGalleryForm.Submitted && createGalleryForm.desc.$invalid"
+        tooltip-is-open="createGalleryForm.$submitted && createGalleryForm.desc.$invalid && createGalleryForm.desc.$focus">
     </div>
 
-    <!-- <button
-      type="submit" -->
+    <button
+      class="btn btn-primary"
+      type="submit">
+       +
+    </button>
+
   </form>
+
 </section>

@@ -2,10 +2,10 @@
 
 .home {
   width: 70%;
+  font-family: $app-block;
 
   .panel-heading {
     background-color: $app-primary;
-    font-family: $app-block;
 
     span {
       font-weight: bold;

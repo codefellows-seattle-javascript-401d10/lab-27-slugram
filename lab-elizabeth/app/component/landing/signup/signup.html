@@ -1,36 +1,75 @@
 <section class="signup">
 
   <form
-    ng-submit="signupCtrl.signup(signupCtrl.user)"
+    name="signupForm"
+    ng-submit="signupCtrl.signup()"
     novalidate>
 
-    <input
-      class="form-control"
-      ng-minlength="6"
-      required
-      type="text"
-      placeholder="Username"
-      ng-model="signupCtrl.user.username">
+    <div
+      ng-class="{
+        'has-error': signupForm.username.$invalid && signupForm.$submitted,
+        'has-success': signupForm.username.$valid,
+      }"
+      class="form-group">
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        required
+        placeholder="Username"
+        ng-minlength="6"
+        ng-model="signupCtrl.user.username"
+        uib-tooltip="must be at least 6 characters"
+        tooltip-trigger="'focus'"
+        tooltip-placement="top-right"
+        tooltip-enable="signupForm.Submitted && signupForm.username.$invalid"
+        tooltip-is-open="signupForm.$submitted && signupForm.username.$invalid && signupForm.username.$focus">
+    </div>
 
-    <input
-      class="form-control"
-      required
-      type="email"
-      placeholder="Email"
-      ng-model="signupCtrl.user.email">
+    <div
+      ng-class="{
+        'has-error': signupForm.email.$invalid && signupForm.$submitted,
+        'has-success': signupForm.email.$valid,
+      }"
+      class="form-group">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        required
+        placeholder="Email"
+        ng-model="signupCtrl.user.email"
+        uib-tooltip="must be an email"
+        tooltip-trigger="'focus'"
+        tooltip-placement="bottom-right"
+        tooltip-enable="signupForm.Submitted && signupForm.email.$invalid"
+        tooltip-is-open="signupForm.$submitted && signupForm.email.$invalid && signupForm.email.$focus">
+    </div>
 
-    <input
-      class="form-control"
-      ng-minlength="8"
-      required
-      type="password"
-      placeholder="Password"
-      ng-model="signupCtrl.user.password">
+    <div
+      ng-class="{
+        'has-error': signupForm.password.$invalid && signupForm.$submitted,
+        'has-success': signupForm.password.$valid,
+      }"
+      class="form-group">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        required
+        placeholder="Password"
+        ng-minlength="8"
+        ng-model="signupCtrl.user.password"
+        ng-disabled="login.username.$invalid"
+        uib-tooltip="must be at least 8 characters"
+        tooltip-trigger="'focus'"
+        tooltip-placement="bottom-right"
+        tooltip-enable="signupForm.Submitted && signupForm.password.$invalid"
+        tooltip-is-open="signupForm.$submitted && signupForm.password.$invalid && signupForm.password.$focus"
+        tooltip-is-open="signupForm.$submitted && signupForm.password.$invalid && signupForm.password.$focus">
+    </div>
 
-    <input
-      class="btn btn-primary"
-      type="submit"
-      value="Sign Up">
+    <button class="btn btn-primary"> Sign Up </button>
 
   </form>
 

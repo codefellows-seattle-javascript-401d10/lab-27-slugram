@@ -2,9 +2,8 @@
 
   <form
     name="loginForm"
-    ng-submit="loginCtrl.login(loginCtrl.user)"
-    novalidate
-    >
+    ng-submit="loginCtrl.login()"
+    novalidate>
 
     <div
       ng-class="{
@@ -15,12 +14,16 @@
       <input
         type="text"
         name="username"
-        placeholder="Username"
         class="form-control"
         required
+        placeholder="Username"
         ng-minlength="6"
         ng-model="loginCtrl.user.username"
-        >
+        uib-tooltip="must be at least 6 characters"
+        tooltip-trigger="'focus'"
+        tooltip-placement="top-right"
+        tooltip-enable="loginForm.Submitted && loginForm.username.$invalid"
+        tooltip-is-open="loginForm.$submitted && loginForm.username.$invalid && loginForm.username.$focus">
     </div>
 
     <div
@@ -32,20 +35,21 @@
       <input
         type="password"
         name="password"
-        placeholder="Password"
         class="form-control"
         required
+        placeholder="Password"
         ng-minlength="8"
-        ng-disabled="login.username.$invalid"
         ng-model="loginCtrl.user.password"
-        >
+        ng-disabled="login.username.$invalid"
+        uib-tooltip="must be at least 8 characters"
+        tooltip-trigger="'focus'"
+        tooltip-placement="bottom-right"
+        tooltip-enable="loginForm.Submitted && loginForm.password.$invalid"
+        tooltip-is-open="loginForm.$submitted && loginForm.password.$invalid && loginForm.password.$focus"
+        tooltip-is-open="loginForm.$submitted && loginForm.password.$invalid && loginForm.password.$focus">
     </div>
 
-    <input
-      class="btn btn-primary"
-      type="submit"
-      value="Log In"
-      >
+    <button class="btn btn-primary"> Login </button>
 
   </form>
 

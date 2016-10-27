@@ -1,11 +1,16 @@
 <section class="navbar navbar-default">
+
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">[DemoApp]</a>
+
+    <a class="navbar-brand" href="#"> DemoApp </a>
+
     <div ng-hide="navbarCtrl.hideButtons">
+
       <button
         ng-class="btn pull-right btn-default navbar-btn btn-logout">
         logout
       </button>
+
       <div class="btn-group pull-right" uib-dropdown>
         <button
           id="btn-append-to-body"
@@ -15,7 +20,15 @@
           <span class="glyphicon glypicon-menu-hamburger"></span>
         </button>
 
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+          <li role="menuitem"><a href="#" ng-click="navbarCtrl.logout()"> Logout </a></li>
+          <li role="menuitem"><a href="#/home"> Home </a></li>
+        </ul>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
