@@ -1,6 +1,21 @@
 @import "theme";
 
 .home {
+
+  h3, p, form  {
+    text-align: center;
+  }
+
+  h3 {
+    padding-top: 1.5%;
+  }
+
+  hr {
+    width: 55%;
+    border: .7px solid;
+    color: $app-disabled;
+  }
+
   .panel-heading {
     background-color: $app-primary;
     span {
@@ -13,4 +28,3 @@
     }
   }
 }
-

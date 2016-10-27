@@ -2,9 +2,9 @@
   <section class ="form">
     <signup ng-show="landingCtrl.showSignup"></signup>
     <button class="btn btn-primary" ng-click="landingCtrl.showSignup = false"
-    ng-hide="!landingCtrl.showSignup">Go to Login</button>
+    ng-show="landingCtrl.showSignup">Go to Login</button>
 
-    <login ng-show="!landingCtrl.showSignup"></login>
+    <login ng-hide="landingCtrl.showSignup"></login>
     <button class="btn btn-primary" ng-click="landingCtrl.showSignup = true" ng-hide="landingCtrl.showSignup">Go to Signup</button>
   </section>
 </main>
