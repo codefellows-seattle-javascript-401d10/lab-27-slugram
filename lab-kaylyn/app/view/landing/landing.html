@@ -1,4 +1,4 @@
-<main class="landing">
+<!-- <main class="landing">
   <div class="landing-inner-container">
     <p>Already a member?</p>
     <a href="#" ng-click="landingCtrl.login()" ng-hide="landingCtrl.showSignup">Login</a>
@@ -8,5 +8,30 @@
     <p>Not yet a member?</p>
     <a href="#" ng-click="landingCtrl.signup()" ng-hide="landingCtrl.showLogin">Signup</a>
     <signup ng-if="landingCtrl.showSignup"></signup>
+  </div>
+</main> -->
+<main class="landing">
+  <div class="join-container"
+    ng-if="landingCtrl.showSignup">
+    <div class="join-inner-container">
+      <signup></signup>
+      <p> All ready a member? </p>
+      <a href="/#/join#login"
+        ng-click="landingCtrl.showSignup=false">
+        login
+      </a>
+    </div>
+  </div>
+
+  <div class="join-container"
+    ng-if="!landingCtrl.showSignup">
+    <div class="join-inner-container">
+      <login> </login>
+      <p> Not a member yet? </p>
+      <a href="/#/join#signup"
+        ng-click="landingCtrl.showSignup=true">
+        Signup
+      </a>
+    </div>
   </div>
 </main>
