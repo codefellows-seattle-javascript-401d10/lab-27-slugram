@@ -1,8 +1,8 @@
 <main class="home">
   <gallery></gallery>
   <ul>
-    <li name="gallery" ng-repeat="gallery in homeCtrl.galleries">
-      <p>{{gallery.name}}</p>
+    <gallery-li ng-repeat="item in homeCtrl.galleries" gallery="item"></gallery-li>
+      <!-- <p>{{gallery.name}}</p>
       <p>{{gallery.desc}}</p>
       <p>{{gallery._id}}</p>
       <form
@@ -12,7 +12,6 @@
         <button class="btn btn-primary"
         ng-click="homeCtrl.deleteGallery(gallery._id)">Delete</button>
         <button class="btn btn-primary"
-        ng-click="homeCtrl.updateGallery(gallery._id, updateForm.gallery)">Update</button>
-    </li>
+        ng-click="homeCtrl.updateGallery(gallery._id, updateForm.gallery)">Update</button> -->
   </ul>
 </main>
