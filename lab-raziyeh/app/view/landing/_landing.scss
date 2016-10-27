@@ -3,3 +3,19 @@
 .landing {
   background-color: $app-secondary;
 }
+
+.navbar-inverse {
+  background-color: #6f94a2 !important;
+  border-color: #6f94a2 !important;
+}
+.navbar-inverse a {
+    color:#fff!important;
+    font-weight: 400;
+}
+.navbar-nav > li > a {
+  padding-top:10px !important;
+  padding-bottom:10px !important;
+}
+img {
+  max-width: 100px;
+}

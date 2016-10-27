@@ -1,22 +1,22 @@
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">My Website</a>
+      <a class="navbar-brand" href="#"><img src="../../image/codefellows.png"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active">  
-        <a href="#" class="btn" role="button" ng-click="landingCtrl.signin()">Sign in</a>
-      </li>
-
-      <li>
-        <a href="#" class="btn" role="button" ng-click="landingCtrl.signin()">Sign up</a>
-      </li>
+      <li><a href="#" class="btn" role="button">Home</a></i>
+      <li><a href="#" class="btn" role="button">Contact</a></i>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-       <signin ng-if="landingCtrl.showsignin"></signin>
-       <signup ng-if="!landingCtrl.showsignin"></signup>
-    </ul>
+      <li><a href="#/login" class="btn btn-warning btn-sm" role="button" >Sign in</a></i>
+      <!--<li><a href="#" class="btn" role="button" ng-click="landingCtrl.signin()">Sign up</a></i>-->
+    </ul> 
   </div>
 </nav>
 
-
+<!--//ng-click="landingCtrl.signin()"-->
+    <!--<ul class="nav navbar-nav navbar-right">
+       <signin ng-if="landingCtrl.showsignin"></signin>
+       <signup ng-if="!landingCtrl.showsignin"></signup>
+    </ul>-->

@@ -17,6 +17,13 @@ function routerConfig($stateProvider, $urlRouterProvider){
     controllerAs: 'landingCtrl',
     controller: 'LandingController',
     template: require('../view/landing/landing.html'),
+  })
+
+  .state('login', {
+    url: '/login',
+    controllerAs: 'loginCtrl',
+    controller: 'LoginController',
+    template: require('../view/login/login.html'),
   });
 
   $urlRouterProvider.otherwise('/');
