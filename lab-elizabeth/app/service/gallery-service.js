@@ -11,7 +11,7 @@ function galleryService($q, $log, $http, authService){
   service.createGallery = function(gallery){
     $log.debug('galleryService.createGallery');
 
-    authService.getToken()
+    return authService.getToken()
     .then(token => {
       let url = `${__API_URL__}/api/gallery`;
       let config = {
@@ -27,7 +27,7 @@ function galleryService($q, $log, $http, authService){
       $log.log('successful create gallery');
       let gallery = res.data;
       service.galleries.unshift(gallery);
-      return gallery;
+      return $q.resolve(gallery);
     })
     .catch(err => {
       $log.error(err.message);
@@ -50,7 +50,7 @@ function galleryService($q, $log, $http, authService){
     })
     .then(res => {
       $log.log('sucessful fetch galleries');
-      service.galleries = res.data;
+      service.galleries = res.data.reverse();
       return service.galleries;
     })
     .catch(err => {
