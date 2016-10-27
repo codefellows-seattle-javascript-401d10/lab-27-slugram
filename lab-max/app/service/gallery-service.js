@@ -42,7 +42,7 @@ function galleryService($q, $log, $http, authService){
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/gallery`;
+      let url = `${__API_URL__}/api/gallery?sort=dsc`;
       let config = {
         headers: {
           Accept: 'application/json',
