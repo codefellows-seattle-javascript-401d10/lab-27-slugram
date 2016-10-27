@@ -1,13 +1,25 @@
 <main class="home">
-  <uib-accordion close-others="homeCtrl.oneAtATime">
-    <div uib-accordion-group class="panel-default" heading="In box A is magic">
-      Empty.
-    </div>
-    <div uib-accordion-group class="panel-default" heading="In box B is money">
-      Empty.
-    </div>
-    <div uib-accordion-group class="panel-default" heading="In box C is a job">
-      Magic, Money, Food.
-    </div>
-  </uib-accordion>
+  <create-gallery> </create-gallery>
+  <!-- <ul > -->
+    <section class="repeatGallery">
+      <!-- we will take all this logic, and move it into a gallery-li.js file as a component, and use binding to access it here -->
+      <h3 ng-show="">Galleries</h3>
+      <h5 ng-repeat="gallery in homeCtrl.galleries">
+      <p>Name: {{gallery.name}}</p>
+      <p>Description: {{gallery.desc}}</p>
+      <!-- <p> {{gallery._id}}</p> -->
+
+      <form
+        name="updateForm"
+        ng-submit="homeCtrl.updateGallery(updateForm.gallery, gallery._id)"
+        novalidate>
+        <button class="btn btn-primary" ng-click="homeCtrl.deleteGallery(gallery, gallery._id)"> - </button>
+        <input ng-model="updateForm.gallery.name" name="name" type="text" placeholder="name">
+        <input ng-model="updateForm.gallery.desc" name="desc" type="text" placeholder="description">
+        <button class="btn btn-primary"> Update </button>
+      </form>
+      <hr/>
+    </section>
+    <!-- </li> -->
+  <!-- </ul> -->
 </main>
