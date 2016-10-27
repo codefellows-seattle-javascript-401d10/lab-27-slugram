@@ -14,9 +14,9 @@ Today you will componentize your gallery navigation
 # Directions
 * create a component for displying gallery info and an edit gallery form
  * it should be configured to pass a gallery object into it, using one way data binding
- * it should also have a button that will trigger a **DELETE** request to the slugram and remove the current galery info component from the screen
-* create an edit gallery component that will be used in the previous gallery info component
- * the sumbit event should trigger a **PUT** request to the slugram backend, and update the view on the front end
+ * it should also have a button that will trigger a **DELETE** request to the slugram API and remove the current gallery info component from the screen
+* create an edit gallery component that will be nested in the previous gallery info component
+ * the sumbit event should trigger a **PUT** request to the slugram backend updating the gallery info, and then update the view on the front end to reflect the changes
 
 ### POST `/api/gallery`
 * use this route to create a gallery
