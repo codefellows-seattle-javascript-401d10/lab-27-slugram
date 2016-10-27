@@ -108,7 +108,7 @@ function galleryService($q, $log, $http, authService) {
     .then( res => {
       $log.log('successful fetch user galleries');
       service.galleries = res.data;
-      return service.galleries;
+      return service.galleries.reverse();
     })
     .catch( err => {
       $log.error(err.message);
