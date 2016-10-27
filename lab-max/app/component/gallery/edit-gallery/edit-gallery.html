@@ -1,0 +1,18 @@
+<div class="update-gallery-container">
+  <form novalidate
+    name="updateForm"
+    class="edit-gallery"
+    ng-submit="editGalleryCtrl.updateGallery()">
+    <input class="form-control"
+      type="text"
+      placeholder="Gallery Name"
+      name="name"
+      ng-model="editGalleryCtrl.gallery.name">
+    <input class="form-control"
+      type="text"
+      placeholder="Gallery Description"
+      name="desc"
+      ng-model="editGalleryCtrl.gallery.desc">
+    <button ng-if="!gallery.editGallery" class="btn btn-warn" type="submit"> Update </button>
+  </form>
+</div>

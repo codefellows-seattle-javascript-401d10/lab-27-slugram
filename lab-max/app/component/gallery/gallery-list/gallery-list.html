@@ -1,0 +1,16 @@
+<li class="gallery-li">
+  <h3> {{galleryListCtrl.gallery.name}} </h3>
+  <p> {{galleryListCtrl.gallery.desc}} </p>
+  <button
+    ng-click="galleryListCtrl.editGallery = !galleryListCtrl.editGallery"
+    ng-show="!galleryListCtrl.editGallery"
+    class="btn btn-warn"> Edit </button>
+  <span
+    ng-show="!galleryListCtrl.editGallery"
+    ng-click="galleryListCtrl.deleteGallery()"
+    class="glyphicon glyphicon-trash"> </span>
+  <edit-gallery
+    ng-if="galleryListCtrl.editGallery"
+    gallery="galleryListCtrl.gallery">
+  </edit-gallery>
+</li>

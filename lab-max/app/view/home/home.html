@@ -1,29 +1,8 @@
 <main class="home">
   <create-gallery> </create-gallery>
-
-  <ul>
-    <li name="gallery" ng-repeat="gallery in homeCtrl.galleries">
-      <p> {{gallery.name}} </p>
-      <p> {{gallery.desc}} </p>
-      <p> {{gallery._id}} </p>
-      <button ng-if="!gallery.editGallery" ng-click="gallery.editGallery = true" class="btn btn-info"> Edit Gallery </button>
-      <form novalidate
-        ng-show="gallery.editGallery"
-        name="updateForm"
-        ng-submit="homeCtrl.updateGallery(gallery._id, updateForm.gallery)">
-        <input class="form-control"
-          type="text"
-          placeholder="Gallery Name"
-          name="name"
-          ng-model="updateForm.gallery.name">
-        <input class="form-control"
-          type="text"
-          placeholder="Gallery Description"
-          name="desc"
-          ng-model="updateForm.gallery.desc">
-        <input ng-if="gallery.editGallery" class="btn btn-info" type="submit" value="Update">
-      </form>
-      <button class="btn btn-info"
-        ng-click="homeCtrl.deleteGallery(gallery._id)"> Delete </button>
-  </ul>
+  <nav class="gallery-list-container">
+    <ul>
+      <gallery-list ng-repeat="item in homeCtrl.galleries" gallery="item"> </gallery-list>
+    </ul>
+  </nav>
 </main>

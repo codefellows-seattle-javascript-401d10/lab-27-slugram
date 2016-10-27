@@ -12,5 +12,17 @@
       color: $app-black;
     }
   }
-}
 
+  .gallery-list-container {
+    width: 20%;
+    background-color: $app-white;
+
+    ul {
+      padding: 2%;
+    }
+
+    li {
+      list-style: none;
+    }
+  }
+}

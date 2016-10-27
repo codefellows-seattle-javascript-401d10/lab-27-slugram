@@ -13,7 +13,6 @@ function HomeController($log, $rootScope, galleryService){
     galleryService.fetchGalleries()
     .then( galleries => {
       this.galleries = galleries;
-      console.log(this.galleries);
     });
   };
 
@@ -22,12 +21,4 @@ function HomeController($log, $rootScope, galleryService){
   $rootScope.$on('$locationChangeSuccess', () => {
     this.fetchGalleries();
   });
-
-  this.updateGallery = function(galleryID, galleryData){
-    galleryService.updateGallery(galleryID, galleryData);
-  };
-
-  this.deleteGallery = function(galleryID){
-    galleryService.deleteGallery(galleryID);
-  };
 }
