@@ -1,5 +1,6 @@
 'use strict';
 
+// inject authService to get the tokens in order to make authenticated requests
 module.exports = ['$q', '$log', '$http', 'authService', galleryService];
 
 function galleryService($q, $log, $http, authService){
@@ -21,7 +22,7 @@ function galleryService($q, $log, $http, authService){
           Authorization: `Bearer ${token}`,
         },
       };
-      return $http.post(url, gallery, config);
+      return $http.post(url, gallery, config); // returns a Promise 
     })
     .then( res => {
       $log.log('create gallery success');

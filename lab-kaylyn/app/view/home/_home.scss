@@ -1,16 +1,14 @@
+@import "custom-bootstrap";
 @import "theme";
 
-.home {
-  .panel-heading {
-    background-color: $app-primary;
-    span {
-      font-weight: bold;
-      color: $app-secondary;
-    }
-
-    span:hover {
-      color: $app-black;
-    }
-  }
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
+form {
+  input {
+    border-radius: 0px;
+    border-width: 4px;
+  }
+}

@@ -14,6 +14,7 @@ function GalleryController($log, galleryService){
   this.createGallery = function(){
     galleryService.createGallery(this.gallery)
     .then( () => {
+      // upon success, reset the form
       this.gallery.name = null;
       this.gallery.desc = null;
     });
