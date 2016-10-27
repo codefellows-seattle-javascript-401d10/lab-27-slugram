@@ -1,3 +1,8 @@
 <li class="container-fluid gallery-li">
   <h2>{{galleryLiCtrl.gallery.name}}</h2>
+  <p>{{galleryLiCtrl.gallery.desc}}</p>
+  <span
+  ng-click="galleryLiCtrl.deleteGallery(this.gallery._id)"
+  class="glyphicon glyphicon-trash"></span>
+  <edit-gallery gallery="galleryLiCtrl.gallery"></edit-gallery>
 </li>

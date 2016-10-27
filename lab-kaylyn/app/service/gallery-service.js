@@ -22,7 +22,7 @@ function galleryService($q, $log, $http, authService){
           Authorization: `Bearer ${token}`,
         },
       };
-      return $http.post(url, gallery, config); // returns a Promise 
+      return $http.post(url, gallery, config); // returns a Promise
     })
     .then( res => {
       $log.log('create gallery success');
@@ -43,7 +43,6 @@ function galleryService($q, $log, $http, authService){
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
       let config = {
         headers: {
-          Accept: 'application/json', // what is being sent back from server
           Authorization: `Bearer ${token}`,
         },
       };
