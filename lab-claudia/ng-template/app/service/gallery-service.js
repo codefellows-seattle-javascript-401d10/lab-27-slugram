@@ -24,7 +24,7 @@ function galleryService($q, $log, $http, authService){
       return $http.post(url, gallery, config);
     })
     .then( res => {
-      $log.log('successful create gallery');
+      $log.log('Succesfully created gallery');
       let gallery = res.data;
       service.galleries.unshift(gallery);
       return gallery;
@@ -72,7 +72,7 @@ function galleryService($q, $log, $http, authService){
     return authService.getToken()
     .then( token => {
       // __API_URL__ is set in the .env file
-      let url = `${__API_URL__}/api/gallery/`; // can configure with querystring sort gallery/?sort=asc, sort=desc
+      let url = `${__API_URL__}/api/gallery/?sort=desc`; // can configure with querystring sort gallery/?sort=asc, sort=desc
       // sorts newest to oldest
       let config = {
         headers: {

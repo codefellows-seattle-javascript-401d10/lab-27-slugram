@@ -22,16 +22,29 @@ const uiBootstrap = require('angular-ui-bootstrap'); // Need touch and animate t
 // Add everything we need to module
 const demoApp = angular.module('demoApp', [ngTouch, ngAnimate, uiRouter, uiBootstrap]);
 
-// Load config
-// Returns object that has files that match regex in the
-// config directory and loads it in
-let context = require.context('./config/', true, /.js$/);
-// key -absolute path of where file was found
-context.keys().forEach( path => {
-  demoApp.config(context(path));
+// WHAT DOES REQUIRE.CONTEXT DO?
+//////////////////////////////////////
+// 1. Loops through directory
+// 2. Gives us path
+// 3. Gives us the object to export
+
+// BASENAME = name of file without folders or .js
+    //ex: start with app/goose/file.js --> returns 'file'
+// true parameter -looks through sub-directories
+// Require.context returns a function
+
+// Returns object that has files that match regex in the config directory and loads it in
+// Key - absolute path of where file was found
+// Context has a method called keys that returns an array of paths
+// For each loops across it and gives us the path name
+
+// LOAD CONFIG
+let context = require.context('./config/', true, /.js$/); // goes through config and finds files that end .js
+context.keys().forEach( path => { //gets array of paths -  path is the name returned
+  demoApp.config(context(path)); //gives us the object (module that is exported)
 });
 
-// Load view controllers
+// LOAD VIEW CONTROLLERS
 context = require.context('./view/', true, /.js$/); //looks in view for directories ending in js
 context.keys().forEach( key => {
   // for every key, take path, and get the base name(home-controller)

@@ -20,7 +20,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
       template: require('../view/home/home.html'),
     },
     {
-      name: 'Welcome',
+      name: 'welcome',
       url: '/join',
       controllerAs: 'landingCtrl',
       controller: 'LandingController',
