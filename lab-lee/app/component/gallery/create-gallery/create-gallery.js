@@ -8,11 +8,11 @@ module.exports = {
 
 function CreateGalleryController($log, galleryService){
   $log.debug('init createGalleryCtrl');
-
   this.gallery = {};
-  this.createGallery = function() {
+
+  this.createGallery = function(){
     galleryService.createGallery(this.gallery)
-    .then( () => {
+    .then(() => {
       this.gallery.name = null;
       this.gallery.desc = null;
     });

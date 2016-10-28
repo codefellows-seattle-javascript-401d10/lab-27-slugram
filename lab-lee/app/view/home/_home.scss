@@ -1,6 +1,20 @@
 @import "theme";
 
 .home {
+
+  .gallery-list-container {
+    width: 15%;
+    background-color: $app-secondary;
+
+    ul {
+      padding: 0px;
+    }
+
+    li {
+      list-style: none;
+    }
+  }
+
   .panel-heading {
     background-color: $app-primary;
     span {
@@ -13,4 +27,3 @@
     }
   }
 }
-

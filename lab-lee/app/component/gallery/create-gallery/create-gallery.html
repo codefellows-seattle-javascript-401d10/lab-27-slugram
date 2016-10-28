@@ -2,12 +2,12 @@
   <form name="createGalleryForm"
     class="form-inline"
     novalidate
-    ng-submit="createGalleryCtrl.createGallery()">
+    ng-submit="createGalleryCtrl.createGallery(createGalleryCtrl.gallery)">
 
     <div class="form-group">
       <label for="name"> Name: </label>
       <input name="name"
-      class="form-control"
+        class="form-control"
         type="text"
         uib-tooltip="name required"
         ng-model="createGalleryCtrl.gallery.name"
@@ -17,7 +17,7 @@
     <div class="form-group">
       <label for="desc"> Description: </label>
       <input name="desc"
-      class="form-control"
+        class="form-control"
         type="text"
         uib-tooltip="description required"
         ng-model="createGalleryCtrl.gallery.desc"
@@ -25,7 +25,5 @@
     </div>
 
     <button class="btn btn-primary" type="submit"> + </button>
-
-    </div>
   </form>
 </section>
