@@ -3,8 +3,11 @@
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
+  // these are all redirects
+  // when you go to /signup- redirects to /join#signup
+  // when you go to /login- redirects to /join#login
   $urlRouterProvider.when('' , '/join#signup');
-  $urlRouterProvider.when('' , '/join#signup');
+  $urlRouterProvider.when('/' , '/join#signup'); //used in navbar.js
   $urlRouterProvider.when('/signup' , '/join#signup');
   $urlRouterProvider.when('/login' , '/join#login');
 

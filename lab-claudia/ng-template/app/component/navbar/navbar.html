@@ -1,13 +1,13 @@
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">[nuggetGram]</a>
+    <a class="navbar-brand" href="#">{{ navbarCtrl.appTitle }}</a>   <!-- Comes from bindings @-->
     <div ng-hide="navbarCtrl.hideButtons">
-      
+
       <button
         ng-click="navbarCtrl.logout()"
         class="btn pull-right btn-default navbar-btn btn-logout">
-        logout
+        Logout
       </button>
 
       <div class="btn-group pull-right" uib-dropdown>

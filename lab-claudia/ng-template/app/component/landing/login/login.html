@@ -10,7 +10,7 @@
       class="form-group">
       <input type="text"
         name="username"
-        uib-tooltip="Username must have 5 charicters"
+        uib-tooltip="Username must have 5 characters"
         tooltip-enable="loginForm.$submitted && loginForm.username.$invalid"
         tooltip-is-open="loginForm.$submitted && loginForm.username.$invalid &&
         loginForm.username.$focus"
@@ -42,6 +42,7 @@
         required ng-minlength="8"
         ng-model="loginCtrl.user.password">
     </div>
+    <!-- Button calls login -->
     <button class="btn btn-primary"> Login </button>
   </form>
 </section>
