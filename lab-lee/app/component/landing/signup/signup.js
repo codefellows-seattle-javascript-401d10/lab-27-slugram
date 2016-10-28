@@ -8,12 +8,7 @@ module.exports = {
 
 function SignupController($log, $location, authService) {
   $log.debug('init signupCtrl');
-
-  authService.getToken()
-  .then( () => {
-    $location.url('/home');
-  });
-
+// Stefanie, when you grade this, why are there promises usable below? Is it because the authService Service is being injected with the $q module that we're able to use them?
   this.signup = function(user){
     $log.debug('signupCtrl.signup()');
     authService.signup(user)

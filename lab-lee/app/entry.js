@@ -12,18 +12,19 @@ const camelcase = require('camelcase');
 const pascalcase = require('pascalcase');
 
 // require angualr modules
-const ngTouch = require('angular-touch');
-const ngAnimate = require('angular-animate');
+// below libraries are angular modules to be injected into our modules to let us take advantage of routing, bootstrap, etc
+const ngTouch = require('angular-touch'); // dependency of uiBootstrap
+const ngAnimate = require('angular-animate'); // dependency of uiBootstrap
 const uiRouter = require('angular-ui-router');
-const uiBootstrap = require('angular-ui-bootstrap');
+const uiBootstrap = require('angular-ui-bootstrap'); // allows angular to work with bootstrap
 
 // create angular module
 const leeGram = angular.module('leeGram', [ngTouch, ngAnimate,  uiRouter, uiBootstrap]);
 
 // load config
 let context = require.context('./config/', true, /.js$/);
-context.keys().forEach( path => {
-  leeGram.config(context(path));
+context.keys().forEach( key => {
+  leeGram.config(context(key));
 });
 
 // load view controllers

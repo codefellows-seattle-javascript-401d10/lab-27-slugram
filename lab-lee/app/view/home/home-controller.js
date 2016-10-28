@@ -8,26 +8,20 @@ function HomeController($log, $rootScope, galleryService){
   $log.debug('init homeCtrl');
   this.galleries = [];
 
-  this.fetchGalleries = function() {
+  this.fetchGalleries = function(){
     galleryService.fetchGalleries()
     .then( galleries => {
       this.galleries = galleries;
+      console.log(this.galleries);
     });
   };
 
-  this.deleteGallery = function(galleryID) {
-    $log.debug('init deleteGallery');
-    galleryService.deleteGallery(galleryID);
-  };
-
-  this.updateGallery = function(galleryID, gallery) {
-    $log.debug('init updateGallery');
-    galleryService.updateGallery(galleryID, gallery);
-  };
-
+  // when the controller gets created fetchGalleries
   this.fetchGalleries();
 
+  // when the locationChangeSuccess fetchGalleries
   $rootScope.$on('$locationChangeSuccess', () => {
     this.fetchGalleries();
   });
+
 }

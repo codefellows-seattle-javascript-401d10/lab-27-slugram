@@ -1,4 +1,4 @@
-<section class="login-form">
+  <section class="login-form">
   <form
     name="loginForm"
     ng-submit="loginCtrl.login()" novalidate>
@@ -10,7 +10,7 @@
       class="form-group">
       <input type="text"
         name="username"
-        uib-tooltip="Username must have 5 charicters"
+        uib-tooltip="Username must have 5 characters"
         tooltip-enable="loginForm.$submitted && loginForm.username.$invalid"
         tooltip-is-open="loginForm.$submitted && loginForm.username.$invalid &&
         loginForm.username.$focus"
