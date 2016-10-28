@@ -3,10 +3,14 @@
   <form
     name="createGalleryForm"
     class="form-inline"
-    ng-submit="createGalleryCtrl.createGallery()">
+    ng-submit="createGalleryCtrl.createGallery()"
+    novalidate>
 
     <div class="form-group">
-      <label for="name"> Name: </label>
+      <label
+        for="name">
+        Name:
+      </label>
       <input
         type="text"
         name="name"
@@ -17,12 +21,18 @@
         uib-tooltip="Name required"
         tooltip-trigger="'focus'"
         tooltip-placement="top-right"
-        tooltip-enable="createGalleryForm.Submitted && createGalleryForm.name.$invalid"
-        tooltip-is-open="createGalleryForm.$submitted && createGalleryForm.name.$invalid && createGalleryForm.name.$focus">
+        tooltip-enable="createGalleryForm.Submitted
+          && createGalleryForm.name.$invalid"
+        tooltip-is-open="createGalleryForm.$submitted
+          && createGalleryForm.name.$invalid
+          && createGalleryForm.name.$focus">
     </div>
 
     <div class="form-group">
-      <label for="desc"> Description: </label>
+      <label
+        for="desc">
+        Description:
+      </label>
       <input
         type="text"
         name="desc"
@@ -33,14 +43,17 @@
         uib-tooltip="Description required"
         tooltip-trigger="'focus'"
         tooltip-placement="bottom-right"
-        tooltip-enable="createGalleryForm.Submitted && createGalleryForm.desc.$invalid"
-        tooltip-is-open="createGalleryForm.$submitted && createGalleryForm.desc.$invalid && createGalleryForm.desc.$focus">
+        tooltip-enable="createGalleryForm.Submitted
+          && createGalleryForm.desc.$invalid"
+        tooltip-is-open="createGalleryForm.$submitted
+          && createGalleryForm.desc.$invalid
+          && createGalleryForm.desc.$focus">
     </div>
 
     <button
       class="btn btn-primary"
       type="submit">
-       Add
+       <span class="glyphicon glyphicon-plus"></span>
     </button>
 
   </form>

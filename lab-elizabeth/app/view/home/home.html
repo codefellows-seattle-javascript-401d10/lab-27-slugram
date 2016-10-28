@@ -2,48 +2,17 @@
 
   <create-gallery></create-gallery>
 
-  <ul>
+  <nav class="gallery-list-container">
 
-    <li ng-repeat="gallery in homeCtrl.galleries">
-      <p> {{gallery.name}} </p>
-      <p> {{gallery.desc}} </p>
-      <p> {{gallery._id}} </p>
+    <ul>
+      
+      <gallery-li
+        ng-repeat="item in homeCtrl.galleries"
+        gallery="item">
+      </gallery-li>
 
-      <button
-        class="btn btn-primary"
-        ng-click="homeCtrl.deleteGallery(gallery._id)"> Delete </button>
+    </ul>
 
-      <form
-        name="updateForm"
-        ng-submit="homeCtrl.updateGallery(gallery._id, updateForm.gallery)"
-        novalidate>
-
-        <input
-          type="text"
-          name="name"
-          class="form-control"
-          placeholder="Name"
-          ng-model="updateForm.gallery.name"
-          uib-tooltip="Update Name"
-          tooltip-trigger="'focus'"
-          tooltip-placement="top-right"
-          tooltip-is-open="updateForm.name.$focus">
-
-        <input
-          type="text"
-          name="desc"
-          class="form-control"
-          placeholder="Description"
-          ng-model="updateForm.gallery.desc"
-          uib-tooltip="Update Description"
-          tooltip-trigger="'focus'"
-          tooltip-placement="bottom-right"
-          tooltip-is-open="updateForm.desc.$focus">
-
-        <button class="btn btn-primary"> Update </button>
-
-    </li>
-
-  </ul>
+  </nav>
 
 </main>

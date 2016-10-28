@@ -22,8 +22,11 @@
         uib-tooltip="must be at least 6 characters"
         tooltip-trigger="'focus'"
         tooltip-placement="top-right"
-        tooltip-enable="loginForm.Submitted && loginForm.username.$invalid"
-        tooltip-is-open="loginForm.$submitted && loginForm.username.$invalid && loginForm.username.$focus">
+        tooltip-enable="loginForm.Submitted
+          && loginForm.username.$invalid"
+        tooltip-is-open="loginForm.$submitted
+          && loginForm.username.$invalid
+          && loginForm.username.$focus">
     </div>
 
     <div
@@ -44,12 +47,17 @@
         uib-tooltip="must be at least 8 characters"
         tooltip-trigger="'focus'"
         tooltip-placement="bottom-right"
-        tooltip-enable="loginForm.Submitted && loginForm.password.$invalid"
-        tooltip-is-open="loginForm.$submitted && loginForm.password.$invalid && loginForm.password.$focus"
-        tooltip-is-open="loginForm.$submitted && loginForm.password.$invalid && loginForm.password.$focus">
+        tooltip-enable="loginForm.Submitted
+          && loginForm.password.$invalid"
+        tooltip-is-open="loginForm.$submitted
+          && loginForm.password.$invalid
+          && loginForm.password.$focus">
     </div>
 
-    <button class="btn btn-primary"> Login </button>
+    <button
+      class="btn btn-primary">
+      Login
+    </button>
 
   </form>
 

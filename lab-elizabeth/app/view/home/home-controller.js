@@ -15,13 +15,13 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
-  this.updateGallery = function(galleryID, newGallery){
-    galleryService.updateGallery(galleryID, newGallery);
-  };
-
-  this.deleteGallery = function(galleryID){
-    galleryService.deleteGallery(galleryID);
-  };
+  // this.updateGallery = function(galleryID, newGallery){
+  //   galleryService.updateGallery(galleryID, newGallery);
+  // };
+  //
+  // this.deleteGallery = function(galleryID){
+  //   galleryService.deleteGallery(galleryID);
+  // };
 
   this.fetchGalleries();
 

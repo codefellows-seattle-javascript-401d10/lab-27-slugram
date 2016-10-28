@@ -1,28 +1,44 @@
 @import "custom-bootstrap";
 @import "theme";
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background-color: $app-secondary;
-  color: $app-black;
+html {
 
-  h1 {
-    font-family: $app-title;
-  }
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: $app-secondary;
+    color: $app-black;
 
-  main {
-    width: 70%;
-    margin: 1em auto;
-    border-radius: .25em;
-    padding: 1em;
-
-    * {
-      margin-top: .5em;
+    h1 {
+      font-family: $app-title;
     }
-  }
 
-  input {
-    font-family: $app-accent;
+    h2 {
+      font-family: $app-accent;
+    }
+
+    p {
+      font-family: $app-block;
+      font-weight: bold;
+    }
+
+    main {
+      width: 70%;
+      margin: 1em auto;
+      border-radius: .25em;
+      padding: 1em;
+
+      * {
+        margin-top: .5em;
+      }
+    }
+
+    input {
+      font-family: $app-accent;
+    }
+
+    button {
+      font-weight: bold;
+    }
   }
 }

@@ -9,14 +9,14 @@
 * write a question and observation on canvas
 
 # Description
-Today you will componentize your gallery navigation
+Today you will component-ize your gallery navigation
 
 # Directions
-* create a component for displying gallery info and an edit gallery form
+* create a component for displaying gallery info and an edit gallery form
  * it should be configured to pass a gallery object into it, using one way data binding
  * it should also have a button that will trigger a **DELETE** request to the slugram API and remove the current gallery info component from the screen
 * create an edit gallery component that will be nested in the previous gallery info component
- * the sumbit event should trigger a **PUT** request to the slugram backend updating the gallery info, and then update the view on the front end to reflect the changes
+ * the submit event should trigger a **PUT** request to the slugram back-end updating the gallery info, and then update the view on the front end to reflect the changes
 
 ### POST `/api/gallery`
 * use this route to create a gallery
@@ -29,7 +29,7 @@ Today you will componentize your gallery navigation
  * desc: **String**  
 * 200 response
  * an object with the data for the gallery that was just created
- 
+
 ### GET `/api/gallery`
 * use this route to get an array of all of a users galleries
 * headers required

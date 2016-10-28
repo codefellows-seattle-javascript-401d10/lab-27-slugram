@@ -7,7 +7,8 @@
 
     <div
       ng-class="{
-        'has-error': signupForm.username.$invalid && signupForm.$submitted,
+        'has-error': signupForm.username.$invalid
+          && signupForm.$submitted,
         'has-success': signupForm.username.$valid,
       }"
       class="form-group">
@@ -22,13 +23,17 @@
         uib-tooltip="must be at least 6 characters"
         tooltip-trigger="'focus'"
         tooltip-placement="top-right"
-        tooltip-enable="signupForm.Submitted && signupForm.username.$invalid"
-        tooltip-is-open="signupForm.$submitted && signupForm.username.$invalid && signupForm.username.$focus">
+        tooltip-enable="signupForm.Submitted
+          && signupForm.username.$invalid"
+        tooltip-is-open="signupForm.$submitted
+          && signupForm.username.$invalid
+          && signupForm.username.$focus">
     </div>
 
     <div
       ng-class="{
-        'has-error': signupForm.email.$invalid && signupForm.$submitted,
+        'has-error': signupForm.email.$invalid
+          && signupForm.$submitted,
         'has-success': signupForm.email.$valid,
       }"
       class="form-group">
@@ -42,8 +47,11 @@
         uib-tooltip="must be an email"
         tooltip-trigger="'focus'"
         tooltip-placement="bottom-right"
-        tooltip-enable="signupForm.Submitted && signupForm.email.$invalid"
-        tooltip-is-open="signupForm.$submitted && signupForm.email.$invalid && signupForm.email.$focus">
+        tooltip-enable="signupForm.Submitted
+          && signupForm.email.$invalid"
+        tooltip-is-open="signupForm.$submitted
+          && signupForm.email.$invalid
+          && signupForm.email.$focus">
     </div>
 
     <div
