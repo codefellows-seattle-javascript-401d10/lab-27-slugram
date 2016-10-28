@@ -17,19 +17,20 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
-  this.updateGallery = function(gallery, galleryID) {
-    galleryService.updateGallery(gallery, galleryID)
-    .then(() => {
-      $log.log('updated gallery');
-    });
-  };
-
-  this.deleteGallery = function(gallery, galleryID) {
-    galleryService.deleteGallery(gallery, galleryID)
-    .then(() => {
-      $log.log('deleted gallery');
-    });
-  };
+  //took out all this (the update and delete Gallery methods) and put this logic in the update gallery component
+  // this.updateGallery = function(gallery, galleryID) {
+  //   galleryService.updateGallery(gallery, galleryID)
+  //   .then(() => {
+  //     $log.log('updated gallery');
+  //   });
+  // };
+  //
+  // this.deleteGallery = function(gallery, galleryID) {
+  //   galleryService.deleteGallery(gallery, galleryID)
+  //   .then(() => {
+  //     $log.log('deleted gallery');
+  //   });
+  // };
 
   //call the fetchGallery method, which calls the galleryService when this(the home) controller is initialized
   this.fetchGalleries();
@@ -38,5 +39,4 @@ function HomeController($log, $rootScope, galleryService){
   $rootScope.$on('$locationChangeSuccess', () => {
     this.fetchGalleries();
   });
-
 }

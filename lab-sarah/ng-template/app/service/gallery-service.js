@@ -48,7 +48,6 @@ function galleryService($q, $log, $http, authService){
       let url = `${API_URL}/api/gallery/${galleryID}`;
       let config = {
         headers: {
-          Accept: 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
@@ -73,7 +72,7 @@ function galleryService($q, $log, $http, authService){
     $log.debug('galleryService.fetchGalleries()');
     return authService.getToken()
     .then(token => {
-      let url = `${API_URL}/api/gallery`;
+      let url = `${API_URL}/api/gallery/?sort=dsc`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -85,7 +84,7 @@ function galleryService($q, $log, $http, authService){
     })
     .then(res => {
       $log.log('successfully fetched user galleries');
-      service.galleries = res.data.reverse();
+      service.galleries = res.data;
       return service.galleries;
     })
     .catch(err => {
@@ -115,13 +114,14 @@ function galleryService($q, $log, $http, authService){
       for (let i = 0; i < service.galleries.length; i++) {
         if (service.galleries[i]._id === galleryID) {
           service.galleries[i] = res.data;
-          break; //if you've found it, exit the loop
+          // break; //if you've found it, exit the loop
         }
       }
-      console.log('service.galleries', service.galleries);
-      return $q.resolve('updated');
+      return res.data;
+      // return $q.resolve('updated');
     })
     .catch((err) => {
+      $log.error(err.message);
       return $q.reject(err);
     });
   };

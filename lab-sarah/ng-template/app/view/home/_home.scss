@@ -2,18 +2,17 @@
 
 .home {
 
-  h3, p, form  {
-    text-align: center;
-  }
+  .gallery-list-container {
+    width: 15%;
+    background-color: $app-secondary;
 
-  h3 {
-    padding-top: 1.5%;
-  }
+    ul {
+      padding: 0px;
+    }
 
-  hr {
-    width: 55%;
-    border: .7px solid;
-    color: $app-disabled;
+    li {
+      list-style: none;
+    }
   }
 
   .panel-heading {

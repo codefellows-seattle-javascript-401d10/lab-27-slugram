@@ -1,10 +1,25 @@
 <main class="landing">
-  <section class ="form">
-    <signup ng-show="landingCtrl.showSignup"></signup>
-    <button class="btn btn-primary" ng-click="landingCtrl.showSignup = false"
-    ng-show="landingCtrl.showSignup">Go to Login</button>
+  <div class="join-container"
+    ng-if="landingCtrl.showSignup">
+    <div class="join-inner-container">
+      <signup></signup>
+      <p> Already a member? </p>
+      <a href="/#/join#login"
+        ng-click="landingCtrl.showSignup=false">
+        login
+      </a>
+    </div>
+  </div>
 
-    <login ng-hide="landingCtrl.showSignup"></login>
-    <button class="btn btn-primary" ng-click="landingCtrl.showSignup = true" ng-hide="landingCtrl.showSignup">Go to Signup</button>
-  </section>
+  <div class="join-container"
+    ng-if="!landingCtrl.showSignup">
+    <div class="join-inner-container">
+      <login> </login>
+      <p> Not a member yet? </p>
+      <a href="/#/join#signup"
+        ng-click="landingCtrl.showSignup=true">
+        Signup
+      </a>
+    </div>
+  </div>
 </main>

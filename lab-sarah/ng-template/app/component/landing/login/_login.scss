@@ -1,10 +1,10 @@
-@import "theme";
+@import  "theme";
+.login-form {
+  .tooltip-inner {
+    background-color: $app-error;
+  }
 
-.login {
-  background-color: $app-warn;
-
-  .landing-button {
-    margin-top: 1%;
-    width: 10%;
+  .tooltip-arrow {
+    display: none;
   }
 }

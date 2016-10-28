@@ -8,10 +8,13 @@ module.exports = {
 };
 
 function LoginController($log, $location, authService) {
-  this.login = function(user) {
-    authService.login(user)
+  $log.debug('init loginCtrl');
+
+  this.login = function() {
+    $log.log('loginCtrl.login()');
+    authService.login(this.user)
     .then(() => {
-      $location.path('/home');
+      $location.url('/home');
     })
     .catch(() => {
       console.log('failed to login');
