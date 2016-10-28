@@ -4,6 +4,10 @@ module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('' , '/');
+  // $urlRouterProvider.when('' , '/join#signup');
+  // $urlRouterProvider.when('/' , '/join#signup');
+  // $urlRouterProvider.when('/signup' , '/join#signup');
+  // $urlRouterProvider.when('/login' , '/join#login');
 
   // array of all the configs for each view
   let states = [
@@ -16,7 +20,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     },
     {
       name: 'Welcome',
-      url: '/',
+      url: '/join',
       controllerAs: 'landingCtrl',
       controller: 'LandingController',
       template: require('../view/landing/landing.html'),
@@ -26,4 +30,5 @@ function routerConfig($stateProvider, $urlRouterProvider){
   states.forEach(state => {
     $stateProvider.state(state);
   });
+
 }
