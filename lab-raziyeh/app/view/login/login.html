@@ -1,21 +1,29 @@
 
-<div class="container login" ng-init="showRegister=true">
+<div class="container login" ng-init="showLoginForm = true">
     <div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-default">
+				<div class="panel panel-success">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-xs-6">
-								<a href="" class="active" id="login-form-link" ng-click="showRegister? showRegister = false :showRegister = true">Login</a>
-							</div>
-							<div class="col-xs-6">
-								<a href="" id="register-form-link" ng-click="!showRegister ? showRegister = true : showRegister = false">Register</a>
+							<div class="text-center">
+								<h5 class="active">Login</h5>
 							</div>
 						</div>
-						<hr>
 					</div>
-          <signin ng-show="showRegister"></signin>
-          <signup ng-hide="showRegister"></signup>
+					
+          <signin ng-show="showLoginForm"></signin>
+          <signup ng-hide="showLoginForm"></signup>
+
+					<div class="panel-footer">
+					  <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center">
+                  <h6>Are you a new User?</h6>
+                  <a class="btn btn-default btn-sm" ng-click="showLoginForm = false">Sign up</a>
+                </div>
+              </div>
+            </div>
+					</div>
         </div>
 			</div>
 		</div>

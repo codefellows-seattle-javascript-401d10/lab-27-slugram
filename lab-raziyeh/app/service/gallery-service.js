@@ -92,6 +92,7 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
       let config = {
         headers: {
           Accept: 'application/json',
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
@@ -99,7 +100,7 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
       return $http.put(url, galleryData, config);
     })
     .then( () => {
-      $log.log('successful delete user galleries');
+      $log.log('successful update user galleries');
       return service.galleries;
     })
     .catch(err => {

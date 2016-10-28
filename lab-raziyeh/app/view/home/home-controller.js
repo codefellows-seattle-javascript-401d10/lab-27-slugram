@@ -32,7 +32,6 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
-  // when the controller gets created fetchGalleries
   this.fetchGalleries();
 
   // when the locationChangeSuccess fetchGalleries
