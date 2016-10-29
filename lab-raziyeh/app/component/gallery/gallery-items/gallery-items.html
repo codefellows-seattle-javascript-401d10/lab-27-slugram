@@ -1,0 +1,14 @@
+<a href="javascript: void(0)" class="list-group-item clearfix">
+  <span class="glyphicon glyphicon-file"></span>
+  {{ galleryItemsCtrl.gallery.name | uppercase }} - {{ galleryItemsCtrl.gallery.desc }}
+  <span class="pull-right">
+    <button class="btn btn-sm btn-info" ng-click="galleryItemsCtrl.showEdit = !galleryItemsCtrl.showEdit">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+
+    <button class="btn btn-sm btn-danger" ng-click="galleryItemsCtrl.deleteGallery(galleryItemsCtrl.gallery._id)">
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+  </span>
+  <edit-gallery ng-if="galleryItemsCtrl.showEdit" gallery="galleryItemsCtrl.gallery"></edit-gallery>
+</a>

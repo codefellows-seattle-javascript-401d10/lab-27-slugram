@@ -1,37 +1,11 @@
 
 <main class="container home">
   <navbar btnTitle="Log out"></navbar>
-  <create-gallery> </create-gallery>
 
-  <div class="col-md-6 list-group">
-    <a href="javascript: void(0)" class="list-group-item clearfix" 
-       ng-repeat="gallery in homeCtrl.galleries">
-
-      <span class="glyphicon glyphicon-file"></span>
-      {{ gallery.name | uppercase }} - {{ gallery.desc }}
-      <span class="pull-right">
-        <button class="btn btn-sm btn-info" 
-                ng-click="showUpdateForm?showUpdateForm=false:showUpdateForm=true" 
-                ng-init="showUpdateForm=false">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
-
-        <button class="btn btn-sm btn-danger" ng-click="homeCtrl.deleteGallery(gallery._id)">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-
-      </span>
-      <form ng-if="showUpdateForm"
-        name="updateForm"
-        class="form-inline"
-        ng-sumibt="//call update with gallery._id, updateForm"
-        novalidate>
-        <input name="name" type="text" class="form-control input-sm" ng-model="homeCtrl.updateDate.name" placeholder="name"> 
-        <input name="desc" type="text" class="form-control input-sm" ng-model="homeCtrl.updateDate.desc" placeholder="description">
-        <button class="btn btn-warning btn-sm" ng-click="homeCtrl.updateGallery(gallery._id)"> update </button>
-      </form>
+  <div class="list-group">
+    <a class="list-group-item disabled">
+      <create-gallery></create-gallery>
     </a>
-  </div>
-  <div class="com-md-6">
+    <gallery-items ng-repeat="item in homeCtrl.galleries" gallery="item"></gallery-items>
   </div>
 </main>
