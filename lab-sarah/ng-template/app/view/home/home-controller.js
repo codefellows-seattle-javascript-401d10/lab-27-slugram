@@ -17,19 +17,19 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
-  this.updateGallery = function(gallery, galleryID) {
-    galleryService.updateGallery(gallery, galleryID)
-    .then(() => {
-      $log.log('updated gallery');
-    });
-  };
-
-  this.deleteGallery = function(gallery, galleryID) {
-    galleryService.deleteGallery(gallery, galleryID)
-    .then(() => {
-      $log.log('deleted gallery');
-    });
-  };
+  // this.updateGallery = function(gallery, galleryID) {
+  //   galleryService.updateGallery(gallery, galleryID)
+  //   .then(() => {
+  //     $log.log('updated gallery');
+  //   });
+  // };
+  //
+  // this.deleteGallery = function(gallery, galleryID) {
+  //   galleryService.deleteGallery(gallery, galleryID)
+  //   .then(() => {
+  //     $log.log('deleted gallery');
+  //   });
+  // };
 
   //call the fetchGallery method, which calls the galleryService when this(the home) controller is initialized
   this.fetchGalleries();
