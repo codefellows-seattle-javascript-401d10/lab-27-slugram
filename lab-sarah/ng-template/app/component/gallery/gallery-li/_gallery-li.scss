@@ -2,14 +2,24 @@
 
 
 .gallery-li {
-  // position:
-  // display:
-  // width hight
-  // margin
+  // width: 20%;
   margin: 2%;
-  // padding
   padding: 2%;
-  // text
-  // color
-  // background-color: $app-primary;
+
+  .glyphicons {
+    display: flex;
+    flex-direction: row;
+
+    span {
+      margin: 0% .5%;
+    }
+  }
+
+  h3, p {
+    text-align: left;
+  }
+
+  hr {
+    width: 80%;
+  }
 }
