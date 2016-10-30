@@ -1,8 +1,8 @@
 {
-  "name": "ng-template",
+  "name": "lab-27-slugram",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "entry.js",
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js .",
     "build": "./node_modules/webpack/bin/webpack.js",
@@ -11,8 +11,8 @@
     "test-watch": "./node_modules/karma/bin/karma start"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "tenlia@hotmail.com",
+  "license": "MIT",
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",

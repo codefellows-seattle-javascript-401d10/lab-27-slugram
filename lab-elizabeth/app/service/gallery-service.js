@@ -110,7 +110,7 @@ function galleryService($q, $log, $http, authService){
           break;
         }
       }
-      return res.data;
+      return $q.resolve('update successful');
     })
     .catch(err => {
       $log.error(err.message);
