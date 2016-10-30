@@ -2,12 +2,28 @@
 
 .home {
 
+  .outer-container {
+    border: 1px solid $app-secondary;
+    background-color: $app-primary;
+    width: 60%;
+    margin: 2% auto;
+
+    create-gallery {
+      padding-top: 2%;
+      margin-top: 2%;
+    }
+  }
+
   h3, p, form  {
     text-align: center;
   }
 
   h3 {
     padding-top: 1.5%;
+  }
+
+  ul {
+    list-style: none;
   }
 
   hr {

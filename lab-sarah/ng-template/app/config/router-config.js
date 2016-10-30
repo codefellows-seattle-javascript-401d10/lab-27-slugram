@@ -3,7 +3,11 @@
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.when('' , '/');
+  $urlRouterProvider.when('', '/');
+  // $urlRouterProvider.when('' , '/join#signup');
+  // $urlRouterProvider.when('/' , '/join#signup');
+  // $urlRouterProvider.when('/signup' , '/join#signup');
+  // $urlRouterProvider.when('/login' , '/join#login');
   // state == route
   let states = [
     {

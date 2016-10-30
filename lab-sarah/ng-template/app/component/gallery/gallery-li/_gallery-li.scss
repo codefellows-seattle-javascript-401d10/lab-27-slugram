@@ -1,0 +1,25 @@
+@import "theme";
+
+
+.gallery-li {
+  // width: 20%;
+  margin: 2%;
+  padding: 2%;
+
+  .glyphicons {
+    display: flex;
+    flex-direction: row;
+
+    span {
+      margin: 0% .5%;
+    }
+  }
+
+  h3, p {
+    text-align: left;
+  }
+
+  hr {
+    width: 80%;
+  }
+}

@@ -1,10 +1,14 @@
 @import  "theme";
 
 .landing {
-  .form {
-    border: 1px solid black;
-    width: 40%;
-    margin: 5% auto;
-    background-color: $app-success;
+  width: 40%;
+  margin: auto;
+  border: 1px solid $app-disabled;
+  padding: 2%;
+  background-color: $app-primary;
+
+  a {
+    color: $app-secondary;
   }
+
 }

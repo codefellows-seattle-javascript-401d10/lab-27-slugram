@@ -1,0 +1,10 @@
+<li class="gallery-li">
+  <h3> Name: {{ galleryLICtrl.gallery.name }} </h3>
+  <h4> Description: {{ galleryLICtrl.gallery.desc }} </p>
+  <div class="glyphicons">
+    <span ng-click="galleryLICtrl.showEditGallery = !galleryLICtrl.showEditGallery" class="glyphicon glyphicon-pencil" > </span>
+    <span ng-click="galleryLICtrl.deleteGallery()" class="glyphicon glyphicon-trash" > </span>
+  </div>
+  <edit-gallery ng-if="galleryLICtrl.showEditGallery" gallery="galleryLICtrl.gallery"> </edit-gallery>
+  <hr>
+</li>
