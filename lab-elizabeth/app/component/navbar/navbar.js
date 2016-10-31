@@ -6,6 +6,9 @@ module.exports = {
   template: require('./navbar.html'),
   controller: ['$log', '$location', '$rootScope', 'authService', NavbarController],
   controllerAs: 'navbarCtrl',
+  bindings: {
+    appTitle: '@',
+  },
 };
 
 function NavbarController($log, $location, $rootScope, authService){
@@ -15,6 +18,10 @@ function NavbarController($log, $location, $rootScope, authService){
     let path = $location.path();
     if(path === '/join'){
       this.hideButtons = true;
+      authService.getToken()
+      .then(() => {
+        $location.url('/home');
+      });
     }
 
     if(path !== '/join'){

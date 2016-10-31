@@ -56,7 +56,8 @@
 
     <div
       ng-class="{
-        'has-error': signupForm.password.$invalid && signupForm.$submitted,
+        'has-error': signupForm.password.$invalid
+          && signupForm.$submitted,
         'has-success': signupForm.password.$valid,
       }"
       class="form-group">
@@ -72,9 +73,14 @@
         uib-tooltip="must be at least 8 characters"
         tooltip-trigger="'focus'"
         tooltip-placement="bottom-right"
-        tooltip-enable="signupForm.Submitted && signupForm.password.$invalid"
-        tooltip-is-open="signupForm.$submitted && signupForm.password.$invalid && signupForm.password.$focus"
-        tooltip-is-open="signupForm.$submitted && signupForm.password.$invalid && signupForm.password.$focus">
+        tooltip-enable="signupForm.Submitted
+          && signupForm.password.$invalid"
+        tooltip-is-open="signupForm.$submitted
+          && signupForm.password.$invalid
+          && signupForm.password.$focus"
+        tooltip-is-open="signupForm.$submitted
+          && signupForm.password.$invalid
+          && signupForm.password.$focus">
     </div>
 
     <button class="btn btn-primary"> Sign Up </button>

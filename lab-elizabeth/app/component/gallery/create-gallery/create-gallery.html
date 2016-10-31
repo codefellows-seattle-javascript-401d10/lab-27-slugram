@@ -19,13 +19,7 @@
         placeholder="Name"
         ng-model="createGalleryCtrl.gallery.name"
         uib-tooltip="Name required"
-        tooltip-trigger="'focus'"
-        tooltip-placement="top-right"
-        tooltip-enable="createGalleryForm.Submitted
-          && createGalleryForm.name.$invalid"
-        tooltip-is-open="createGalleryForm.$submitted
-          && createGalleryForm.name.$invalid
-          && createGalleryForm.name.$focus">
+        tooltip-placement="top-right">
     </div>
 
     <div class="form-group">
@@ -41,13 +35,7 @@
         placeholder="Description"
         ng-model="createGalleryCtrl.gallery.desc"
         uib-tooltip="Description required"
-        tooltip-trigger="'focus'"
-        tooltip-placement="bottom-right"
-        tooltip-enable="createGalleryForm.Submitted
-          && createGalleryForm.desc.$invalid"
-        tooltip-is-open="createGalleryForm.$submitted
-          && createGalleryForm.desc.$invalid
-          && createGalleryForm.desc.$focus">
+        tooltip-placement="bottom-right">
     </div>
 
     <button
