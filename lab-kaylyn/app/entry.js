@@ -17,9 +17,10 @@ const ngTouch = require('angular-touch');
 const ngAnimate = require('angular-animate');
 const uiRouter = require('angular-ui-router');
 const uiBootstrap = require('angular-ui-bootstrap');
+const ngFileUpload = require('ng-file-upload');
 
 // create angular module
-const demoApp = angular.module('demoApp', [ngTouch, ngAnimate, uiRouter, uiBootstrap]);
+const demoApp = angular.module('demoApp', [ngTouch, ngAnimate, uiRouter, uiBootstrap, ngFileUpload]);
 
 // load config
 let context = require.context('./config/', true, /.js$/);
@@ -47,7 +48,7 @@ context.keys().forEach( key => {
 // load components
 context = require.context('./component/', true, /.js$/);
 context.keys().forEach( key => {
-  let name = camelcase(path.basename(key, '.js')); // name component based on filename 
+  let name = camelcase(path.basename(key, '.js')); // name component based on filename
   let module = context(key); // value of module.exports
   demoApp.component(name, module);
 });
