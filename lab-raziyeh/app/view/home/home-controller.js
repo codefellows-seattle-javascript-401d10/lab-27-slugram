@@ -12,6 +12,7 @@ function HomeController($log, $rootScope, galleryService){
     galleryService.fetchGalleries()
     .then( galleries => {
       this.galleries = galleries;
+      this.currentGallery = galleries[0];
       console.log('this.galleries', this.galleries);
     });
   };
