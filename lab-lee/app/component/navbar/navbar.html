@@ -8,12 +8,14 @@
         <login ng-hide="!navbarCtrl.hideButtons"> </login>
       </div>
     </div>
+
     <div ng-hide="navbarCtrl.hideButtons">
       <button
         ng-click="navbarCtrl.logout()"
         class="btn pull-right btn-default navbar-btn btn-logout">
         Logout
       </button>
+
       <div class="btn-group pull-right" uib-dropdown>
         <button id="btn-append-to-body"
           type="button"
@@ -21,11 +23,13 @@
           uib-dropdown-toggle>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
+
         <ul class="dropdown-menu" uib-dropdown-menu role="menu">
           <li role="menuitem"><a href="#" ng-click="navbarCtrl.logout()">Logout</a></li>
           <li role="menuitem"><a href="#">Profile</a></li>
           <li role="menuitem"><a href="#">Something else here</a></li>
         </ul>
+
       </div>
     </div>
   </div>
