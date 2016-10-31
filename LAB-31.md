@@ -69,7 +69,7 @@ Today you will add image uploads to your app
  * an object with the data for the pic that was just created
 
 ### DELETE  `/api/gallery/<galleryID>/pic/<picID>`
-* use this route to delete a gallery
+* use this route to delete a pic
 * headers required
  * `Authorization` :  `Bearer <token>`
 * 204 response
