@@ -13,6 +13,33 @@
     }
   }
 
+  .thumbnail-container {
+    background-color: $app-secondary;
+
+    h2 {
+      text-align: center;
+    }
+
+    button {
+      background-color: $app-warn;
+    }
+
+    div {
+      padding: 1%;
+
+      .thumbnail {
+        display: inline-block;
+        margin-left: 1%;
+        margin-right: 1%;
+
+        img {
+          height: 200px;
+          width: 200px;
+        }
+      }
+    }
+  }
+
   .gallery-list-container {
     width: 20%;
     background-color: $app-white;

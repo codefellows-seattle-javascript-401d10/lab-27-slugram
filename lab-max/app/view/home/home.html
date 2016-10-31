@@ -4,12 +4,12 @@
     <ul>
       <gallery-list
         ng-repeat="item in homeCtrl.galleries"
-        delete-Done="homeCtrl.deleteDone(gallery)"
+        delete-Done="homeCtrl.galleryDeleteDone(gallery)"
         ng-click="homeCtrl.currentGallery = item"
         gallery="item"> </gallery-list>
     </ul>
   </nav>
 
-  <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery">
+  <thumbnail-container class="thumbnail-container" ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery">
   </thumbnail-container>
 </main>

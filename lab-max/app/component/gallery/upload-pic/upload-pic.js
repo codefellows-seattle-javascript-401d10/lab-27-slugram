@@ -14,6 +14,8 @@ function UploadPicController($log, picService){
 
   this.pic = {};
 
+  this.dragPicOption = 'Select Image';
+
   this.uploadPic = function(){
     $log.debug('init uploadPicCtrl.uploadPic()');
     picService.uploadGalleryPic(this.gallery, this.pic)
