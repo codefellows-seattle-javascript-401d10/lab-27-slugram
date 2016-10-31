@@ -41,6 +41,8 @@ context.keys().forEach( key => {
 context = require.context('./service/', true, /.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
+  console.log('name', name);
+
   let module = context(key); // value of module.exports
   demoApp.service(name, module);
 });

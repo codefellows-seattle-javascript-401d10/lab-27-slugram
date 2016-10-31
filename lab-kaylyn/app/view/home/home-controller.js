@@ -17,18 +17,20 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
+  this.galleryDeleteDone = function(gallery){
+    if(this.currentGallery._id == gallery._id){
+      this.currentGallery = null;
+    }
+  };
+
   this.fetchGalleries();
 
   $rootScope.$on('$locationChangeSuccess', () => {
     this.fetchGalleries();
   });
 
-  this.deleteGallery = function(galleryID){
+  this.galleryDeleteDone = function(galleryID){
     galleryService.deleteGallery(galleryID);
-  };
-
-  this.updateGallery = function(galleryID, gallery){
-    galleryService.updateGallery(galleryID, gallery);
   };
 
 }
