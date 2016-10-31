@@ -38,6 +38,7 @@ function galleryService($q, $log, $http, authService){
   service.deleteGallery = function (gallery, galleryID){
     return authService.getToken()
     .then(token => {
+      console.log('inside delete galleryservice');
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
       let config = {
         headers: {

@@ -1,6 +1,20 @@
 @import "theme";
 
 .home {
+  .gallery-list-container {
+  width: 50%;
+  margin: 0 25%;
+  background-color: $app-secondary;
+
+  ul {
+    padding: 0px;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
   .panel-heading {
     background-color: $app-primary;
     span {
@@ -11,5 +25,11 @@
     span:hover {
       color: $app-black;
     }
+  }
+
+  .thumbnail-container {
+    width: 50%;
+    margin: 0 25%;
+    background-color: transparent;
   }
 }
