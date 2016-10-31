@@ -16,7 +16,11 @@ function GalleryItemsController($log, galleryService){
   this.deleteGallery = function(galleyId){
     galleryService.deleteGallery(galleyId)
     .then( () => {
-      $log.debug('delete gallery by Id');      
+      console.log('galleries',this.galleries);
+      $log.debug('delete gallery by Is, Done!'); 
+    })
+    .catch(err => {
+      $log.debug('delete gallery failed', err.message);
     });
   };
 }

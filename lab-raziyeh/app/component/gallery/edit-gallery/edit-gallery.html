@@ -1,7 +1,5 @@
-<form name="updateForm" class="form-inline"
-        ng-sumibt="homeCtrl.updateGallery(gallery._id)"
-        novalidate>
-  <input name="name" type="text" class="form-control input-sm" ng-model="homeCtrl.updateDate.name" placeholder="name"> 
-  <input name="desc" type="text" class="form-control input-sm" ng-model="homeCtrl.updateDate.desc" placeholder="description">
-  <button class="btn btn-warning btn-sm"> update </button>
+<form name="updateForm" class="form-inline" novalidate>
+  <input name="name" type="text" class="form-control input-sm" ng-model="editGalleryCtrl.gallery.name" placeholder="name"> 
+  <input name="desc" type="text" class="form-control input-sm" ng-model="editGalleryCtrl.gallery.desc" placeholder="description">
+  <button class="btn btn-warning btn-sm" ng-click="editGalleryCtrl.updateGallery(editGalleryCtrl.gallery._id, editGalleryCtrl.gallery)"> update </button>
 </form>
