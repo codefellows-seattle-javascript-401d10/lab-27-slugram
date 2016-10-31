@@ -8,6 +8,7 @@ module.exports = {
   controllerAs: 'galleryListCtrl',
   bindings: {
     gallery: '<',
+    deleteDone: '&',
   },
 };
 
@@ -17,6 +18,9 @@ function GalleryListController($log, galleryService){
   this.editGallery = false;
 
   this.deleteGallery = function(){
-    galleryService.deleteGallery(this.gallery._id);
+    galleryService.deleteGallery(this.gallery._id)
+    .then(() => {
+      this.deleteDone({gallery: this.gallery});
+    });
   };
 }

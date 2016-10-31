@@ -1,0 +1,11 @@
+<div class="thumbnail-container">
+  <h2> {{thumbnailContainerCtrl.gallery.name}} </h2>
+  <upload-pic gallery="thumbnailContainerCtrl.gallery"> </upload-pic>
+
+  <div>
+    <thumbnail class="thumbnail"
+      ng-repeat="pic in thumbnailContainerCtrl.gallery.pics"
+      pic="pic"
+      gallery="thumbnailContainerCtrl.gallery"> </thumbnail>
+  </div>
+</div>
