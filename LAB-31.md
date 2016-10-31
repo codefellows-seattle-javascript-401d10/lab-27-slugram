@@ -9,7 +9,7 @@
 * write a question and observation on canvas
 
 # Description
-Today you will componentize your gallery navigation
+Today you will add image uploads to your app
 
 # Directions
 * create a component for uploading an image to the slugram API for a specific gallery
