@@ -41,8 +41,8 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
       let config = {
         headers: {
-          Accept: 'application/json',
           Authorization: `Bearer ${token}`,
+          Accept: 'application/json, text/plain, */*',
         },
       };
 
@@ -57,7 +57,6 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
       return;
     })
     .catch(err => {
-      $log.error(err.message);
       return $q.reject(err);
     });
   };
@@ -103,9 +102,15 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
 
       return $http.put(url, galleryData, config);
     })
-    .then( () => {
+    .then( res => {
+      let gallery = res.data;
       $log.log('successful update user galleries');
-      return service.galleries;
+      for( let i=0; i< service.galleries.length; i++) {
+        if(galleryID === service.galleries[i]._id) {
+          service.galleries[i] = gallery;
+        }
+      }
+      return gallery;
     })
     .catch(err => {
       $log.error(err.message);
