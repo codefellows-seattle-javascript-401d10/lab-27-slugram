@@ -14,14 +14,13 @@ describe('testing gallery service', function(){
     });
   });
 
-  describe('testing galleryService.createGallery', () => {
+  describe('testing galleryService.createGallery(galleryData)', () => {
     it('should return a gallery', () => {
 
       let galleryData = {
         name: 'exampleGallery',
         desc: 'memories from my beach adventure',
       };
-
       let headers = {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -38,7 +37,9 @@ describe('testing gallery service', function(){
       .catch(err => {
         expect(err).toBe(null);
       });
+
       this.$httpBackend.flush();
+
     });
   });
 
@@ -54,35 +55,46 @@ describe('testing gallery service', function(){
       this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/helloworld', headers)
       .respond(204);
 
-      console.log(this.galleryService);
-
-      // this.galleryService.deleteGallery(galleryID);
-
       this.galleryService.deleteGallery(galleryID)
       .then(res => {
         expect(res).toBe('delete successful');
+      })
+      .catch(err => {
+        expect(err).toBe(null);
       });
 
       this.$httpBackend.flush();
+
     });
+  });
 
-    // it('should respond with a 404', () => {
-    //   let headers = {
-    //     Authorization: 'Bearer 1234',
-    //     Accept: 'application/json, text/plain, */*',
-    //   };
-    //
-    //   this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/:galleryID', headers)
-    //   .respond(function(method, url, data, headers, params){
-    //     if(params.galleryID !== '5678'){
-    //       return [404, 'NotFoundError'];
-    //     }
-    //     return [204];
-    //   });
+  describe('testing galleryService.updateGallery(galleryID, newGalleryData)', () => {
+    it('should update a gallery', () => {
 
+      let newGalleryData = {
+        name: 'newExampleGallery',
+        desc: 'new memories from my beach adventure',
+      };
+      let headers = {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer 1234',
+        Accept: 'application/json',
+      };
 
-    // this.$httpBackend.flush();
-    // });
+      this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/5678', newGalleryData, headers)
+      .respond(200, {_id: '5678', name: newGalleryData.name, desc: newGalleryData.desc, pics: []});
+
+      this.galleryService.updateGallery('5678', newGalleryData)
+      .then(res => {
+        expect(res).toBe('update successful');
+      })
+      .catch(err => {
+        expect(err).toBe(null);
+      });
+
+      this.$httpBackend.flush();
+
+    });
   });
 
 });
