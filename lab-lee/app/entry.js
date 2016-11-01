@@ -16,10 +16,11 @@ const pascalcase = require('pascalcase');
 const ngTouch = require('angular-touch'); // dependency of uiBootstrap
 const ngAnimate = require('angular-animate'); // dependency of uiBootstrap
 const uiRouter = require('angular-ui-router');
+const ngFileUpload = require('ng-file-upload');
 const uiBootstrap = require('angular-ui-bootstrap'); // allows angular to work with bootstrap
 
 // create angular module
-const leeGram = angular.module('leeGram', [ngTouch, ngAnimate,  uiRouter, uiBootstrap]);
+const leeGram = angular.module('leeGram', [ngTouch, ngAnimate,  uiRouter, uiBootstrap, ngFileUpload]);
 
 // load config
 let context = require.context('./config/', true, /.js$/);
