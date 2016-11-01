@@ -6,10 +6,12 @@
     <a class="list-group-item disabled">
       <create-gallery></create-gallery>
     </a>
-    <gallery-items ng-repeat="item in homeCtrl.galleries" 
+    <gallery-items 
+        ng-repeat="item in homeCtrl.galleries" 
          ng-click="homeCtrl.currentGallery=item"
          delete-done="homeCtrl.galleryDeleteDone(galleryData)"
-         gallery="item"></gallery-items>
+         gallery="item">
+    </gallery-items>
     <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"> </thumbnail-container>
   </div>
 </main>

@@ -50,7 +50,11 @@ module.exports = ['$q', '$log', '$http', 'authService', function($q, $log, $http
     })
     .then( () => {
       $log.log('successful delete user galleries');
-      return service.galleries;
+      for (let i=0; i< service.galleries.length; i++) {
+        if(service.galleries[i]._id === galleryID)
+          service.galleries.splice(i,1);
+      }
+      return;
     })
     .catch(err => {
       $log.error(err.message);

@@ -13,14 +13,14 @@ module.exports = {
 function ThumbnailController($log, picService){
   $log.debug('init picService');
 
-  this.deletePic = function(gallery, pic){
+  this.deletePic = function(){
     $log.debug('thumbnailCtrl.deletePic()');
-    picService.deleteGalleryPic(gallery, pic)
+    picService.deleteGalleryPic(this.gallery, this.pic)
     .then(() => {
-      $log.debug('delete gallery, Done!');
+      $log.debug('delete pic, Done!');
     })
     .catch(() => {
-      $log.debug('delete gallery by has error!');
+      $log.debug('delete pic by has error!');
     });
   };
 } 
