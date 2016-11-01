@@ -16,7 +16,7 @@ Today you will add image uploads to your app
 * Write test for your gallery service  
 
 ### POST `/api/signup`
-* use this route to create a gallery
+* use this route to create a user
 * headers required
  * `Accept` :  `application/json`
  * `Content-Type` :  `application/json`
@@ -25,10 +25,10 @@ Today you will add image uploads to your app
  * username: **String**  
  * password: **String**  
 * 200 response
- * an object with the data for the gallery that was just created  
+ * a token
 
 ### GET `/api/login`
-* use this route to create a gallery
+* use this route login an existing user
 * headers required
  * `Accept` : `application/json`
  * `Authorization` : `Basic <Base64(username:password)>`
@@ -45,7 +45,7 @@ Today you will add image uploads to your app
  * name: **String**
  * desc: **String**  
 * 200 response
- * a token
+* an object with the data for the gallery that was just created
  
 ### GET `/api/gallery`
 * use this route to get an array of all of a users galleries
