@@ -111,7 +111,7 @@ function galleryService($q, $log, $http, authService){
       return service.galleries;
     })
     .catch(err => {
-      $log.err(err.message);
+      $log.error(err.message);
       return $q.reject(err);
     });
   };

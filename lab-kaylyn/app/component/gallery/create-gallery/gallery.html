@@ -11,6 +11,8 @@
         uib-tooltip="name required"
         ng-model="galleryCtrl.gallery.name"
         required>
+        <!-- whatever you type into the input on the ng-model is going to recieve the value of whatever the user put in, the model and input has two way data binding -->
+        <!-- any kind of input can take ng-model -->
         <!-- galleryCtrl.createGallery takes in a this.gallery so you have to set the model to galleryCtrl.gallery.name -->
     </div>
     <div class="form-group">

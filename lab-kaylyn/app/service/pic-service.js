@@ -55,8 +55,13 @@ function picService($q, $log, $http, Upload, authService){
     })
     .then( () => {
       $log.log('delete pic successful');
-      var currentPic = galleryData.pics.indexOf(picData._id);
-      return galleryData.pics.splice(currentPic, 1);
+      console.log('GALLERY DATA', galleryData);
+      for(var i = 0;  i < galleryData.pics.length; i++){
+        if(galleryData.pics[i]._id === picData._id){
+          galleryData.pics.splice(i, 1);
+        }
+      }
+      return;
     })
     .catch(err => {
       $log.error(err.message);

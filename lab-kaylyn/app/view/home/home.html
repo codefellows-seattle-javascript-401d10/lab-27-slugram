@@ -2,6 +2,7 @@
   <gallery></gallery>
   <nav class="gallery-list-container">
     <ul>
+      <!-- ng-repeat creates a gallery list tag for each gallery -->
       <gallery-li ng-repeat="item in homeCtrl.galleries"
         gallery="item"
         delete-done="homeCtrl.galleryDeleteDone(galleryData)"

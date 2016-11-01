@@ -5,8 +5,8 @@ module.exports = {
   controller: ['$log', 'galleryService', GalleryLiController],
   controllerAs: 'galleryLiCtrl',
   bindings: {
-    gallery: '<', // one way data binding
-    deleteDone: '&', // pass in a callback
+    gallery: '<', // one way data binding, passes an object
+    deleteDone: '&', // pass in a callback, passes a function, see home html
   },
 };
 
