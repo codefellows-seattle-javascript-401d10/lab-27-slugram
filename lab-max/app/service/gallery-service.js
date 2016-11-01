@@ -89,7 +89,7 @@ function galleryService($q, $log, $http, authService){
           service.galleries[i] = gallery;
         }
       }
-      return;
+      return gallery;
     })
     .catch( err => {
       $log.error(err.message);
