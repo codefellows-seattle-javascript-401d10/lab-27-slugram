@@ -1,6 +1,6 @@
 'use strict';
 
-describe('testing gallery service', function(){
+describe('testing galleryService', function(){
 
   // beforeEach mocks the demoApp module
   //            mocks the service
@@ -68,11 +68,11 @@ describe('testing gallery service', function(){
         Authorization: 'Bearer 1234',
       };
       this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/helloworld', galleryData, headers)
-      .respond(200, {_id: '4567', name: 'updatedName', desc: 'updatedDesc', pics: []});
+      .respond(200, {_id: 'helloworld', name: 'updatedName', desc: 'updatedDesc', pics: []});
 
       this.galleryService.updateGallery(galleryID, galleryData)
       .then( gallery => {
-        expect(gallery._id).toBe('4567');
+        expect(gallery._id).toBe(galleryID);
         expect(gallery.name).toBe(galleryData.name);
         expect(gallery.desc).toBe(galleryData.desc);
       });
