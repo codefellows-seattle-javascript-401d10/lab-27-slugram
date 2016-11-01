@@ -81,7 +81,6 @@ function galleryService($q, $log, $http, authService){
       return $http.put(url, galleryData, config);
     })
     .then( res => {
-      console.log(res);
       $log.log('successfully update a gallery');
       let gallery = res.data;
       for(var i=0; i<service.galleries.length; ++i){

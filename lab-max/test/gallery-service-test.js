@@ -105,13 +105,13 @@ describe('testing gallery service', function(){
       };
 
       this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/exampleID', galleryData, headers)
-      .respond(200, {_id: '7890', name: galleryData.name, desc: galleryData.desc, pics: []});
+      .respond(200, {_id: galleryID, name: galleryData.name, desc: galleryData.desc, pics: []});
 
       this.galleryService.updateGallery(galleryID, galleryData)
       .then(gallery => {
         expect(gallery.name).toBe(galleryData.name);
         expect(gallery.desc).toBe(galleryData.desc);
-        expect(gallery._id).toBe('7890');
+        expect(gallery._id).toBe(galleryID);
         expect(Array.isArray(gallery.pics)).toBe(true);
       });
 
