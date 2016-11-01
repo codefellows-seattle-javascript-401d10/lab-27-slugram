@@ -9,11 +9,11 @@
 * write a question and observation on canvas
 
 # Description
-Today you will add image uploads to your app
+Today you will write service tests
 
 # TEST
-* Write test for your AUTH service
-* Write test for your gallery service  
+* Write test for each method on your auth service
+* Write test for each mothod on your gallery service  
 
 ### POST `/api/signup`
 * use this route to create a user
