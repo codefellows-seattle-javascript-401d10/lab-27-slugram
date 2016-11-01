@@ -6,6 +6,7 @@ module.exports = {
   controllerAs: 'galleryItemsCtrl',
   bindings: {
     gallery: '<',
+    deleteDone: '&',
   },
 };
 
@@ -21,6 +22,13 @@ function GalleryItemsController($log, galleryService){
     })
     .catch(err => {
       $log.debug('delete gallery failed', err.message);
+    });
+  };
+
+  this.deleteGallery = function(){
+    galleryService.deleteGallery(this.gallery._id)
+    .then(() => {
+      this.deleteDone({galleryData: this.gallery});
     });
   };
 }

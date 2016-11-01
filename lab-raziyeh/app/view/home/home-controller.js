@@ -17,6 +17,13 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
+  this.galleryDeleteDone = function(gallery){
+    $log.debug('homeCtrl.galleryDeleteDone()');
+    if (this.currentGallery._id == gallery._id){
+      this.currentGallery = null;
+    }
+  };
+
   this.fetchGalleries();
 
   // when the locationChangeSuccess fetchGalleries

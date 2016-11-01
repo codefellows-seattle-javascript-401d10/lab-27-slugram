@@ -1,4 +1,14 @@
-<div class="thumbnail">
-  <span ng-click="thumbnailCtrl.deletePic(thumbnailCtrl.gallery,thumbnailCtrl.pic)" class="glyphicon glyphicon-trash"> </span>
-  <img ng-src="{{thumbnailCtrl.pic.imageURI}}" alt="{{thumbnailCtrl.pic.desc}}">
+
+<br/>
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" ng-src="{{thumbnailCtrl.pic.imageURI}}" alt="{{thumbnailCtrl.pic.desc}}" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <h5 class="media-heading">{{thumbnailCtrl.pic.name}}</h5>
+    <p class="media-heading">{{thumbnailCtrl.pic.desc}}</p>
+   <span ng-click="thumbnailCtrl.deletePic(thumbnailCtrl.gallery,thumbnailCtrl.pic)" class="btn btn-xs btn-default glyphicon glyphicon-trash fa-4x"> </span>
+  </div>
 </div>
