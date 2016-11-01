@@ -4,12 +4,7 @@ module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('' , '/');
-  // $urlRouterProvider.when('' , '/join#signup');
-  // $urlRouterProvider.when('/' , '/join#signup');
-  // $urlRouterProvider.when('/signup' , '/join#signup');
-  // $urlRouterProvider.when('/login' , '/join#login');
 
-  // array of all the configs for each view
   let states = [
     {
       name: 'home',

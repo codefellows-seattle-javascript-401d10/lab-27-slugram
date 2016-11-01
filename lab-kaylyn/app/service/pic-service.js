@@ -40,23 +40,29 @@ function picService($q, $log, $http, Upload, authService){
     });
   };
 
-  // service.deleteGalleryPic = function(galleryData, picData){
-  //   $log.debug('picService.deleteGalleryPic()');
-  //
-  //   return authService.getToken()
-  //   .then (token => {
-  //     let url = `${__API_URL__}/api/gallery/${galleryData._id}/pic/${picData._id}`;
-  //     let config = {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     };
-  //     return $http.delete(url, config);
-  //   })
-  //   .then( () => {
-  //     for(var i = 0; i < )
-  //   })
-  // };
+  service.deleteGalleryPic = function(galleryData, picData){
+    $log.debug('picService.deleteGalleryPic()');
+
+    return authService.getToken()
+    .then (token => {
+      let url = `${__API_URL__}/api/gallery/${galleryData._id}/pic/${picData._id}`;
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      return $http.delete(url, config);
+    })
+    .then( () => {
+      $log.log('delete pic successful');
+      var currentPic = galleryData.pics.indexOf(picData._id);
+      return galleryData.pics.splice(currentPic, 1);
+    })
+    .catch(err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
 
   return service;
 }
