@@ -119,34 +119,5 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
-  service.deleteGallery = function (galleryID){
-    return authService.getToken()
-    .then(token => {
-      let url = `${__API_URL__}/api/gallery/${galleryID}`;
-      let config = {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      return $http.delete(url, config);
-    })
-    .then(() => {
-      $log.log('successful delete user galleries');
-      for(var i = 0; i < service.galleries.length; ++i){
-        let currentGallery = service.galleries[i];
-        if(currentGallery._id === galleryID){
-          service.galleries.splice(i, 1);
-          break;
-        }
-      }
-    })
-    .catch(err => {
-      $log.error(err.message);
-      return $q.reject(err);
-    });
-  };
-
   return service;
 }
