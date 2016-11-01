@@ -40,15 +40,31 @@ function picService($q, $log, $http, Upload, authService){
   };
 
   service.deleteGalleryPic = function(galleryData, picData){
-    // TODO: log the deleteGalleryPic method name
-    // TODO: get a token from the auth service
-    // TODO: set the url to __API_URL__/api/gallery/:galleryID/pic/:picID
-    // TODO: set config for http headers
-    //       set authorization header
-    // TODO: make $http.delete request to url with config
-    // TODO: on success you splice the pic out of the galleryData.pics array
-    //       resolve undefined
-    // TODO: on error log error and reject error
+    $log.debug('picService.deleteGalleryPic');
+    authService.getToken()
+    .then(token => {
+      let url = `${__API_URL__}/api/gallery/${galleryData._id}/pic/${picData._id}`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      return $http.delete(url, config);
+    })
+    .then(() => {
+      for(let i = 0; i < galleryData.pics.length; ++i){
+        if(galleryData.pics[i]._id === picData._id){
+          galleryData.pics.splice(i, 1);
+          break;
+        }
+      }
+      return $q.resolve('pic delete successful');
+    })
+    .catch(err => {
+      $log.error(err);
+      return $q.reject(err);
+    });
   };
 
   return service;

@@ -1,5 +1,7 @@
 'use strict';
 
+require('./_thumbnail.scss');
+
 module.exports = {
   template: require('./thumbnail.html'),
   controllerAs: 'thumbnailCtrl',
@@ -14,5 +16,6 @@ function thumbnailController($log, picService){
 
   this.deletePic = function(){
     $log.debug('thumbnailCtrl.deletePic()');
+    picService.deleteGalleryPic(this.gallery, this.pic);
   };
 }
