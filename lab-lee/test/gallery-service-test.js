@@ -1,4 +1,4 @@
-'use strtict';
+'use strict';
 
 let url = 'http://localhost:3000/api';
 
@@ -38,6 +38,10 @@ describe('testing gallery service', function() {
       this.galleryService.createGallery(galleryData)
       .then(gallery => {
         expect(gallery._id).toBe('5678');
+        expect(gallery.username).toBe('slugbyte');
+        expect(gallery.name).toBe('exampleGallery');
+        expect(gallery.desc).toBe('stuff');
+        expect(Array.isArray(gallery.pics)).toBe(true);
       })
       .catch( err => {
         expect(err).toBe(null);
@@ -86,7 +90,12 @@ describe('testing gallery service', function() {
       this.$httpBackend.expectPUT(`${url}/gallery/helloworld`, galleryData, headers)
       .respond(200, {_id: '5678', username: 'slugbyte', name: galleryData.name, desc: galleryData.desc, pics: []});
 
-      this.galleryService.updateGallery(galleryID, galleryData);
+      this.galleryService.updateGallery(galleryID, galleryData)
+      .then( gallery => {
+        expect(gallery.name).toBe(galleryData.name);
+        expect(gallery.username).toBe('slugbyte');
+        expect(gallery.desc).toBe(galleryData.desc);
+      });
 
       this.$httpBackend.flush();
     });
@@ -100,11 +109,29 @@ describe('testing gallery service', function() {
         Accept: 'application/json',
         Authorization: 'Bearer 12345678901234',
       };
+
+      let galleryArray = [];
+
+      for (var i = 0; i < 50; i++) {
+        galleryArray.push(
+          {
+            name: 'exampleGallery' + i,
+            desc: 'stuff' + i,
+          }
+        );
+      }
       // mock the server route
       this.$httpBackend.expectGET(`${url}/gallery/?sort=dsc`, headers)
-      .respond(200);
+      .respond(200, galleryArray);
 
-      this.galleryService.fetchGalleries();
+      this.galleryService.fetchGalleries()
+      .then( galleries => {
+        expect(galleries.length).toBe(50);
+        expect(Array.isArray(galleries)).toBe(true);
+      })
+      .catch( err => {
+        expect(err).toBe(null);
+      });
 
       this.$httpBackend.flush();
     });
