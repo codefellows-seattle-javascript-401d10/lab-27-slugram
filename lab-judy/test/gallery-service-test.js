@@ -7,16 +7,18 @@ describe('testing gallery service', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, galleryService, $httpBackend) => {
+    angular.mock.inject((authService, galleryService, $httpBackend, $window) => {
       this.authService = authService;
       authService.setToken('1234');
 
       this.galleryService = galleryService;
+      this.$window = $window;
       this.$httpBackend = $httpBackend;
     });
   });
 
-  describe('testing galleryService.createGallery', () => {
+  //POST /api/gallery
+  describe('testing POST galleryService.createGallery', () => {
     it('should return a gallery', () => {
       let galleryData = {
         name: 'exampleGallery',
@@ -37,41 +39,141 @@ describe('testing gallery service', function(){
     });
   });
 
-  describe('testing galleryService.deleteGallery(galleryID)', () => {
-    it('should succeed in deleting a gallery', () => {
-      // mock the request
-      let galleryID = 'helloworld';
-      let headers = {"Accept":"application/json, text/plain, */*","Authorization":"Bearer 1234"}
+  //POST /api/signup
+  describe('testing  POST user signup at /api/signup', () => {
+    it('should succesfully create a new user', () => {
+      let userData = {
+        name: 'Judy',
+        username: 'fakeUser',
+        password: 'ABCD',
+      };
 
-      // mock the server route
+      let headers = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      };
+
+      this.$httpBackend.expectPOST('http://localhost:3000/api/signup', userData, headers)
+      .respond(200, '1234');
+
+      this.authService.signup(userData)
+      .then((token) => {
+        expect(token).toBe('1234');
+      });
+
+      this.$httpBackend.flush();
+    });
+  });
+
+  //GET /api/login
+  describe('testing GET user login at /api/login', () => {
+    it('should login an existing user', () => {
+      let userData = {
+        name: 'Judy',
+        username: 'fakeUser',
+        password: 'ABCD',
+      };
+
+      let base64 = this.$window.btoa(`${userData.username}:${userData.password}`);
+
+      let headers = {
+        Accept: 'application/json',
+        Authorization: `Basic ${base64}`,
+      };
+
+      this.$httpBackend.expectGET('http://localhost:3000/api/login', headers)
+      .respond(200, '1234');
+
+      this.authService.login(userData)
+      .then((token) => {
+        expect(token).toBe('1234');
+      });
+
+      this.$httpBackend.flush();
+    });
+  });
+
+  //GET /api/gallery
+  describe('testing GET a user\'s galleries at /api/gallery', () => {
+    it('should return a user\'s galleries as array', () => {
+
+      let galleries = [
+        {
+          name: 'exampleGallery1',
+          desc: 'yohoo',
+        },
+        {
+          name: 'exampleGallery2',
+          desc: 'wee',
+        },
+      ];
+
+
+      let headers = {
+        Authorization: 'Bearer 1234',
+        Accept: 'application/json',
+      };
+
+      this.$httpBackend.expectGET('http://localhost:3000/api/gallery/?sort=dsc', headers)
+      .respond(200, galleries);
+
+      this.galleryService.fetchGalleries()
+      .then((res) => {
+        expect(res).toEqual(galleries);
+      });
+
+      this.$httpBackend.flush();
+    });
+  });
+
+  //PUT /api/gallery/galleryID
+  describe('testing PUT to /api/gallery/galleryID', () => {
+    it('should update a user\'s gallery', () => {
+
+      let gallery = {
+        name: 'exampleGallery1',
+        desc: 'yohoo',
+      };
+
+
+      let headers = {
+        Authorization: 'Bearer 1234',
+        Accept: 'application/json',
+        'Content-Type':'application/json',
+      };
+
+      this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/helloworld', gallery, headers)
+      .respond(200, {_id: 'helloworld', username: 'slugbyte',  name: gallery.name, desc: gallery.desc, pics: []});
+
+      this.galleryService.updateGallery('helloworld', gallery)
+      .then((res) => {
+        expect(res).toEqual({_id: 'helloworld', username: 'slugbyte',  name: gallery.name, desc: gallery.desc, pics: []});
+      });
+
+      this.$httpBackend.flush();
+    });
+  });
+  //DELETE /api/gallery/galleryID
+  describe('testing DELETE to /api/gallery/galleryID', () => {
+    it('should delete a user\'s gallery', () => {
+
+      // let gallery = {
+      //   name: 'exampleGallery1',
+      //   desc: 'yohoo',
+      // };
+
+
+      let headers = {
+        Accept: 'application/json',
+        Authorization: 'Bearer 1234',
+      };
+
       this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/helloworld', headers)
       .respond(204);
 
-      // make the reuset
-      this.galleryService.deleteGallery(galleryID);
-
-      // flush the server mock
-      this.$httpBackend.flush();
-    });
-
-    it('should respond with a 404', () => {
-      let headers = {
-        Authorization: 'Bearer 1234',
-        Accept: "application/json, text/plain, */*",
-      };
-
-      this.$httpBackend.whenDELETE('http://localhost:3000/api/gallery/:galleryID', headers)
-      .respond(function(method, url, data, headers, params) {
-        if (params.galleryID !== '1234'){
-          return [404, 'NotFoundError'];
-        }
-        return [204];
-      });
-
       this.galleryService.deleteGallery('helloworld')
-      .catch(err => {
-        console.log('err');
-        expect(err.status).toBe(404);
+      .then((res) => {
+        expect(res).toEqual(undefined);
       });
 
       this.$httpBackend.flush();

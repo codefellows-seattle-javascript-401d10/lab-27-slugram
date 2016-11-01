@@ -52,12 +52,12 @@ function galleryService($q, $log, $http, authService){
       };
       return $http.delete(url, config);
     })
-    .then( (res) => {
+    .then( () => {
       $log.log('init service.deleteGalleries()');
       for(let i= 0; i < service.galleries.length; ++i){
         let current = service.galleries[i];
         if (current._id === galleryID){
-          service.galleries[i] = res.data;
+          service.galleries.splice(i, 1);
           break;
         }
       }
