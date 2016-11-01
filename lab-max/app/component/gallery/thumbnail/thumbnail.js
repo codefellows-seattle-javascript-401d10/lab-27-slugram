@@ -15,7 +15,6 @@ function ThumbnailController($log, picService){
 
   this.deletePic = function(){
     $log.debug('init thumbnailCtrl.deletePic()');
-
     picService.deleteGalleryPic(this.gallery, this.pic);
   };
 }
