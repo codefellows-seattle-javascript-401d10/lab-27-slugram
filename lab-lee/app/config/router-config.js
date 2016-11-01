@@ -1,5 +1,6 @@
 'use strict';
 
+// ui-view is a component that has a controller than has access to services being configured by the providers below.
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
