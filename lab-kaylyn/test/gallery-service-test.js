@@ -20,7 +20,7 @@ describe('testing gallery service', function(){
     it('should return a gallery', () => {
       let galleryData = {
         name: 'exampleGallery',
-        desc: 'memories from my beach adventure',
+        desc: 'exampleDesc',
       };
 
       let headers = {
@@ -37,50 +37,79 @@ describe('testing gallery service', function(){
     });
   });
 
-  // describe('testing galleryService.deleteGallery(galleryID)', () => {
-  //   it('should succed in deleting a gallery', () => {
-  //     // mock the request
-  //     let galleryID = 'helloworld';
-  //     let headers = {
-  //       Authorization: 'Bearer 1234',
-  //       Accept: 'application/json, text/plain, */*',
-  //       'Content-Type': 'application/json, text/plain */*',
-  //     };
-  //
-  //     // mock the server route
-  //     this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/helloworld', headers)
-  //     .respond(204);
-  //
-  //     // make the reuset
-  //     this.galleryService.deleteGallery(galleryID);
-  //
-  //     // flush the server mock
-  //     this.$httpBackend.flush();
-  //   });
-  //
-  //   it('should respond with a 404', () => {
-  //     let headers = {
-  //       Authorization: 'Bearer 1234',
-  //       Accept: 'application/json, text/plain, */*',
-  //     };
-  //
-  //     this.$httpBackend.whenDELETE('http://localhost:3000/api/gallery/:galleryID', headers)
-  //     .respond(function(method, url, data, headers, params) {
-  //       if (params.galleryID !== '1234'){
-  //         return [404, 'NotFoundError'];
-  //       }
-  //       return [204];
-  //     });
-  //
-  //     this.galleryService.deleteGallery('helloworld')
-  //     .catch(err => {
-  //       console.log('err');
-  //       expect(err.status).toBe(404);
-  //     });
-  //
-  //     this.$httpBackend.flush();
-  //   });
-  // });
+  describe('testing galleryService.deleteGallery(galleryID)', () => {
+    it('should successfully delete a gallery', () => {
+      // mock the request
+      let galleryID = 'helloworld';
+      let headers = {
+        Authorization: 'Bearer 1234',
+        Accept: 'application/json, text/plain, */*',
+      };
+      // mock the server route
+      this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/helloworld', headers)
+      .respond(204);
+      // make the reuset
+      this.galleryService.deleteGallery(galleryID);
+      // flush the server mock
+      this.$httpBackend.flush();
+    });
+  });
 
+  describe('testing galleryService.upDateGallery(galleryID)', () => {
+    it('should successfully update a gallery', () => {
+      let galleryID = 'helloworld';
+      let galleryData = {
+        name: 'updatedName',
+        desc: 'updatedDesc',
+      };
+      let headers = {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer 1234',
+      };
+      this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/helloworld', galleryData, headers)
+      .respond(200, {_id: '4567', name: 'updatedName', desc: 'updatedDesc', pics: []});
+
+      this.galleryService.updateGallery(galleryID, galleryData)
+      .then( gallery => {
+        expect(gallery._id).toBe('4567');
+        expect(gallery.name).toBe(galleryData.name);
+        expect(gallery.desc).toBe(galleryData.desc);
+      });
+
+      this.$httpBackend.flush();
+
+    });
+  });
+
+  describe('testing galleryService.fetchGalleries', () => {
+    it('should successfully fetch a gallery', () => {
+      let galleriesArray =[
+        {
+          name: 'gallery1',
+          desc: 'desc1',
+        },
+        {
+          name: 'gallery2',
+          desc: 'desc2',
+        },
+      ];
+      let headers = {
+        Accept: 'application/json',
+        Authorization: 'Bearer 1234',
+      };
+      this.$httpBackend.expectGET('http://localhost:3000/api/gallery/?sort=dsc', headers)
+      .respond(200, galleriesArray);
+
+      this.galleryService.fetchGalleries()
+      .then(galleries => {
+        expect(galleries.length).toEqual(2);
+        expect(galleries[0]).toEqual({name: 'gallery1', desc: 'desc1'});
+      });
+
+      this.$httpBackend.flush();
+
+    });
+  });
 
 });
