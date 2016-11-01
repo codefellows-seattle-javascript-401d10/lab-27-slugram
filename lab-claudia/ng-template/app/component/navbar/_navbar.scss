@@ -1,23 +1,26 @@
 @import "theme";
 
 .navbar {
-  background-color: $app-secondary;
+  background-color: transparent;
   border:none;
+  height: 60px;
+
   .btn-logout {
     display: none;
+    float: right;
+    font-size: 100%;
+    padding: .75% 1.25%;
+    margin: 2%;
     @media (min-width: 500px){
       display: inline-block;
     }
   }
 
-  .btn-dropdown  {
-    padding: 10%;
-    span{
-      font-size: 1.5em;
-
-      @media (min-width: 500px){
-        display: none;
-      }
-    }
+  .navbar-brand {
+    color: $app-secondary;
+    float: left;
+    margin: 2%;
+    font-size: 170%;
+    text-decoration: none;
   }
 }

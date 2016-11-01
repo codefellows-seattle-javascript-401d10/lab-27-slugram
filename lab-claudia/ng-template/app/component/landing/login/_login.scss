@@ -1,1 +1,11 @@
 @import  "theme";
+
+.form-control {
+  color: $app-white;
+}
+.has-error {
+  color: $app-error;
+}
+.has-success {
+  color: $app-success;
+}

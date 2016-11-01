@@ -3,15 +3,21 @@
 .landing {
   .join-inner-container {
     padding: 5%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    background-color: $app-secondary;
+    background-color: transparent;
+    border: 1.5px solid $app-primary;
+    border-radius: 5% 5% 5% 5%;
     transition: 1s;
+    text-transform: uppercase;
 
-    button {
+    a {
       color: $app-secondary;
+    }
+    a:hover {
+      color: $app-white;
     }
 
     input {
@@ -20,6 +26,48 @@
       &[type='submit'] {
         color: $app-secondary;
       }
+    }
+
+    /*--------- Input Styles --------*/
+    input,
+    select {
+      width: 100%;
+      font-size: 100%;
+      background-color: transparent;
+      text-transform: uppercase;
+      border:none;
+      border-bottom: 1.5px solid $app-primary;
+      margin: 3%;
+      padding: 1% 0;
+      color: $app-white;
+    }
+
+    input:focus{
+      outline: none;
+    }
+    /*---- Changes Placeholder Color -----*/
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      color: $app-primary;
+    }
+
+
+    /* General Button Styles  */
+    .btn {
+      background-color: rgba(255,255,255,.3);
+      border: none;
+      text-transform: uppercase;
+      border-radius: 3px;
+      font-size: 120%;
+      padding: 1.5% 2%;
+      margin-top: 3%;
+      width: 25%;
+      transition: all 0.3s;
+      color: $app-secondary;
+    }
+    .btn:hover {
+      background:rgba(255,255,255,1);
+      color: $app-black;
     }
 
     p {
@@ -39,15 +87,12 @@
     }
 
     @media (min-width: 600px) {
-      width: 70%;
+      width: 65%;
     }
 
     @media (min-width: 1000px) {
       width: 50%;
     }
 
-    @media (min-width: 1200px) {
-      width: 30%;
-    }
   }
 }

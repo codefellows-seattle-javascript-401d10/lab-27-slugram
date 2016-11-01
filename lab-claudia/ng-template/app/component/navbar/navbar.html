@@ -1,29 +1,21 @@
 
-<nav class="navbar navbar-default">
+<nav class="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{{ navbarCtrl.appTitle }}</a>   <!-- Comes from bindings @-->
 
     <div ng-hide="navbarCtrl.hideButtons">
       <button
         ng-click="navbarCtrl.logout()"
-        class="btn pull-right btn-default navbar-btn btn-logout">
+        class="btn btn-logout">
         Logout
       </button>
 
-      <div class="btn-group pull-right" uib-dropdown>
-        <button id="btn-append-to-body"
-          type="button"
-          class="btn btn-dropdown btn-primary navbar-btn"
-          uib-dropdown-toggle>
+      <div class="btn-group">
+        <button id="btn-append-to-body" type="button">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
-
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-          <li role="menuitem"><a href="#" ng-click="navbarCtrl.logout()">Logout</a></li>
-          <li role="menuitem"><a href="#">Profile</a></li>
-          <li role="menuitem"><a href="#">Cat Facts</a></li>
-        </ul>
       </div>
+
     </div>
   </div>
 </nav>
