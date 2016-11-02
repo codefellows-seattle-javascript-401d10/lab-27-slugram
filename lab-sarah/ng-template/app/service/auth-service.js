@@ -9,6 +9,7 @@ function authService($q, $log, $http, $window){
   service.token = null;
 
   service.setToken = function(_token){
+    console.log('service.setToken', _token);
     $log.debug('authService.service.setToken()');
     if (! _token)
       return $q.reject(new Error('no service.token'));
@@ -57,6 +58,7 @@ function authService($q, $log, $http, $window){
   };
 
   service.login = function(user){
+    console.log('service.login');
     $log.debug('authService.login()');
     let url = `${API_URL}/api/login`;
     // base64 encoded 'username:password'

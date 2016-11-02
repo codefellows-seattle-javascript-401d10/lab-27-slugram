@@ -6,14 +6,20 @@ describe('testing gallery service', function(){
   beforeEach(() => {
     angular.mock.module('demoApp');
     //angular is global at this point, so dont have to require it in or anything
-    angular.mock.inject((authService, galleryService, $httpBackend) => {
+    angular.mock.inject((authService, $window, galleryService, $httpBackend) => {
       this.authService = authService;
+      this.$window = $window;
       authService.setToken('1234');
 
       this.galleryService = galleryService;
       //$httpBackend mocks the backend
       this.$httpBackend = $httpBackend;
     });
+  });
+
+  afterEach(() => {
+    this.authService.token = null;
+    this.$window.localStorage.clear();
   });
 
   describe('testing galleryService.createGallery', () => {
@@ -109,10 +115,10 @@ describe('testing gallery service', function(){
       //only testing the request, not the response
       this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/helloworld', headers)
       .respond(204);
-    //make the request
-    //fix your delete method in galleryservice
+      //make the request
+      //fix your delete method in galleryservice
       this.galleryService.deleteGallery(galleryID);
-    //flush the server mock (flush the responses from the fake server)
+      //flush the server mock (flush the responses from the fake server)
       this.$httpBackend.flush();
     });
   });
