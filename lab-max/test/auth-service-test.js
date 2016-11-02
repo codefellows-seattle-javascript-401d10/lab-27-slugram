@@ -4,38 +4,58 @@ describe('testing auth service', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, $window, $httpBackend) => {
+    angular.mock.inject((authService, $rootScope, $window, $httpBackend) => {
       this.authService = authService;
+      this.$rootScope = $rootScope;
       this.$window = $window;
       this.$httpBackend = $httpBackend;
     });
   });
 
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
+  });
+
   describe('testing authService.setToken(_token)', () => {
 
     it('should return a token', () => {
-      this.authService.setToken('1234');
-      expect(this.authService.token).toBe('1234');
+      this.authService.setToken('1234')
+      .then( token => {
+        expect(token).toBe('1234');
+      });
+
+      this.$rootScope.$apply();
     });
   });
 
   describe('testing authService.getToken()', () => {
 
     it('should return a token', () => {
-      this.authService.setToken('1234');
-      this.authService.getToken();
-      expect(this.authService.token).toBe('1234');
-      expect(this.authService.token).toBe(this.$window.localStorage.getItem('service.token'));
+      this.authService.token = '1234';
+      this.$window.localStorage.setItem('service.token', this.authService.token);
+      this.authService.getToken()
+      .then( token => {
+        expect(token).toBe('1234');
+        expect(token).toBe(this.$window.localStorage.getItem('service.token'));
+      });
+
+      this.$rootScope.$apply();
     });
   });
 
   describe('testing authService.logout()', () => {
 
     it('should return a token equal to null', () => {
-      this.authService.setToken('1234');
-      this.authService.logout();
-      expect(this.authService.token).toBe(null);
+      this.authService.token = '1234';
+      this.authService.logout()
+      .then(() => {
+        expect(this.authService.token).toBe(null);
+      });
+
+      this.$rootScope.$apply();
     });
+
   });
 
   describe('testing authService.signup(user)', () => {
@@ -61,6 +81,7 @@ describe('testing auth service', function(){
       });
 
       this.$httpBackend.flush();
+      this.$rootScope.$apply();
     });
   });
 
@@ -88,6 +109,7 @@ describe('testing auth service', function(){
       });
 
       this.$httpBackend.flush();
+      this.$rootScope.$apply();
     });
   });
 });
