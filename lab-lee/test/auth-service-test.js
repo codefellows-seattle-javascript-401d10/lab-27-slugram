@@ -8,13 +8,50 @@ describe('testing authorization service', function() {
 
   beforeEach( () => {
     angular.mock.module('leeGram');
-    angular.mock.inject((authService, $httpBackend, $window) => {
+    angular.mock.inject((authService, $httpBackend, $rootScope, $window) => {
       this.authService = authService;
       authService.setToken('12345678901234');
       this.$httpBackend = $httpBackend;
       this.$window = $window;
+      this.$rootScope = $rootScope;
     });
   });
+
+  afterEach( () => {
+    this.authService.token = null;
+    this.$window.localStorage.clear();
+  });
+
+  describe('testing #getToken()', () => {
+
+    it('should return a token', () => {
+
+      this.authService.token = 'the token';
+
+      this.authService.getToken()
+      .then( token => {
+        expect(token).toEqual('the token');
+      });
+      this.$rootScope.$apply();
+    });
+  });
+
+  // describe('testing #getToken()', () => {
+  //
+  //   it('should return a token on localStorage', () => {
+  //
+  //     this.$window.localStorage.setItem('token', 'the token');
+  //
+  //     this.authService.getToken()
+  //     .then( token => {
+  //       expect(token).toEqual('the token');
+  //     })
+  //     .catch( err => {
+  //       expect(err);
+  //     });
+  //     this.$rootScope.$apply();
+  //   });
+  // });
 
   describe('testing authService.signup(user)', () => {
 
