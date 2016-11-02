@@ -3,8 +3,9 @@
 describe('testing auth service', function(){
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, $window, $httpBackend) => {
+    angular.mock.inject((authService, $window, $rootScope, $httpBackend) => {
       this.$window = $window;
+      this.$rootScope = $rootScope;
       this.authService = authService;
       this.$httpBackend = $httpBackend;
     });
@@ -24,25 +25,38 @@ describe('testing auth service', function(){
 
   describe('testing authService.getToken', () => {
     it('should get a token', () => {
-      this.authService.setToken('1234')
-      .then(() => {
-        this.authService.getToken()
-        .then(token => {
-          expect(token).toBe('1234');
-        });
+      this.authService.token = '1234';
+      this.authService.getToken()
+      .then(token => {
+        expect(token).toBe('1234');
       });
+      //most angular constructs allow for changes to be noticed immediately, but since we're in jasmine, have to actually call apply so that any changes in two way  bound objects will be noticed
+      this.$rootScope.$apply();
     }); //end of it should get a token
+
+    it('should return a token', () => {
+      this.authService.token = null;
+      this.$window.localStorage.setItem('service.token', '1234');
+      // this.authService.token = '1234';
+      this.authService.getToken()
+      .then(token => {
+        expect(token).toBe('1234');
+      })
+      .catch(err => {
+        expect(err).toEqual(null);
+      });
+
+      this.$rootScope.$apply();
+    });
   });
 
   describe('testing authService.logout', () => {
     it('should not return a token', () => {
-      this.authService.setToken('1234')
-      .then(() => {
-        this.authService.logout()
-        .then((res) => {
-          expect(res).toBeFalsy;
-          expect(this.$window.localStorage.getItem('service.token').toBe(null));
-        });
+      this.authService.token = '1234';
+      this.authService.logout()
+      .then((res) => {
+        expect(res).toBeFalsy;
+        expect(this.$window.localStorage.getItem('service.token').toBe(null));
       });
     }); //end of it should not return a token
   });
@@ -59,7 +73,7 @@ describe('testing auth service', function(){
         'Accept': 'application/json',
       };
       this.$httpBackend.expectPOST('http://localhost:3000/api/signup', exampleUser, headers)
-      .respond(200);
+      .respond(200, {});
 
       this.authService.signup(exampleUser)
       .then((token) => {
@@ -73,19 +87,29 @@ describe('testing auth service', function(){
 
   describe('testing authService.login(user)', () => {
     it('should return a token', () => {
-      let sameUser = {
+      this.authService.token = '1234';
+      let exampleUser = {
         username: 'prungy',
         password: 'ilovefood',
       };
-      this.$httpBackend.expectGET('http://localhost:3000/api/login')
-      .respond(200);
 
-      this.authService.login(sameUser)
-      .then((token) => {
-        console.log('token', token);
-        expect(token).toNotBe(null);
+      let base64 = this.$window.btoa(`${exampleUser.username}:${exampleUser.password}`);
+
+      let headers = {
+        Accept: 'application/json',
+        Authorization: `Basic ${base64}`,
+      };
+
+      this.$httpBackend.expectGET('http://localhost:3000/api/login', headers)
+      .respond(200, 'faketoken1234');
+
+      this.authService.login(exampleUser)
+      .then(token => {
+        expect(token).toBe('faketoken1234');
+      })
+      .catch((err) => {
+        expect(err).toBe(null);
       });
-
       this.$httpBackend.flush();
     });
   });
