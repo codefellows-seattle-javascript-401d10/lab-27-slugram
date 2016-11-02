@@ -18,6 +18,11 @@ describe('testing gallery service', function(){
     });
   });
 
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
+  });
+
   //POST /api/gallery
   describe('testing POST galleryService.createGallery', () => {
     it('should return a gallery', () => {
@@ -94,35 +99,6 @@ describe('testing gallery service', function(){
     });
   });
 
-  //Testing setToken method (authService)
-  describe('testing #service.setToken', () => {
-    it('should return a new token', () => {
-
-
-      this.authService.setToken('1234')
-      .then((token) => {
-        expect(token).toEqual('1234');
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-      this.$rootScope.$apply();
-    });
-  });
-
-  //Testing getToken method (authService)
-  describe('testing #service.getToken', () => {
-    it('should retrieve a token from localStorage', () => {
-
-      this.$window.localStorage.setItem('service.token', '1234');
-
-      this.authService.getToken()
-      .then((token) => {
-        expect(token).toBe('1234');
-      });
-      this.$rootScope.$apply();
-    });
-  });
 
   //GET /api/gallery
   describe('testing GET a user\'s galleries at /api/gallery', () => {
