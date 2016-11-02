@@ -12,8 +12,8 @@ module.exports = {
 function EditGalleryController($log, galleryService){
   $log.debug('init editGalleryCtrl');
 
-  this.updateGallery = function(galleyId, galleyData){
-    galleryService.updateGallery(galleyId, galleyData)
+  this.updateGallery = function(){
+    galleryService.updateGallery(this.gallery._id, this.gallery)
     .catch( () => {
       $log.debug('error in editGalleryCtrl');
     });

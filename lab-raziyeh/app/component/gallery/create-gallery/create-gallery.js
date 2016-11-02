@@ -9,7 +9,6 @@ module.exports = {
 function CreateGalleryController($log, galleryService){
   $log.debug('init createGalleryCtrl');
   this.gallery = {};
-  console.log('this.gallery ', this.gallery );
   
   this.createGallery = function(){
     galleryService.createGallery(this.gallery)
