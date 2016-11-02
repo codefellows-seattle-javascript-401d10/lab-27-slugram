@@ -29,7 +29,7 @@ context.keys().forEach( key => {
 });
 
 // load view controllers
-context = require.context('./view/', true, /.js$/); // true allows us to recursively look through a directory.  
+context = require.context('./view/', true, /.js$/); // true allows us to recursively look through a directory.
 context.keys().forEach( key => {
   let name = pascalcase(path.basename(key, '.js')); // name controller based on file name
   let module = context(key); // value of module.exports
@@ -50,4 +50,12 @@ context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
   let module = context(key); // value of module.exports
   leeGram.component(name, module);
+});
+
+// load directives
+context = require.context('./directive/', true, /.js$/);
+context.keys().forEach( key => {
+  let name = camelcase(path.basename(key, '.js'));
+  let module = context(key); // value of module.exports
+  leeGram.directive(name, module);
 });
