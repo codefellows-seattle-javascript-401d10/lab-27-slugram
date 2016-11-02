@@ -19,8 +19,10 @@ function authService($q, $log, $http, $window){
 
   service.getToken = function(){
     $log.debug('authService.getToken');
+
     if (service.token) return $q.resolve(service.token);
     service.token = $window.localStorage.getItem('service.token');
+
     if (service.token) return $q.resolve(service.token);
     return $q.reject(new Error('service.token not found'));
   };
