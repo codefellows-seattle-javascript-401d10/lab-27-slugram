@@ -4,13 +4,26 @@ describe('testing authService', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, $window, $httpBackend) => {
-      this.authService = authService;
+    angular.mock.inject(($rootScope, $q, authService, $window, $httpBackend) => {
+      this. $q = $q;
       this.$window = $window;
-      authService.setToken('1234');
-
+      this.$rootScope = $rootScope;
       this.authService = authService;
       this.$httpBackend = $httpBackend;
+      // authService.setToken('1234');
+    });
+  });
+
+  describe('testing #getToken()', () => {
+    it('should return a token', () => {
+      this.authService.token = 'helloworld token';
+
+      this.authService.getToken()
+      .then( token => {
+        expect(token).toEqual('helloworld token');
+      });
+
+      this.$rootScope.$apply();
     });
   });
 
