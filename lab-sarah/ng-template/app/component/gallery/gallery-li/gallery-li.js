@@ -18,8 +18,9 @@ function GalleryLIController($log, galleryService){
   this.showEditGallery = false;
 
   this.deleteGallery = function(){
-    galleryService.deleteGallery(this.gallery, this.gallery._id)
+    galleryService.deleteGallery(this.gallery._id)
     .then(() => {
+      //deleteDone was defined in a separate controller and passed in using &
       this.deleteDone({galleryData: this.gallery});
     });
   };

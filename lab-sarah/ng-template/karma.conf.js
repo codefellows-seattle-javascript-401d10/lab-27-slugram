@@ -18,13 +18,14 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
     logLevel: config.LOG_INFO,
     preprocessors: {
+      //every time it encounters the files that match the regex below, will run it through webpack
       'test/**/*-test.js': ['webpack'],
       'app/entry.js': ['webpack'],
     },
     files: [
       'app/entry.js',
-      'test/**/*-test.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'test/**/*-test.js',
     ],
   });
 };

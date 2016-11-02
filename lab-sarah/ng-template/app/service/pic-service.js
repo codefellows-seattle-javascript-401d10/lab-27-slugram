@@ -45,9 +45,9 @@ function picService($q, $log, $http, Upload, authService){
   //galleryData is the gallery Object
    function(galleryData, picID){
     // TODO: log the deleteGalleryPic method name
-    $log.debug('picService.deleteGalleryPic()');
+     $log.debug('picService.deleteGalleryPic()');
     // TODO: get a token from the auth service
-    return authService.getToken()
+     return authService.getToken()
     .then((token) => {
       let url = `${API_URL}/api/gallery/${galleryData._id}/pic/${picID}`;
       let config = {

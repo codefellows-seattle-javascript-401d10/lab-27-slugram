@@ -20,6 +20,7 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
+  //this is where the function is actually defined, is invoked in gallery-li controller
   this.galleryDeleteDone = function(gallery){
     $log.debug('homeCtrl.galleryDeleteDone()');
     if (this.currentGallery._id === gallery._id){
