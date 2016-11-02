@@ -1,4 +1,5 @@
 @import "theme";
+@import "vendor";
 
 .navbar {
   background-color: transparent;
@@ -23,4 +24,27 @@
     font-size: 170%;
     text-decoration: none;
   }
+
+  .mobile-nav-icon {
+    padding: .75% 1.25%;
+    margin: 2%;
+    display: none;
+    float: right;
+
+    @media (max-width: 500px){
+      display: inline-block;
+    }
+  }
+
+  .fa {
+      background-color: transparent;
+      color: $app-black;
+      transition: 1s;
+  }
+
+  .fa:hover {
+    color: $app-white;
+  }
+
+
 }

@@ -1,6 +1,26 @@
 @import "theme";
-  .upload-pic  {
-    margin: 2%;
-    // text
+@import "vendor";
+
+.upload-pic{
+  .btn {
+    width: 25%;
+    color: $app-black;
+    margin: 2% 3%;
+  }
+  form {
+    width: 80%;
+    margin: 2% 10%;
+  }
+
+  input {
+    width: 80%;
+  }
+  .has-error {
+    background-color: $app-warn;
     color: $app-white;
   }
+  .btn-success {
+    background-color: $app-success;
+  }
+
+}

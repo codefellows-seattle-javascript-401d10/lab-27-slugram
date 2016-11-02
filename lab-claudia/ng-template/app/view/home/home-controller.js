@@ -10,12 +10,13 @@ function HomeController($log, $rootScope, galleryService){
 
   this.fetchGalleries = function(){
     galleryService.fetchGalleries()
-    // every time we fetch, we get an array of galleries
-    // sets galleries as a property on the home controller
+    // Fetching returns an array of galleries
+    // Galleries is set as a property on the home controller
     .then( galleries => {
       this.galleries = galleries;
-      // current gallery is the first one in the index
-      // in html, gallery is passed into the thumbnail-conatiner
+      // The current gallery is the first one in the index
+      // In the html, the current gallery is passed into
+      // The thumbnail-container gallery attribute
       this.currentGallery = galleries[0];
       $log.log('Succesfully found gallery');
     });
@@ -24,14 +25,15 @@ function HomeController($log, $rootScope, galleryService){
   this.galleryDeleteDone = function(gallery){
     $log.debug('init homeCtrl.galleryDeleteDone()');
     if (this.currentGallery._id == gallery._id) {
-      // if the current gallery has ben deleted, it is set to null
+      // If the current gallery matches the galleryid, it is set to null
       this.currentGallery = null;
     }
   };
 
-  // when page is loaded (controller gets created), call fetchGalleries
+  // When page is loaded (controller gets created), call fetchGalleries
   this.fetchGalleries();
-  // any time url changes (locationChangeSuccess), call fetch galleries
+
+  // Any time url changes (locationChangeSuccess), call fetchGalleries
   $rootScope.$on('$locationChangeSuccess', () => {
     this.fetchGalleries();
   });

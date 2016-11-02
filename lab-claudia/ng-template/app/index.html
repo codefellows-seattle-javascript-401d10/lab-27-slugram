@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <!-- set up root scope of app - tell it to use demoApp(named in entry.js) -->
+<!-- Set up the root scope of the app - tell it to use demoApp(named in entry.js) -->
 <html ng-app="demoApp">
   <head>
     <title> [NuggetGram] </title>
@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <!-- has binding that allows primitive to be passed in component -->
+    <!-- Has binding that allows primitive to be passed in component -->
     <navbar app-title="[nuggetGram]"> </navbar>
-    <!--ui view is configured in router config - displays different page based on state of the app -->
+    <!-- The ui view is configured in router.config - Displays a different page based on state of the app -->
     <ui-view> </ui-view>
   </body>
 </html>

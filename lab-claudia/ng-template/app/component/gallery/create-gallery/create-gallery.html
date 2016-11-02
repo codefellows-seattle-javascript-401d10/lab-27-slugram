@@ -1,28 +1,36 @@
 <section class="create-gallery-container">
+
+  <h2>Create a new gallery</h2>
+
   <form name="createGalleryForm"
     class="form-inline"
     novalidate
     ng-submit="createGalleryCtrl.createGallery()">
 
-    <div class="form-group">
-      <label for="name"> Name: </label>
-      <input name="name"
-        class="form-control"
-        type="text"
-        ng-model="createGalleryCtrl.gallery.name"
-        required>
-    </div>
+    <div class ="row">
+      <div class = "col span-1-of-2">
+        <div class="form-group">
+          <label for="name"> Name: </label>
+          <input name="name"
+            class="form-control"
+            type="text"
+            ng-model="createGalleryCtrl.gallery.name"
+            required>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="desc"> Description: </label>
-      <input name="desc"
-        class="form-control"
-        type="text"
-        uib-tooltip="Description Required"
-        ng-model="createGalleryCtrl.gallery.desc"
-        required>
+      <div class = "col span-1-of-2">
+        <div class="form-group">
+          <label for="desc"> Description: </label>
+          <input name="desc"
+            class="form-control"
+            type="text"
+            ng-model="createGalleryCtrl.gallery.desc"
+            required>
+        </div>
+      </div>
     </div>
+    <button class="btn btn-add" type="submit"> Add </button>
 
-    <button class="btn btn-primary" type="submit"> + </button>
   </form>
 </section>

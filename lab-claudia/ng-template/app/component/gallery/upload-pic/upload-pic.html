@@ -1,17 +1,65 @@
-<div class ="upload-pic">
-  <form
-  ng-submit = "uploadPicCtrl.uploadPic()"
-  novalidate>
+<div class="upload-pic">
+  <button
+    ng-click="uploadPicCtrl.showForm = true"
+    class="btn btn-primary show-form-btn"
+    ng-if="!uploadPicCtrl.showForm"> Add Pic </button>
 
-  <input class = "form-control" type = "text" ng-model="uploadPicCtrl.pic.name" placeholder = "Name">
-  <input class = "form-control" type = "text" ng-model="uploadPicCtrl.pic.desc" placeholder = "Description">
-  <!-- ngf-select allows us to select image from computer -->
-<div class = "btn btn-default"
-  ngf-select
-  ng-model="uploadPicCtrl.pic.file">
-  Select Image
-</div>
-<!-- -->
-<button class = "btn btn-primary"> Upload Image </button>
-</form>
+  <form
+    name="uploadPicForm"
+    ng-if="uploadPicCtrl.showForm"
+    ng-submit="uploadPicCtrl.uploadPic()"
+    novalidate>
+
+    <div class ="row">
+      <div class ='col span-1-of-2'>
+        <div
+          ng-class="{
+            'has-error': uploadPicForm.$submitted && uploadPicForm.name.$invalid}"
+          class="form-group">
+
+          <input
+          name="name"
+          class="form-control"
+          required
+          type="text"
+          ng-model="uploadPicCtrl.pic.name"
+          placeholder="Name">
+
+        </div>
+      </div>
+
+
+      <div class ='col span-1-of-2'>
+        <div
+          ng-class="{
+          'has-error': uploadPicForm.$submitted && uploadPicForm.desc.$invalid}"
+          class="form-group">
+
+          <input name="desc"
+            required
+            class="form-control"
+            type="text"
+            ng-model="uploadPicCtrl.pic.desc"
+            placeholder="Description">
+
+        </div>
+      </div>
+    </div>  <!-- end row -->
+
+    <div class = "row">
+      <div class="btn btn-default"
+        ngf-select
+        required
+        ngf-drop
+        ng-model="uploadPicCtrl.pic.file"
+        ng-class="{
+        'has-error': uploadPicForm.$submitted && !uploadPicCtrl.pic.file,
+        'btn-success': uploadPicCtrl.pic.file}" >
+        <button class="btn"> Select Image </button>
+        <!--<span class="drop-image-btn"> Drop Image </span> -->
+      </div>
+      <button class="btn"> Upload Image </button>
+      <button type="button" class="btn" ng-click="uploadPicCtrl.done()"> Cancel </button>
+  </div>
+  </form>
 </div>

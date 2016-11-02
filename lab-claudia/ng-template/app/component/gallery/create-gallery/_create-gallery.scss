@@ -1,6 +1,25 @@
 @import "theme";
-  .create-gallery-container  {
-    margin: 2%;
-    // text
-    color: $app-white;
+
+.create-gallery-container {
+  width: 70%;
+  margin: 0 15%;
+  padding: 3%;
+  margin-bottom: 3%;
+  background-color: $app-primary;
+
+  h2 {
+    color: $app-black;
+    margin: 3% 0;
   }
+
+  .btn-add {
+    background-color: $app-secondary;
+    border: 1px solid $app-primary;
+    color: $app-black;
+  }
+
+  .btn-add:hover {
+    background-color: $app-white;
+  }
+
+}

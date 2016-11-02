@@ -3,10 +3,25 @@
 describe('testing authService', function(){
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, $httpBackend) => {
+    angular.mock.inject((authService, $httpBackend, $q, $window, $rootScope) => {
       this.authService = authService;
       authService.setToken('1234');
       this.$httpBackend = $httpBackend;
+      this.$q = $q;
+      this.$window = $window;
+      this.$rootScope = $rootScope;
+    });
+  });
+
+  describe('testing authService.setToken()', () => {
+    it('should return a token', () => {
+      this.authService.token = 'myspecialtoken';
+      this.authService.getToken()
+      .then(token => {
+        expect(token).toEqual('myspecialtoken');
+      });
+
+      this.$rootScope.$apply();
     });
   });
   describe('testing authService.login(user)', () => {
@@ -16,7 +31,7 @@ describe('testing authService', function(){
         email:'bread@tasty.com',
         password: '1234567',
       };
-      let base64 = window.btoa(`${userData.username}:${userData.password}`);
+      let base64 = this.$window.btoa(`${userData.username}:${userData.password}`);
       // set up test headers
       let headers = {
         Accept: 'application/json',

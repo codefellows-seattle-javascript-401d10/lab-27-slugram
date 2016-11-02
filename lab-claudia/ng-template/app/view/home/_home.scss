@@ -1,35 +1,32 @@
 @import "theme";
 
 .home {
-  .gallery-list-container {
-  width: 70%;
-  margin: 0 15%;
-  background-color: $app-secondary;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2%;
 
-  ul {
-    padding: 0px;
-  }
-
-  li {
-    list-style: none;
-  }
-}
-
-  .panel-heading {
-    background-color: $app-primary;
-    span {
-      font-weight: bold;
-      color: $app-secondary;
-    }
-
-    span:hover {
+    input,
+    select {
+      width: 80%;
+      font-size: 100%;
+      border:none;
+      border: 1.5px solid $app-primary;
+      margin: 3%;
+      padding: 1% 0;
       color: $app-black;
     }
-  }
 
-  .thumbnail-container {
-    width: 50%;
-    margin: 0 25%;
-    background-color: transparent;
-  }
+    ul {
+      padding: 0px;
+    }
+    li {
+      list-style: none;
+    }
+
+    .create-gallery-container {
+        width: 60%;
+        padding: 3%;
+    }
+
+
 }

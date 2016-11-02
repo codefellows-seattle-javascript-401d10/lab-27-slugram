@@ -14,13 +14,21 @@ module.exports = {
 function UploadPicController($log, picService) {
   $log.debug('init uploadPicCtrl');
   this.pic = {},
-  this.uploadPic = function() {
+  this.done = function() {
     picService.uploadGalleryPic(this.gallery, this.pic)
   // when a pic is succesfully uploaded, set it to null!
     .then(() => {
+      this.showForm = false;
       this.pic.name = null;
       this.pic.desc = null;
       this.pic.file = null;
+    });
+  };
+
+  this.uploadPic = function(){
+    picService.uploadGalleryPic(this.gallery, this.pic)
+    .then(() => {
+      this.done();
     });
   };
 }

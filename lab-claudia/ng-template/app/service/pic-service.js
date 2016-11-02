@@ -6,25 +6,25 @@ function picService($q, $log, $http, Upload, authService) {
   $log.debug('init picService');
   let service = {};
 
-// route for making an upload
+// Route for making an upload
   service.uploadGalleryPic = function(galleryData, picData) {
     $log.debug('picService.uploadGalleryPic()');
-    // return promise
+    // Return promise
     return authService.getToken()
+    // Get token
     .then( token => {
       let url = `${__API_URL__}/api/gallery/${galleryData._id}/pic`;
       let headers = {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json',
       };
-      // don't need key value pairs with object literals in ES6
+      // Don't need key value pairs with object literals in ES6
       return Upload.upload({
         url,
         headers,
         method: 'POST',
-        // information expected to be uploaded
-        // things that are required in the back ending
-        // info is being sent as multi part form data
+        // Information expected to be uploaded (required in the back-end)
+        // Info is being sent as multi-part form data
         data: {
           name: picData.name,
           desc: picData.desc,
@@ -32,9 +32,9 @@ function picService($q, $log, $http, Upload, authService) {
         },
       });
     })
-    // get a response that returns an image
+    // Get a response that returns an image
     .then( res => {
-      //add pic to the front of the array
+      // Add pic to the front of the array
       galleryData.pics.unshift(res.data);
       $log.log('success!\n', res.data);
       return res.data;
@@ -43,13 +43,10 @@ function picService($q, $log, $http, Upload, authService) {
       $log.error(err.message);
       return $q.reject(err);
     });
-    //get token
-    //make request
   };
 
-// route for deleting a pic
+// Route for deleting a pic - (this.gallery, this.pic._id) in controller
   service.deleteGalleryPic = function(galleryData, picID) {
-    // Log name
     $log.debug('picService.deleteGalleryPic()');
     // Get a token from the auth service
     return authService.getToken()
@@ -67,7 +64,7 @@ function picService($q, $log, $http, Upload, authService) {
       return $http.delete(url, config);
     })
 
-    // On success you splice the pic out of the galleryData.pics array
+    // On success, splice the pic out of the galleryData.pics array
     .then(() => {
       $log.log('Deleted pic sucessfully');
       for(let i = 0; i < galleryData.pics.length; i++){
@@ -77,10 +74,10 @@ function picService($q, $log, $http, Upload, authService) {
           break;
         }
       }
-      // resolve undefined
+      // Resolve undefined
       return $q.resolve(undefined);
     })
-    // on error log error and reject error
+    // On error log error and reject error
     .catch( err => {
       $log.error(err.message);
       return $q.reject(err);

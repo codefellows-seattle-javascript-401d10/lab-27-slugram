@@ -18,6 +18,9 @@ function routerConfig($stateProvider, $urlRouterProvider){
       controllerAs: 'homeCtrl',
       controller: 'HomeController',
       template: require('../view/home/home.html'),
+      data: {
+        bodyClasses: 'bg',
+      },
     },
     {
       name: 'welcome',

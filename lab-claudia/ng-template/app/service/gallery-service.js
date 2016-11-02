@@ -35,7 +35,7 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
-  service.deleteGallery = function (galleryID){
+  service.deleteGallery = function(galleryID){
     return authService.getToken()
     .then(token => {
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
@@ -95,7 +95,7 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
-  service.updateGallery = function(galleryData, galleryID){
+  service.updateGallery = function(gallery, galleryID){
     $log.debug('galleryService.updateGalleries()');
     // call authService to get token
     return authService.getToken()
@@ -112,7 +112,7 @@ function galleryService($q, $log, $http, authService){
       };
       // ajax request
       // makes request to API, parses, updates and responds
-      return $http.put(url, galleryData, config);
+      return $http.put(url, gallery, config);
     })
     // get the response
     .then( res => {

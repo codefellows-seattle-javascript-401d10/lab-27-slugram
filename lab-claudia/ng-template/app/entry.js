@@ -30,7 +30,7 @@ const demoApp = angular.module('demoApp', [ngTouch, ngAnimate, uiRouter, uiBoots
 // 3. Gives us the object to export
 
 // BASENAME = name of file without folders or .js
-    //ex: start with app/goose/file.js --> returns 'file'
+// ex: start with app/goose/file.js --> returns 'file'
 // true parameter -looks through sub-directories
 // Require.context returns a function
 

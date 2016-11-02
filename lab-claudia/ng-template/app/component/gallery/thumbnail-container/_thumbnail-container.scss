@@ -1,0 +1,9 @@
+@import "theme";
+@import "vendor";
+
+.thumbnail-container {
+  width: 70%;
+  margin: 1% 15%;
+  padding: 3%;
+  background-color: $app-primary;
+}
