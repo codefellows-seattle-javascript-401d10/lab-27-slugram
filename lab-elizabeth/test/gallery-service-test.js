@@ -14,7 +14,7 @@ describe('testing gallery service', function(){
     });
   });
 
-  describe('testing galleryService.createGallery(galleryData)', () => {
+  describe('createGallery(galleryData)', () => {
     it('should return a gallery', () => {
 
       let galleryData = {
@@ -28,11 +28,11 @@ describe('testing gallery service', function(){
       };
 
       this.$httpBackend.expectPOST('http://localhost:3000/api/gallery', galleryData, headers)
-      .respond(200, {_id: '5678', name: galleryData.name, desc: galleryData.desc, pics: []});
+      .respond(200, {_id: 'helloworld', name: galleryData.name, desc: galleryData.desc, pics: []});
 
       this.galleryService.createGallery(galleryData)
       .then(gallery => {
-        expect(gallery._id).toBe('5678');
+        expect(gallery._id).toBe('helloworld');
       })
       .catch(err => {
         expect(err).toBe(null);
@@ -43,9 +43,9 @@ describe('testing gallery service', function(){
     });
   });
 
-  describe('testing galleryService.deleteGallery(galleryID)', () => {
-    it('should succeed in deleting a gallery', () => {
-      //mock the request
+  describe('deleteGallery(galleryID)', () => {
+    it('should delete a gallery', () => {
+
       let galleryID = 'helloworld';
       let headers = {
         Authorization: 'Bearer 1234',
@@ -68,9 +68,8 @@ describe('testing gallery service', function(){
     });
   });
 
-  describe('testing galleryService.updateGallery(galleryID, newGalleryData)', () => {
+  describe('updateGallery(galleryID, newGalleryData)', () => {
     it('should update a gallery', () => {
-
       let newGalleryData = {
         name: 'newExampleGallery',
         desc: 'new memories from my beach adventure',
@@ -81,15 +80,45 @@ describe('testing gallery service', function(){
         Accept: 'application/json',
       };
 
-      this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/5678', newGalleryData, headers)
-      .respond(200, {_id: '5678', name: newGalleryData.name, desc: newGalleryData.desc, pics: []});
+      this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/helloworld', newGalleryData, headers)
+      .respond(200, {_id: 'helloworld', name: newGalleryData.name, desc: newGalleryData.desc, pics: []});
 
-      this.galleryService.updateGallery('5678', newGalleryData)
+      this.galleryService.updateGallery('helloworld', newGalleryData)
       .then(res => {
         expect(res).toBe('update successful');
       })
       .catch(err => {
         expect(err).toBe(null);
+      });
+
+      this.$httpBackend.flush();
+
+    });
+  });
+
+  describe('fetchGalleries()', () => {
+    it('should fetch galleries array', () => {
+      let galleries = [
+        {
+          name: 'exampleGallery',
+          desc: 'memories from my beach adventure',
+        },
+        {
+          name: 'newExampleGallery',
+          desc: 'new memories from my beach adventure',
+        },
+      ];
+      let headers = {
+        Authorization: 'Bearer 1234',
+        Accept: 'application/json',
+      };
+
+      this.$httpBackend.expectGET('http://localhost:3000/api/gallery/?sort=dsc', headers)
+      .respond(200, galleries);
+
+      this.galleryService.fetchGalleries()
+      .then(res => {
+        expect(res).toEqual(galleries);
       });
 
       this.$httpBackend.flush();
