@@ -63,7 +63,6 @@ describe('testing auth service', function(){
 
       this.authService.signup(exampleUser)
       .then((token) => {
-        console.log('tokennnnnnnnnnnnnnnnnnnn', token);
         expect(token).toBeTruthy;
         expect(this.$window.localStorage.getItem('service.token').toBeTruthy);
       });
@@ -73,32 +72,18 @@ describe('testing auth service', function(){
   });
 
   describe('testing authService.login(user)', () => {
-    beforeEach(() => {
-      let exampleUser = {
-        username: 'prungy',
-        email: 'prungy@dog.com',
-        password: 'ilovefood',
-      };
-      this.authService.signup(exampleUser);
-      this.authService.logout();
-    });
     it('should return a token', () => {
       let sameUser = {
         username: 'prungy',
         password: 'ilovefood',
       };
-      let base64 = this.$window.btoa(`${sameUser.username}:${sameUser.password}`);
-      let headers = {
-        Accept: 'application/json',
-        Authorization: `Basic ${base64}`,
-      };
-
       this.$httpBackend.expectGET('http://localhost:3000/api/login')
       .respond(200);
 
-      this.authService.login(sameUser, headers)
+      this.authService.login(sameUser)
       .then((token) => {
-        expect(token).toBe(base64);
+        console.log('token', token);
+        expect(token).toNotBe(null);
       });
 
       this.$httpBackend.flush();
