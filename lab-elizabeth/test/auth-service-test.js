@@ -17,6 +17,7 @@ describe('testing auth service', function(){
 
   describe('#getToken()', () => {
     it('should return token', () => {
+
       this.authService.token = null;
       this.$window.localStorage.setItem('token', 'hello world token');
 
@@ -31,12 +32,13 @@ describe('testing auth service', function(){
 
   describe('#getToken()', () => {
     it('should return token', () => {
+
       this.authService.token = null;
-      this.$window.localStorage.setItem('token', 'hello world token');
+      this.$window.localStorage.setItem('token', 'hello world token two');
 
       this.authService.getToken()
       .then(token => {
-        expect(token).toEqual('hello world token');
+        expect(token).toEqual('hello world token two');
       })
       .catch(err => {
         expect(err).toBe(null);
@@ -79,14 +81,29 @@ describe('testing auth service', function(){
     });
   });
 
-  // describe('login(user)', () => {
-  //   let userData = {
-  //     name: 'FiddyDiddy',
-  //     password: '0987654321',
-  //   };
-  //   let headers = {
-  //     Accept: 'application/json',
-  //     Authorization: `Basic ${base64}`,
-  //   };
-  // })
+  describe('login(user)', () => {
+    it('should get a user', () => {
+      let userToken = 'iva234euq73mve0934uct34906uc54us';
+      let userData = {
+        name: 'FiddyDiddy',
+        password: '0987654321',
+      };
+      let base64 = this.$window.btoa(`${userData.name}:${userData.password}`);
+      let headers = {
+        Accept: 'application/json',
+        Authorization: `Basic ${base64}`,
+      };
+
+      this.$httpBackend.expectGET('http://localhost:3000/api/login', userData, headers)
+      .respond(200, userToken);
+
+      this.authService.login(userData)
+      .then(res => {
+        expect(res).toBe(userToken);
+
+        this.$httpBackend.flush();
+        this.$rootScope.$apply();
+      });
+    });
+  });
 });
