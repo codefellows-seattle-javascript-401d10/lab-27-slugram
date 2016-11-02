@@ -3,9 +3,10 @@
 describe('testing auth service', function() {
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, $window, $httpBackend) => {
+    angular.mock.inject(($rootScope, authService, $window, $httpBackend) => {
       this.authService = authService;
       this.$window = $window;
+      this.$rootScope = $rootScope;
       authService.setToken('1234');
 
       this.$httpBackend = $httpBackend;
@@ -18,6 +19,31 @@ describe('testing auth service', function() {
     username: 'rozibzargan',
     password: '123',
   };
+
+  describe('testing setToken()', ()=> {
+    it('should return a Token', ()=> {
+      this.authService.setToken('hello')
+      .then(token => {
+        expect(token).toBe('hello');
+      });
+
+      this.$rootScope.$apply();
+    });
+  });
+
+  describe('testing getToken()', ()=> {
+    it('should return a Token', ()=> {
+      this.authService.token = null;
+      this.$window.localStorage.setItem('token', 'hello');
+
+      this.authService.getToken()
+      .then(token => {
+        expect(token).toBe('hello');
+      });
+
+      this.$rootScope.$apply();
+    });
+  });
 
   describe('testing sign up', () => {
     it('should create user', () => {
