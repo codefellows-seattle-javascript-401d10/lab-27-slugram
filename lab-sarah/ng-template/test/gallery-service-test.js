@@ -67,7 +67,6 @@ describe('testing gallery service', function(){
 
       this.galleryService.fetchGalleries()
       .then(galleries => {
-        console.log('galleries', galleries);
         expect(galleries[0].name).toBe('one');
         expect(galleries[0].desc).toBe('a name');
         expect(galleries.length).toBe(1);
