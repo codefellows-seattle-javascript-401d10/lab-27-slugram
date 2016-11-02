@@ -23,12 +23,14 @@ function galleryService($q, $log, $http, authService){
       };
       return $http.post(url, gallery, config);
     })
+
     .then( res => {
       $log.log('Succesfully created gallery');
       let gallery = res.data;
       service.galleries.unshift(gallery);
       return gallery;
     })
+
     .catch( err => {
       $log.error(err.message);
       return $q.reject(err);
@@ -72,7 +74,8 @@ function galleryService($q, $log, $http, authService){
     return authService.getToken()
     .then( token => {
       // __API_URL__ is set in the .env file
-      let url = `${__API_URL__}/api/gallery/?sort=desc`; // can configure with querystring sort gallery/?sort=asc, sort=desc
+      let url = `${__API_URL__}/api/gallery/?sort=desc`;
+      // can configure with querystring sort gallery/?sort=asc, sort=desc
       // sorts newest to oldest
       let config = {
         headers: {
@@ -80,8 +83,8 @@ function galleryService($q, $log, $http, authService){
           Authorization: `Bearer ${token}`,
         },
       };
-      // re-triggers the ng-repeat so all the galleries show up
-      // goes from [] to [with a bunch of galleries]
+      // Re-triggers the ng-repeat so all the galleries show up
+      // Goes from [] to [with a bunch of galleries]
       return $http.get(url, config);
     })
     .then( res => {
