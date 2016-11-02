@@ -1,14 +1,15 @@
 'use strict';
 
-describe('testing login-controller', function(){
+'use strict';
+
+describe('testing signup-controller', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject(($rootScope, $location, $window, $httpBackend, $componentController, authService) => {
+    angular.mock.inject(($rootScope, $location, $httpBackend, $componentController, authService) => {
       authService.setToken('1234');
 
       this.$location = $location;
-      this.$window = $window;
       this.$rootScope = $rootScope;
       this.$httpBackend = $httpBackend;
       this.authService = authService;
@@ -20,23 +21,23 @@ describe('testing login-controller', function(){
     this.authService.logout();
   });
 
-  it('testing login controller', () => {
+  it('testing signup controller', () => {
     let user = {
       username: 'mockUserName',
+      email: 'mockEmail',
       password: 'mockPassword',
     };
-    let base64 = this.$window.btoa(`${user.username}:${user.password}`);
-    let url = 'http://localhost:3000/api/login';
+    let url = 'http://localhost:3000/api/signup';
     let headers = {
       Accept: 'application/json',
-      Authorization: `Basic ${base64}`,
+      'Content-Type': 'application/json',
     };
-    this.$httpBackend.expectGET(url, headers)
-    .respond(200, {_id: '1234FIVE', username: 'mockUserName', password: 'mockPassword'});
+    this.$httpBackend.expectPOST(url, user, headers)
+    .respond(200, {_id: '1234FIVE', username: 'mockUserName', email: 'mockEmail', password: 'mockPassword'});
 
-    let loginCtrl = this.$componentController('login');
+    let signupCtrl = this.$componentController('signup');
 
-    loginCtrl.login(user);
+    signupCtrl.signup(user);
 
     this.$httpBackend.flush();
 
