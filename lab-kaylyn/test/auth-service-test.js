@@ -10,7 +10,6 @@ describe('testing authService', function(){
       this.$rootScope = $rootScope;
       this.authService = authService;
       this.$httpBackend = $httpBackend;
-      // authService.setToken('1234');
     });
   });
 
@@ -22,10 +21,26 @@ describe('testing authService', function(){
       .then( token => {
         expect(token).toEqual('helloworld token');
       });
-
+      // set a change up, apply the change
       this.$rootScope.$apply();
     });
   });
+
+  describe('testing #getToken()', () => {
+    it('should return a token', () => {
+      this.authService.token = null;
+      this.$window.localStorage.setItem('token', 'helloworld token');
+
+      this.authService.getToken()
+      .then( token => {
+        expect(token).toEqual('helloworld token');
+      });
+      // set a change up, apply the change
+      this.$rootScope.$apply();
+    });
+  });
+
+
 
   describe('testing authService service.signup', () => {
     it('should return a user', () => {

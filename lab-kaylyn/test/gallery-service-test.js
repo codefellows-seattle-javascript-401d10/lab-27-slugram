@@ -7,13 +7,20 @@ describe('testing galleryService', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, galleryService, $httpBackend) => {
+    angular.mock.inject((authService, $window, galleryService, $httpBackend) => {
       this.authService = authService;
       authService.setToken('1234');
+
+      this.$window = $window;
 
       this.galleryService = galleryService;
       this.$httpBackend = $httpBackend;
     });
+  });
+
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
   });
 
   describe('testing galleryService.createGallery', () => {
