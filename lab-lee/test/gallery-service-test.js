@@ -18,7 +18,6 @@ describe('testing gallery service', function() {
 
   describe('testing galleryService.createGallery', () => {
 
-
     it('should return a gallery', () => {
 
       let galleryData = {
