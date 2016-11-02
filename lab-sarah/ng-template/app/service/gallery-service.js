@@ -42,13 +42,13 @@ function galleryService($q, $log, $http, authService){
   };
 
   //DELETE request
-  service.deleteGallery = function(gallery, galleryID){
+  //change this so it only takes one argument -- galleryID
+  service.deleteGallery = function(galleryID){
     return authService.getToken()
     .then(token => {
       let url = `${API_URL}/api/gallery/${galleryID}`;
       let config = {
         headers: {
-          Accept: 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
@@ -57,10 +57,15 @@ function galleryService($q, $log, $http, authService){
     .then(() => {
       $log.log('successfully deleted gallery');
       //remove gallery from the service.galleries array
-      //remove the gallery from the database? or is this handled on backend?
-      let i = service.galleries.indexOf(gallery);
-      service.galleries.splice(i, 1);
-      return $q.resolve('success');
+      for (let i = 0; i < service.galleries.length; ++i) {
+        if (service.galleries[i]._id === galleryID){
+          service.galleries.splice(i, 1);
+          break;
+        }
+      }
+      // let i = service.galleries.indexOf(gallery);
+      // service.galleries.splice(i, 1);
+      // return $q.resolve('success');
     })
     .catch((err) => {
       $log.error(err.message);
@@ -73,7 +78,7 @@ function galleryService($q, $log, $http, authService){
     $log.debug('galleryService.fetchGalleries()');
     return authService.getToken()
     .then(token => {
-      let url = `${API_URL}/api/gallery`;
+      let url = `${API_URL}/api/gallery/?sort=dsc`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -85,7 +90,7 @@ function galleryService($q, $log, $http, authService){
     })
     .then(res => {
       $log.log('successfully fetched user galleries');
-      service.galleries = res.data.reverse();
+      service.galleries = res.data;
       return service.galleries;
     })
     .catch(err => {

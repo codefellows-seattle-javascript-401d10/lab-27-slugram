@@ -16,9 +16,10 @@ const ngTouch = require('angular-touch');
 const ngAnimate = require('angular-animate');
 const uiRouter = require('angular-ui-router');
 const uiBootstrap = require('angular-ui-bootstrap');
+const ngFileUpload = require('ng-file-upload');
 
 // create angular module
-const demoApp = angular.module('demoApp', [ngTouch, ngAnimate, uiRouter, uiBootstrap]);
+const demoApp = angular.module('demoApp', [ngTouch, ngAnimate, uiRouter, uiBootstrap, ngFileUpload]);
 
 // load config
 let context = require.context('./config/', true, /\.js$/);

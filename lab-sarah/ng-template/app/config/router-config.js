@@ -1,5 +1,8 @@
 'use strict';
 
+//providers and services go hand in hand, providers can set default properties for services
+//providers configure services
+//ui view is configured by these providers
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
@@ -7,7 +10,8 @@ function routerConfig($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('/' , '/join#signup');
   $urlRouterProvider.when('/signup' , '/join#signup');
   $urlRouterProvider.when('/login' , '/join#login');
-  // state == route
+
+  // state == route == views
   let states = [
     {
       name: 'home',
@@ -25,6 +29,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     },
   ];
 
+//state method forces ui view to be aware of all of the possible routes/views
   states.forEach(state => {
     $stateProvider.state(state);
   });
