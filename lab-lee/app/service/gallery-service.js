@@ -44,7 +44,7 @@ function galleryService($q, $log, $http, authService) {
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
       let config = {
         headers: {
-          Accept: 'application.json',
+          Accept: 'application/json',
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
