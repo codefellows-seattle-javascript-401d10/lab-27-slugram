@@ -9,9 +9,12 @@
 * write a question and observation on canvas
 
 # Description
-* Write a filter that allows you to have a fuzzy search bar for displaying galleries and pictures
-* Make a clear button that will clear your search bar and display all the galleries or pictures
-
+* Write a filter that allows fuzzy match displaying galleries and pictures by their name and desc properties
+* create a searchBar component
+ * it should have one way binding with a seachTerm property
+ * it should have a button that will clear your search bar an searchTerm property
+ * use this component to set the values of your searches for your filters
+ 
 ## Bonus
 * **2p** Write test for home controller and landing controller 
 
