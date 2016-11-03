@@ -18,7 +18,7 @@ describe('testing create-gallery-controller', function() {
     this.authService.logout();
   });
 
-  it('testing component bindings', () => {
+  it('testing component controller', () => {
     let url = 'http://localhost:3000/api/gallery';
     let gallery = {
       name: 'mockName',

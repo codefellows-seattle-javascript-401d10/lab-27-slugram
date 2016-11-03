@@ -55,7 +55,7 @@ describe('testing gallery-li controller', function(){
       },
       deleteDone: function(data){
         console.log('HERE. FUQ');
-        expect(data.gallery._id).toEqual('1234FIVE');
+        expect(data.galleryData._id).toEqual('1234FIVE');
       },
     };
 
