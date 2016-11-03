@@ -13,7 +13,9 @@ describe('testing gallery-li controller', function(){
   });
 
   afterEach( () => {
+    //for expect statements
     this.$httpBackend.verifyNoOutstandingExpectation();
+    //for when statements
     this.$httpBackend.verifyNoOutstandingRequest();
   });
 

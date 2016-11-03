@@ -39,11 +39,12 @@ describe('testing create-gallery-controller', function(){
 
       //only if your call to the controller returns something do you need to do expect statements after .createGallery, otherwise the only expect statement is below?
       this.$httpBackend.expectPOST(url, exampleGallery, headers)
-      .respond(200, {_id: '54321', username: 'sarah', name: 'dogs', desc: 'in parks'});
+      .respond(200);
 
       let createGalleryCtrl = this.$componentController('createGallery', null);
 
       //because in the CreateGalleryController in the actual js file, this.gallery = {}; so you have to set the gallery on the current controller to equal the exampleGallery
+      //setting what the user inputs would have given to the model, just have to mock it
       createGalleryCtrl.gallery = exampleGallery;
 
       createGalleryCtrl.createGallery(exampleGallery);

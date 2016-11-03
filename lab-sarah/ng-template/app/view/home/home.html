@@ -1,9 +1,14 @@
 <main class="home">
   <div class="outer-container">
   <create-gallery> </create-gallery>
+  <searchbar
+  search-title="gallery name"
+   search-term="homeCtrl.galleryNameSearchTerm"></searchbar>
+  <searchbar
+  search-title="gallery description" search-term="homeCtrl.galleryDescSearchTerm"></searchbar>
   <nav class="gallery-list-container">
     <ul>
-        <gallery-li ng-repeat="item in homeCtrl.galleries" gallery="item"
+        <gallery-li ng-repeat="item in homeCtrl.galleries | searchFilter : homeCtrl.galleryNameSearchTerm : homeCtrl.galleryDescSearchTerm" gallery="item"
         delete-done="homeCtrl.galleryDeleteDone(galleryData)" ng-click="homeCtrl.currentGallery = item">
          </gallery-li>
     </ul>

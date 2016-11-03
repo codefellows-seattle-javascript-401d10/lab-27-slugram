@@ -50,3 +50,10 @@ context.keys().forEach( key => {
   let module = context(key); // value of module.exports
   demoApp.component(name, module);
 });
+
+context = require.context('./filter/', true, /\.js$/);
+context.keys().forEach( key => {
+  let name = camelcase(path.basename(key, '.js'));
+  let module = context(key); // value of module.exports
+  demoApp.filter(name, module);
+});

@@ -19,8 +19,7 @@ describe('testing gallery service', function(){
   });
 
   afterEach(() => {
-    this.authService.token = null;
-    this.$window.localStorage.clear();
+    this.authService.logout();
   });
 
   describe('testing galleryService.createGallery', () => {

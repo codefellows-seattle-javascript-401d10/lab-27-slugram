@@ -62,7 +62,6 @@ describe('testing edit-gallery controller', function(){
 
       this.$httpBackend.flush();
       this.$rootScope.$apply();
-
     });
   });
 });
