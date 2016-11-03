@@ -18,7 +18,7 @@ function GalleryLiController($log, galleryService){
   this.deleteGallery = function(){
     galleryService.deleteGallery(this.gallery._id)
     .then(() => {
-      this.deleteDone({gallery: this.gallery});
+      this.deleteDone({galleryData: this.gallery});
     });
   };
 }

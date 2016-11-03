@@ -13,6 +13,12 @@ describe('testing authService', function(){
     });
   });
 
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
+  });
+
+
   describe('testing #getToken()', () => {
     it('should return a token', () => {
       this.authService.token = 'helloworld token';
@@ -56,7 +62,7 @@ describe('testing authService', function(){
       };
 
       this.$httpBackend.expectPOST('http://localhost:3000/api/signup', user, headers)
-      .respond(200, {token: '666'});
+      .respond(200, '666');
 
       this.authService.signup(user);
       this.$httpBackend.flush();
@@ -66,7 +72,7 @@ describe('testing authService', function(){
   describe('testing authService service.login', () => {
     it('should authorize a returning user', () => {
       let user = {
-        name: 'userName',
+        username: 'userName',
         password: 'userPassword',
       };
       let base64 = this.$window.btoa(`${user.username}:${user.password}`);
