@@ -12,6 +12,11 @@ describe('testing login controller', function(){
     });
   });
 
+  afterEach(() => {
+    this.$httpBackend.verifyNoOutstandingExpectation();
+    this.$httpBackend.verifyNoOutstandingRequest();
+  });
+
   describe('testing #signup', () => {
     it('should signup a user', () => {
       let url = 'http://localhost:3000/api/signup';

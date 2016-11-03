@@ -14,8 +14,12 @@ describe('testing gallery service', function(){
   });
 
   afterEach(() => {
-    this.authService.setToken(null);
-    this.$window.localStorage.clear();
+    this.$httpBackend.verifyNoOutstandingExpectation();
+    this.$httpBackend.verifyNoOutstandingRequest();
+  });
+
+  afterEach(() => {
+    this.authService.logout();
   });
 
   describe('testing galleryService.createGallery()', () => {

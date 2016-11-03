@@ -13,6 +13,11 @@ describe('testing login controller', function(){
     });
   });
 
+  afterEach(() => {
+    this.$httpBackend.verifyNoOutstandingExpectation();
+    this.$httpBackend.verifyNoOutstandingRequest();
+  });
+
   describe('testing #login', () => {
     it('should login a user', () => {
       let url = 'http://localhost:3000/api/login';
