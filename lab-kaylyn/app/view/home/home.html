@@ -1,9 +1,11 @@
 <main class="home">
   <gallery></gallery>
   <nav class="gallery-list-container">
+    <h2> <span ng-if="homeCtrl.galleries[0]"> {{homeCtrl.galleries[0].username}}'s </span> galleries </h2>
+    <input ng-model="homeCtrl.searchTerm" type="text" placeholder="Search">
     <ul>
       <!-- ng-repeat creates a gallery list tag for each gallery -->
-      <gallery-li ng-repeat="item in homeCtrl.galleries"
+      <gallery-li ng-repeat="item in homeCtrl.galleries | search:homeCtrl.searchTerm"
         gallery="item"
         delete-done="homeCtrl.galleryDeleteDone(galleryData)"
         ng-click="homeCtrl.currentGallery=item">
@@ -12,4 +14,3 @@
   </nav>
   <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"></thumbnail-container>
 </main>
-  

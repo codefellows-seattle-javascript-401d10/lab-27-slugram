@@ -41,8 +41,6 @@ context.keys().forEach( key => {
 context = require.context('./service/', true, /.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
-  console.log('name', name);
-
   let module = context(key); // value of module.exports
   demoApp.service(name, module);
 });
@@ -53,4 +51,12 @@ context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js')); // name component based on filename
   let module = context(key); // value of module.exports
   demoApp.component(name, module);
+});
+
+// load filters
+context = require.context('./filter/', true, /.js$/);
+context.keys().forEach( key => {
+  let name = camelcase(path.basename(key, '.js')); // name component based on filename
+  let module = context(key); // value of module.exports
+  demoApp.filter(name, module);
 });
