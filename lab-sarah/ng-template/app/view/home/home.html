@@ -2,10 +2,8 @@
   <div class="outer-container">
   <create-gallery> </create-gallery>
   <searchbar
-  search-title="gallery name"
    search-term="homeCtrl.galleryNameSearchTerm"></searchbar>
-  <searchbar
-  search-title="gallery description" search-term="homeCtrl.galleryDescSearchTerm"></searchbar>
+  <searchbar search-term="homeCtrl.galleryDescSearchTerm"></searchbar>
   <nav class="gallery-list-container">
     <ul>
         <gallery-li ng-repeat="item in homeCtrl.galleries | searchFilter : homeCtrl.galleryNameSearchTerm : homeCtrl.galleryDescSearchTerm" gallery="item"
@@ -14,5 +12,7 @@
     </ul>
   </nav>
 </div>
+<!-- <searchbar search-term="homeCtrl.pictureNameSearchTerm"></searchbar>
+<searchbar  search-term="homeCtrl.pictureDescSearchTerm"></searchbar> -->
 <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"></thumbnail-container>
 </main>

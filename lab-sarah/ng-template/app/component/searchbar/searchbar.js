@@ -12,7 +12,8 @@ module.exports = {
   controller: ['$log', searchbarController],
   bindings: {
     searchTerm: '=',
-    searchTitle: '@',
+    // searchGalleryTitle: '@',
+    // searchPictureTitle: '@',
   },
 };
 
