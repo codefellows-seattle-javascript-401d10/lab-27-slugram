@@ -3,14 +3,13 @@
 describe('testing thumbnail controller', function(){
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject(($rootScope, $componentController, $httpBackend, Upload, authService, picService) => {
+    angular.mock.inject(($rootScope, $componentController, $httpBackend, authService, picService) => {
       authService.setToken('474747');
       this.authService = authService;
       this.$rootScope = $rootScope;
       this.$componentController = $componentController;
       this.$httpBackend = $httpBackend;
       this.picService = picService;
-      this.Upload = Upload;
     });
   });
 
@@ -21,6 +20,31 @@ describe('testing thumbnail controller', function(){
 
   afterEach(() => {
     this.authService.logout();
+  });
+
+
+  it('testing component bindings', () => {
+    let mockBindings = {
+      gallery: {
+        _id: '47',
+        name: 'starbursts',
+        desc: 'are better than skittles imo',
+        pics: [],
+      },
+      pic: {
+        _id: '1234',
+        name: 'skittles',
+        desc: 'are good too though',
+      },
+    };
+
+    let thumbnailCtrl = this.$componentController('thumbnail', null, mockBindings);
+    expect(thumbnailCtrl.gallery.name).toEqual(mockBindings.gallery.name);
+    expect(thumbnailCtrl.gallery.desc).toEqual(mockBindings.gallery.desc);
+    expect(thumbnailCtrl.gallery.pics.length).toEqual(mockBindings.gallery.pics.length);
+    expect(thumbnailCtrl.pic.name).toEqual(mockBindings.pic.name);
+
+    this.$rootScope.$apply();
   });
 
   describe('testing #deletePic', () => {
@@ -53,10 +77,7 @@ describe('testing thumbnail controller', function(){
 
       thumbnailCtrl.deletePic();
 
-      //to delete a pic, you need the gallery and the pic id
-      //all you really want to test from the photo upload is that if you give it certain info, that info is spit out correctly....?
       this.$httpBackend.flush();
     }); //end of it should delete a picture
   });
-
 });
