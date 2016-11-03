@@ -43,6 +43,7 @@ describe('testing create-gallery-controller', function(){
 
       let createGalleryCtrl = this.$componentController('createGallery', null);
 
+      //because in the CreateGalleryController in the actual js file, this.gallery = {}; so you have to set the gallery on the current controller to equal the exampleGallery
       createGalleryCtrl.gallery = exampleGallery;
 
       createGalleryCtrl.createGallery(exampleGallery);

@@ -9,6 +9,7 @@ describe('testing gallery service', function(){
     angular.mock.inject((authService, $window, galleryService, $httpBackend) => {
       this.authService = authService;
       this.$window = $window;
+      //why do we even need to set a token?? when you call e.g. createGallery, isn't the actual authService also called from within, and thus receives a real token? which part is real and which is mockeddddddddddddddddddddddddddddddddd
       authService.setToken('1234');
 
       this.galleryService = galleryService;
