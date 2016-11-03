@@ -15,10 +15,6 @@
  * it should have a button that will clear your search bar and its searchTerm property
  * use this component to set the values of your searches for your filters
  
- 
-## Bonus
-* **2p** Write test for home controller and landing controller 
-
 ### POST `/api/signup`
 * use this route to create a user
 * headers required
