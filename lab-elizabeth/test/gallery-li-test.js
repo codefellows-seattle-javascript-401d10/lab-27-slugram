@@ -4,8 +4,10 @@ describe('testing gallery-li controller', function(){
   beforeEach(() => {
     angular.mock.module('demoApp');
     angular.mock.inject((authService, $rootScope, $httpBackend, $componentController) => {
+
       authService.setToken('secrettoken');
       this.authService = authService;
+      
       this.$rootScope = $rootScope;
       this.$httpBackend = $httpBackend;
       this.$componentController = $componentController;

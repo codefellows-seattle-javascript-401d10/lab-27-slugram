@@ -1,6 +1,6 @@
 'use strict';
 
-describe('testing create-gallery controller', function(){
+describe('testing thumbnail controller', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
@@ -20,16 +20,18 @@ describe('testing create-gallery controller', function(){
 
   describe('#deletePic()', () => {
     it('should delete an image', () => {
-
-      let picData = {
-        _id: 'empty',
-        name: 'empty',
-        desc: 'not much of a pic',
-      };
-      let galleryData = {
-        _id: 'helloworld',
-        name: 'helloworld',
-        desc: 'I am new',
+      let bindingsMock = {
+        pic: {
+          _id: 'empty',
+          name: 'empty',
+          desc: 'not much of a pic',
+        },
+        gallery: {
+          _id: 'helloworld',
+          name: 'helloworld',
+          desc: 'I am new',
+          pics: [],
+        },
       };
       let headers = {
         Authorization: 'Bearer 54321',
@@ -39,15 +41,17 @@ describe('testing create-gallery controller', function(){
       this.$httpBackend.expectDELETE('http://localhost:3000/api/gallery/helloworld/pic/empty', headers)
       .respond(204);
 
-      let thumbnailCtrl = this.$componentController('thumbnail', null);
+      let thumbnailCtrl = this.$componentController('thumbnail', null, bindingsMock);
 
-      thumbnailCtrl.pic = picData;
-      thumbnailCtrl.gallery = galleryData;
+      // thumbnailCtrl.gallery = galleryData;
 
       thumbnailCtrl.deletePic()
       .then(res => {
         expect(res).toBe('pic delete successful');
       });
+
+      this.$httpBackend.flush();
+      this.$rootScope.$apply();
     });
   });
 });

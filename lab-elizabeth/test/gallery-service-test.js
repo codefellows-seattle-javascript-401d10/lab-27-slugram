@@ -6,8 +6,8 @@ describe('testing gallery service', function(){
     angular.mock.module('demoApp');
     angular.mock.inject((authService, galleryService, $window, $httpBackend, $rootScope) => {
 
+      authService.setToken(1234);
       this.authService = authService;
-      this.authService.setToken(1234);
 
       this.galleryService = galleryService;
       this.$window = $window;

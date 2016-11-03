@@ -8,6 +8,7 @@ module.exports = {
   controllerAs: 'galleryLiCtrl',
   bindings: {
     gallery: '<',
+    deleteDone: '&',
   },
 };
 

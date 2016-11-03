@@ -4,14 +4,15 @@ describe('testing auth service', function(){
 
   beforeEach(() => {
     angular.mock.module('demoApp');
+    //we are injecting our services
     angular.mock.inject((authService, $q, $window, $rootScope, $httpBackend) => {
 
       this.authService = authService;
+      //'this' refers to the current describe block, so that is where we're storing our services
       this.$q = $q;
       this.$window = $window;
       this.$rootScope = $rootScope;
       this.$httpBackend = $httpBackend;
-
     });
   });
 
@@ -26,6 +27,7 @@ describe('testing auth service', function(){
         expect(token).toEqual('hello world token');
       });
 
+      //$rootScope is essentially flushing $q, it's making sure that everything's run through with $q
       this.$rootScope.$apply();
     });
   });
@@ -94,12 +96,12 @@ describe('testing auth service', function(){
         Authorization: `Basic ${base64}`,
       };
 
-      this.$httpBackend.expectGET('http://localhost:3000/api/login', userData, headers)
+      this.$httpBackend.expectGET('http://localhost:3000/api/login', headers)
       .respond(200, userToken);
 
       this.authService.login(userData)
-      .then(res => {
-        expect(res).toBe(userToken);
+      .then(token => {
+        expect(token).toBe(userToken);
 
         this.$httpBackend.flush();
         this.$rootScope.$apply();
