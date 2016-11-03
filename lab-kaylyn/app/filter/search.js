@@ -1,12 +1,20 @@
 'use strict';
 
 module.exports = function(){
-  return function(galleries, searchTerm){
-    if(!searchTerm) return galleries;
-    let fuzzyRegex = generateFuzzyRegex(searchTerm);
-    return galleries.filter(gallery => {
+  return function(galleries, searchTermName, searchTermDesc){
+
+    let filterArray = [];
+    let fuzzyRegex = generateFuzzyRegex(searchTermDesc);
+    filterArray =  galleries.filter(gallery => {
+      return fuzzyRegex.test(gallery.desc.toUpperCase());
+    });
+
+    fuzzyRegex = generateFuzzyRegex(searchTermName);
+    filterArray = filterArray.filter(gallery => {
       return fuzzyRegex.test(gallery.name.toUpperCase());
     });
+
+    return filterArray;
   };
 };
 
