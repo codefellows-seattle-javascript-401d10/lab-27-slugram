@@ -13,6 +13,11 @@ describe('testing gallery service', function(){
     });
   });
 
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
+  });
+
   describe('testing galleryService.createGallery()', () => {
 
     it('should return a gallery', () => {
