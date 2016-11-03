@@ -9,13 +9,19 @@ describe('testing gallery service', function() {
 
   beforeEach(() => {
     angular.mock.module('demoApp');
-    angular.mock.inject((authService, galleryService, $httpBackend) => {
+    angular.mock.inject((authService, galleryService, $httpBackend, $window) => {
       this.authService = authService;
       authService.setToken('1234');
 
       this.galleryService = galleryService;
       this.$httpBackend = $httpBackend;
+      this.$window = $window;
     });
+  });
+
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
   });
 
   describe('testing galleryService.createGallery', () => {
