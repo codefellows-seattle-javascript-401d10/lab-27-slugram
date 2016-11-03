@@ -10,6 +10,7 @@
 
 # Description
 * Write a filter that allows you to have a fuzzy search bar for displaying galleries and pictures
+* Make a clear button that will clear your search bar and display all the galleries or pictures
 
 ## Bonus
 * **2p** Write test for home controller and landing controller 
