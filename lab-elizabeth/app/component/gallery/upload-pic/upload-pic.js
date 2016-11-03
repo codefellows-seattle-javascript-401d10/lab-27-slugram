@@ -3,22 +3,23 @@
 module.exports = {
   controllerAs: 'uploadPicCtrl',
   template: require('./upload-pic.html'),
-  controller: ['$log', 'picService', UploadPicController],
+  controller: ['$q', '$log', 'picService', UploadPicController],
   bindings: {
     gallery: '<',
   },
 };
 
-function UploadPicController($log, picService){
+function UploadPicController($q, $log, picService){
   $log.debug('init uploadPicCtrl');
   this.pic = {},
   this.uploadPic = function(){
 
-    picService.uploadGalleryPic(this.gallery, this.pic)
+    return picService.uploadGalleryPic(this.gallery, this.pic)
     .then(() => {
       this.pic.name = null;
       this.pic.desc = null;
       this.pic.file = null;
+      return $q.resolve();
     });
 
   };

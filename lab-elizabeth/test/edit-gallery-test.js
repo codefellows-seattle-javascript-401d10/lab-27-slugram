@@ -5,7 +5,7 @@ describe('testing edit-gallery controller', function(){
   beforeEach(() => {
     angular.mock.module('demoApp');
     angular.mock.inject((authService, $rootScope, $httpBackend, $componentController) => {
-      authService.setToken('12345');
+      authService.setToken('54321');
 
       this.authService = authService;
       this.$rootScope = $rootScope;
@@ -39,7 +39,7 @@ describe('testing edit-gallery controller', function(){
       let url = 'http://localhost:3000/api/gallery/12345';
       let headers = {
         'Accept': 'application/json',
-        Authorization: 'Bearer 12345',
+        Authorization: 'Bearer 54321',
         'Content-Type': 'application/json',
       };
 
@@ -54,6 +54,7 @@ describe('testing edit-gallery controller', function(){
         },
       };
       let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
+
       editGalleryCtrl.gallery.name = 'new name';
 
       editGalleryCtrl.updateGallery();
