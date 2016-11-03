@@ -1,39 +1,39 @@
 'use strict';
 
 module.exports = function(){
-  return function(galleries, nameSearchTerm, descSearchTerm){
+  return function(assets, nameSearchTerm, descSearchTerm){
     let fuzzyRegex;
 
     if (!nameSearchTerm && !descSearchTerm) {
       fuzzyRegex = generateFuzzyRegex();
-      return galleries.filter(gallery => {
-        return fuzzyRegex.test(gallery.name.toUpperCase());
+      return assets.filter(asset => {
+        return fuzzyRegex.test(asset.name.toUpperCase());
       });
     }
     if (nameSearchTerm && descSearchTerm){
       let fuzzyRegexName = generateFuzzyRegex(nameSearchTerm);
       let fuzzyRegexDesc = generateFuzzyRegex(descSearchTerm);
-      let galleriesByName = galleries.filter(gallery => {
-        return fuzzyRegexName.test(gallery.name.toUpperCase());
+      let assetsByName = assets.filter(asset => {
+        return fuzzyRegexName.test(asset.name.toUpperCase());
       });
-      return galleriesByName.filter(gallery => {
-        return fuzzyRegexDesc.test(gallery.desc.toUpperCase());
+      return assetsByName.filter(asset => {
+        return fuzzyRegexDesc.test(asset.desc.toUpperCase());
       });
-      // return galleries.filter(gallery => {
-      //   return (fuzzyRegex.test(gallery.name.toUpperCase())).filter(gallery => {
-      //     return fuzzyRegex.test(gallery.desc.toUpperCase());
+      // return assets.filter(asset => {
+      //   return (fuzzyRegex.test(asset.name.toUpperCase())).filter(asset => {
+      //     return fuzzyRegex.test(asset.desc.toUpperCase());
       //   });
       // });
     }
     if (!nameSearchTerm) {
       fuzzyRegex = generateFuzzyRegex(descSearchTerm);
-      return galleries.filter(gallery => {
-        return fuzzyRegex.test(gallery.desc.toUpperCase());
+      return assets.filter(asset => {
+        return fuzzyRegex.test(asset.desc.toUpperCase());
       });
     }
     fuzzyRegex = generateFuzzyRegex(nameSearchTerm);
-    return galleries.filter(gallery => {
-      return fuzzyRegex.test(gallery.name.toUpperCase());
+    return assets.filter(asset => {
+      return fuzzyRegex.test(asset.name.toUpperCase());
     });
   };
 };
