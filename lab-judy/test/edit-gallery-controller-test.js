@@ -12,6 +12,11 @@ describe('testing edit-gallery controller', function (){
     });
   });
 
+  afterEach( () => {
+    this.$httpBackend.verifyNoOutstandingExpectation();
+    this.$httpBackend.verifyNoOutstandingRequest();
+  });
+
   afterEach(() => {
     this.authService.logout();
   });

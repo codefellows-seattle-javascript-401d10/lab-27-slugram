@@ -9,14 +9,6 @@ describe('testing thumbnail controller', function(){
     });
   });
 
-  // afterEach(() => {
-  //   this.$httpBackend.verifyNoOutstandingExpectation();
-  //   this.$httpBackend.verifyNoOutstandingRequest();
-  // });
-  //
-  // afterEach(() => {
-  //   this.authService.logout();
-  // });
 
   describe('testing thumbnail-container bindings', () =>{
     it('should return mockBindings properties', () =>{

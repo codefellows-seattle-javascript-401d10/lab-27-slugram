@@ -18,9 +18,13 @@ describe('testing gallery service', function(){
     });
   });
 
+  afterEach( () => {
+    this.$httpBackend.verifyNoOutstandingExpectation();
+    this.$httpBackend.verifyNoOutstandingRequest();
+  });
+
   afterEach(() => {
-    this.authService.setToken(null);
-    this.$window.localStorage.clear();
+    this.authService.logout();
   });
 
   //POST /api/gallery

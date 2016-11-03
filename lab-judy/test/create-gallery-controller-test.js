@@ -11,6 +11,12 @@ describe('testing create-gallery controller', function(){
       this.$httpBackend = $httpBackend;
     });
   });
+
+  afterEach( () => {
+    this.$httpBackend.verifyNoOutstandingExpectation();
+    this.$httpBackend.verifyNoOutstandingRequest();
+  });
+
   afterEach(() => {
     this.authService.logout();
   });
