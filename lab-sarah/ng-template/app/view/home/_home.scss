@@ -8,15 +8,27 @@
     width: 60%;
     margin: 2% auto;
 
+    p {
+      text-align: left;
+    }
+
     create-gallery {
       padding-top: 2%;
       margin-top: 2%;
     }
   }
 
-  h3, p, form  {
-    text-align: center;
+  thumbnail-container {
+    width: 100px;
   }
+
+  span {
+    margin-top: 500px;
+  }
+  //
+  // h3, p, form  {
+  //   text-align: center;
+  // }
 
   h3 {
     padding-top: 1.5%;

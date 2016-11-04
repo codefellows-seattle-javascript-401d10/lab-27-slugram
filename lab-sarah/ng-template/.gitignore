@@ -1,3 +1,4 @@
+./test/home-controller-test.js
 .env
 build
 coverage

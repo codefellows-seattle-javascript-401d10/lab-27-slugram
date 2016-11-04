@@ -11,6 +11,10 @@ describe('testing auth service', function(){
     });
   });
 
+  afterEach(() => {
+    this.authService.logout();
+  });
+
   describe('testing authService.setToken', () => {
     it('should set a token', () => {
       let token = '1234';
@@ -73,7 +77,8 @@ describe('testing auth service', function(){
         'Accept': 'application/json',
       };
       this.$httpBackend.expectPOST('http://localhost:3000/api/signup', exampleUser, headers)
-      .respond(200, {});
+      //need the '1234' set, because the server should respond with a token, so we need to mock the server's behavior, which would be to send back a token, so we set it here
+      .respond(200, '1234');
 
       this.authService.signup(exampleUser)
       .then((token) => {
@@ -87,7 +92,6 @@ describe('testing auth service', function(){
 
   describe('testing authService.login(user)', () => {
     it('should return a token', () => {
-      this.authService.token = '1234';
       let exampleUser = {
         username: 'prungy',
         password: 'ilovefood',
@@ -101,11 +105,11 @@ describe('testing auth service', function(){
       };
 
       this.$httpBackend.expectGET('http://localhost:3000/api/login', headers)
-      .respond(200, 'faketoken1234');
+      .respond(200, '1234');
 
       this.authService.login(exampleUser)
       .then(token => {
-        expect(token).toBe('faketoken1234');
+        expect(token).toBe('1234');
       })
       .catch((err) => {
         expect(err).toBe(null);

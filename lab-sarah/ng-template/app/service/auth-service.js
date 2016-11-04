@@ -9,7 +9,6 @@ function authService($q, $log, $http, $window){
   service.token = null;
 
   service.setToken = function(_token){
-    console.log('service.setToken', _token);
     $log.debug('authService.service.setToken()');
     if (! _token)
       return $q.reject(new Error('no service.token'));
@@ -36,7 +35,6 @@ function authService($q, $log, $http, $window){
   service.signup = function(user) {
     $log.debug('authService.signup()');
     let url = `${API_URL}/api/signup`;
-    console.log('signup url', url);
 
     let config = {
       headers: {
@@ -47,7 +45,6 @@ function authService($q, $log, $http, $window){
 
     return $http.post(url, user, config)
     .then( res => {
-      console.log('success', res.data);
       // res.data is the response body aka the service.token
       return service.setToken(res.data);
     })
