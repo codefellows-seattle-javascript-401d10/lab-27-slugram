@@ -1,0 +1,15 @@
+<div class="thumbnail">
+
+  <button
+    class="btn btn-primary"
+    ng-click="thumbnailCtrl.deletePic()">
+    <span
+      class="glyphicon glyphicon-trash">
+    </span>
+  </button>
+
+  <img
+    ng-src="{{thumbnailCtrl.pic.imageURI}}"
+    alt="{{thumbnailCtrl.pic.desc}}">
+
+</div>
