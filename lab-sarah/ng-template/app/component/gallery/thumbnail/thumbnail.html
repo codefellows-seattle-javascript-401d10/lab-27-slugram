@@ -1,5 +1,7 @@
 <div class="thumbnail">
   <span ng-click="thumbnailCtrl.deletePic()" class="glyphicon glyphicon-trash">
   </span>
+  <p>Name: {{thumbnailCtrl.pic.name}}</p>
+  <p>Description: {{thumbnailCtrl.pic.desc}}</p>
   <img ng-src="{{thumbnailCtrl.pic.imageURI}}" alt="{{thumbnailCtrl.pic.desc}}">
 </div>
