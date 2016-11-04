@@ -1,0 +1,29 @@
+   <form name="searchbarForm" class="" novalidate>
+    <div class="input-group">
+          <div class="form-group  has-feedback">
+              <input type="text" class="form-control"
+                     id="inputSuccess5"
+                     ng-model="searchbarCtrl.searchTerm"
+                     placeholder="Search Gallery...">
+              <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+          </div>
+          <span class="input-group-btn">
+              <button class="btn btn-default" 
+                type="button" 
+                ng-click="searchbarCtrl.makeActive(searchbarCtrl.name)" 
+                ng-value="{{searchbarCtrl.name = 'name'}}"
+                ng-class="{'active':searchbarCtrl.activeName}">Name
+              </button>
+
+              <button class="btn btn-default" 
+                type="button"
+                ng-click="searchbarCtrl.makeActive(searchbarCtrl.desc)" 
+                ng-value="{{searchbarCtrl.desc = 'desc'}}"
+                ng-class="{'active':searchbarCtrl.activeDesc}">Description
+              </button>
+
+              <button class="btn btn-danger" type="button" ng-click="searchbarCtrl.reset()">Reset</button>
+          </span>
+      </div>
+    </form>
+    <br/>

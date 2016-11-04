@@ -1,0 +1,12 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading text-center"> 
+    <h6><i class="glyphicon glyphicon-cloud-upload"></i> Upload Photo</h6>
+  </div>
+  <div class="panel-body">
+      <h5>{{ thumbnailContainerCtrl.gallery.name }}<h5>
+      <upload-pic gallery="thumbnailContainerCtrl.gallery"> </upload-pic>
+      <thumbnail class="col-md-3" ng-repeat="item in thumbnailContainerCtrl.gallery.pics" pic="item" gallery="thumbnailContainerCtrl.gallery"></thumbnail>
+  </div>
+</div>
+

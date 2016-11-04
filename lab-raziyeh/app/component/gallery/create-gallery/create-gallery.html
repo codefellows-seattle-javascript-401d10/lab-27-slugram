@@ -1,0 +1,21 @@
+
+    <form name="createGalleryForm" class="form-inline" novalidate>  
+      <div class="form-group">
+        <input name="name" class="form-control" type="text" uib-tooltip="name required"
+          ng-model="createGalleryCtrl.gallery.name"
+          placeholder="name"
+          required>
+      </div>
+
+      <div class="form-group">
+        <input name="desc" class="form-control" type="text" uib-tooltip="description required"
+          ng-model="createGalleryCtrl.gallery.desc"
+          placeholder="description"
+          required>
+      </div>
+      
+      <button class="btn btn-default" type="submit" ng-click="createGalleryCtrl.createGallery()"> 
+        <span class="glyphicon glyphicon-plus"></span> Add Gallery 
+      </button>
+    </form>
+
