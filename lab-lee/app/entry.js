@@ -59,3 +59,11 @@ context.keys().forEach( key => {
   let module = context(key); // value of module.exports
   leeGram.directive(name, module);
 });
+
+// load filters
+context = require.context('./filter/', true, /.js$/);
+context.keys().forEach( key => {
+  let name = camelcase(path.basename(key, '.js'));
+  let module = context(key); // value of module.exports
+  leeGram.filter(name, module);
+});
