@@ -1,0 +1,17 @@
+<main class="home">
+  <create-gallery></create-gallery>
+  <searchbar search-term="homeCtrl.searchName"></searchbar>
+  <searchbar search-term="homeCtrl.searchDesc"></searchbar>
+  <!-- <p>{{homeCtrl.searchName}}</p> -->
+  <nav class="gallery-list-container">
+    <ul>
+        <gallery-li
+          ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.searchName:homeCtrl.searchDesc"
+          ng-click="homeCtrl.currentGallery = item"
+          delete-done="homeCtrl.galleryDeleteDone(galleryData)"
+          gallery="item"></gallery-li>
+    </ul>
+  </nav>
+
+  <thumbnail-container gallery="homeCtrl.currentGallery" ng-if="homeCtrl.currentGallery"></thumbnail-container>
+</main>

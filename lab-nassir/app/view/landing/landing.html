@@ -1,0 +1,14 @@
+<main class="landing">
+  <div ng-hide="landingCtrl.showLogin">
+    <signup></signup>
+    <input type="button" class="btn btn-primary nassir-btn"
+    ng-click="landingCtrl.switchLoginSignup()"
+    value="Already a member? Log in">
+  </div>
+  <div ng-if="landingCtrl.showLogin">
+    <login></login>
+    <input type="button" class="btn btn-primary nassir-btn"
+    ng-click="landingCtrl.switchLoginSignup()"
+    value="Not a member? Sign Up">
+  </div>
+</main>
