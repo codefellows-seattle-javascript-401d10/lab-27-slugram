@@ -3,12 +3,10 @@
   <upload-pic gallery="thumbnailContainerCtrl.gallery"></upload-pic>
   <searchbar
   search-assets="search by name"
-   search-term="homeCtrl.pictureNameSearchTerm"></searchbar>
+  search-term="homeCtrl.pictureNameSearchTerm"></searchbar>
   <searchbar
   search-assets="search by description"
   search-term="homeCtrl.pictureDescSearchTerm"></searchbar>
-
-  <div>
-    <thumbnail gallery="thumbnailContainerCtrl.gallery" ng-repeat="item in thumbnailContainerCtrl.gallery.pics | searchFilter : homeCtrl.pictureNameSearchTerm : homeCtrl.pictureDescSearchTerm"  pic="item"></thumbnail>
-  </div>
+    <thumbnail gallery="thumbnailContainerCtrl.gallery" ng-repeat="item in thumbnailContainerCtrl.gallery.pics | searchFilter : homeCtrl.pictureNameSearchTerm : homeCtrl.pictureDescSearchTerm"  pic="item">
+    </thumbnail>
 </div>

@@ -10,34 +10,28 @@ module.exports = function(){
         return fuzzyRegex.test(asset.name.toUpperCase());
       });
     }
+
     if (nameSearchTerm && descSearchTerm){
-      let fuzzyRegexName = generateFuzzyRegex(nameSearchTerm);
-      let fuzzyRegexDesc = generateFuzzyRegex(descSearchTerm);
-      let assetsByName = assets.filter(asset => {
-        return fuzzyRegexName.test(asset.name.toUpperCase());
+      return assets.filter(function(asset) {
+        return fuzzyRegex.test(asset.name.toUpperCase());
+      }).filter(function(asset){
+        return fuzzyRegex.test(asset.desc.toUpperCase());
       });
-      return assetsByName.filter(asset => {
-        return fuzzyRegexDesc.test(asset.desc.toUpperCase());
-      });
-      // return assets.filter(asset => {
-      //   return (fuzzyRegex.test(asset.name.toUpperCase())).filter(asset => {
-      //     return fuzzyRegex.test(asset.desc.toUpperCase());
-      //   });
-      // });
     }
+
     if (!nameSearchTerm) {
       fuzzyRegex = generateFuzzyRegex(descSearchTerm);
       return assets.filter(asset => {
         return fuzzyRegex.test(asset.desc.toUpperCase());
       });
     }
+
     fuzzyRegex = generateFuzzyRegex(nameSearchTerm);
     return assets.filter(asset => {
       return fuzzyRegex.test(asset.name.toUpperCase());
     });
   };
 };
-
 
 function generateFuzzyRegex(input){
   if (!input) return /.*/;
