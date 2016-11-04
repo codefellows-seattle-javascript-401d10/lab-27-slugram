@@ -1,13 +1,13 @@
 
 <main class="container home">
   <navbar btnTitle="Log out"></navbar>
-
+  <searchbar search-term="homeCtrl.gallerySearchTerm" field-search="homeCtrl.fieldSearch"></searchbar>
   <div class="list-group">
     <a class="list-group-item disabled">
       <create-gallery></create-gallery>
     </a>
     <gallery-items 
-        ng-repeat="item in homeCtrl.galleries" 
+         ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.gallerySearchTerm : homeCtrl.fieldSearch" 
          ng-click="homeCtrl.currentGallery=item"
          delete-done="homeCtrl.galleryDeleteDone(galleryData)"
          gallery="item">
