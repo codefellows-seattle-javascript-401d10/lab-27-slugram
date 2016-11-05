@@ -1,7 +1,7 @@
 <div class="upload-pic">
   <button
     ng-click="uploadPicCtrl.showForm = true"
-    class="btn btn-primary show-form-btn"
+    class="btn show-form-btn"
     ng-if="!uploadPicCtrl.showForm"> Add Pic </button>
 
   <form
@@ -12,6 +12,7 @@
 
     <div class ="row">
       <div class ='col span-1-of-2'>
+
         <div
           ng-class="{
             'has-error': uploadPicForm.$submitted && uploadPicForm.name.$invalid}"
@@ -24,8 +25,8 @@
           type="text"
           ng-model="uploadPicCtrl.pic.name"
           placeholder="Name">
-
         </div>
+
       </div>
 
 
@@ -47,7 +48,7 @@
     </div>  <!-- end row -->
 
     <div class = "row">
-      <div class="btn btn-default"
+      <div
         ngf-select
         required
         ngf-drop
@@ -55,11 +56,12 @@
         ng-class="{
         'has-error': uploadPicForm.$submitted && !uploadPicCtrl.pic.file,
         'btn-success': uploadPicCtrl.pic.file}" >
-        <button class="btn"> Select Image </button>
+        <button class="btn btn-upload"> Select Image </button>
         <!--<span class="drop-image-btn"> Drop Image </span> -->
       </div>
-      <button class="btn"> Upload Image </button>
-      <button type="button" class="btn" ng-click="uploadPicCtrl.done()"> Cancel </button>
+      <button class="btn btn-upload"> Upload Image </button>
+      <button type="button" class="btn btn-upload" ng-click="uploadPicCtrl.done()"> Cancel </button>
   </div>
+
   </form>
 </div>

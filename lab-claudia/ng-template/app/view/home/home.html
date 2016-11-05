@@ -12,21 +12,25 @@
 
   <create-gallery> </create-gallery>
 
-  <nav class="gallery-list-container">
-    <ul>
 
-    <div class = "row">
-      <gallery-li ng-repeat="item in homeCtrl.galleries"
-        gallery="item"
-        delete-done="homeCtrl.galleryDeleteDone(galleryData)"
-        ng-click="homeCtrl.currentGallery = item">
-      </gallery-li>
-    </div>
+    <searchbar class="searchbar" search-term="homeCtrl.name"></searchbar>
+    <searchbar class="searchbar" search-term="homeCtrl.desc"></searchbar>
+
+  <div class="row">
+    <nav class="gallery-list-container">
+      <ul>
+        <gallery-li ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.name:homeCtrl.desc"
+          gallery="item"
+          delete-done="homeCtrl.galleryDeleteDone(galleryData)"
+          ng-click="homeCtrl.currentGallery=item">
+        </gallery-li>
+    </ul>
+    </nav>
+  </div>
 
     <div class = "row">
       <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"> </thumbnail-container>
     </div>
 
-    </ul>
-  </nav>
+
 </main>

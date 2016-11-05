@@ -3,17 +3,37 @@
 
 .upload-pic{
   .btn {
-    width: 25%;
     color: $app-black;
-    margin: 2% 3%;
+  }
+  .show-form-btn {
+    border: 1px solid $app-black;
+    width: 20%;
+    margin: 3% 40%;
+  }
+
+  .btn-upload {
+      width: 20%;
+  }
+  h2 {
+    text-align: center;
   }
   form {
     width: 80%;
     margin: 2% 10%;
   }
-
-  input {
+  label {
+    margin: 3% 10%;
+    padding: 1% 0;
+  }
+  input,
+  select {
     width: 80%;
+    font-size: 100%;
+    border:none;
+    border: 1.5px solid $app-secondary;
+    margin: 3%;
+    padding: 1% 0;
+    color: $app-black;
   }
   .has-error {
     background-color: $app-warn;

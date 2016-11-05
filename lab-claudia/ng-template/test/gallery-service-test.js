@@ -24,6 +24,12 @@ describe('testing galleryService', function(){
       this.$rootScope = $rootScope;
     });
   });
+
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
+  });
+
   describe('testing galleryService.createGallery()', () => {
     it('should return a gallery', () => {
 
@@ -45,7 +51,7 @@ describe('testing galleryService', function(){
 
       // We are testing if the server responds with the correct information
       // This is what the backend would actually send you
-      .respond(200, {_id:'5678', username:'loom', name: 'galleryData.name', desc: galleryData.desc, pics: []});
+      .respond(200, {_id:'5678', username:'loom', name: galleryData.name, desc: galleryData.desc, pics: []});
 
       // Make the request to the backend
       this.galleryService.createGallery(galleryData);
@@ -53,6 +59,7 @@ describe('testing galleryService', function(){
       this.$httpBackend.flush();
     });
   });
+
   describe('testing galleryService.deleteGallery(galleryID)', () => {
     it('should succeed in deleting gallery', () => {
       // 1. mock the request
@@ -79,21 +86,35 @@ describe('testing galleryService', function(){
   describe('testing galleryService.fetchGalleries()', () => {
     it('should return galleries', () => {
 
-      // 1. mock the request
+      // 1. Mock the request
+      let galleries = [
+        {
+          name: 'gal1',
+          desc: 'yay',
+        },
+        {
+          name: 'gal2',
+          desc: 'yay2',
+        },
+      ];
+
       let headers = {
         Accept: 'application/json',
         Authorization: 'Bearer 1234',
       };
-      // 2. mock server route
+      // 2. Mock server route
       this.$httpBackend.expectGET('http://localhost:3000/api/gallery/?sort=desc', headers)
 
-      // use gallery/helloworld because that is the test ID we set
-      .respond(202);
+      // Use gallery/helloworld because that is the test ID we set
+      .respond(200, galleries);
 
-      // 3. make request
-      this.galleryService.fetchGalleries();
-
-      // 4. flush the server mock
+      // 3. Make request
+      this.galleryService.fetchGalleries()
+      .then( galleries => {
+        expect(galleries.length).toEqual(2);
+        expect(galleries[0].name).toBe('gal1');
+      });
+      // 4. Flush the server mock
       this.$httpBackend.flush();
     });
   });
@@ -107,18 +128,24 @@ describe('testing galleryService', function(){
         desc: 'stuff',
       };
       let galleryID = 'helloworld';
+
       let headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         Authorization: 'Bearer 1234',
       };
-      
+
       // 2. Mock server route
       this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/helloworld', galleryData, headers)
-      .respond(202);
+      .respond(200, {_id: 'helloworld', name: 'exampleGallery', desc: 'stuff'});
 
       // 3. Make request
-      this.galleryService.updateGallery(galleryData, galleryID);
+      this.galleryService.updateGallery(galleryData, galleryID)
+      .then (gallery => {
+        expect(gallery._id).toBe(galleryID);
+        expect(gallery.name).toBe(galleryData.name);
+        expect(gallery.desc).toBe(galleryData.desc);
+      });
 
       // 4. Flush the server mock
       this.$httpBackend.flush();

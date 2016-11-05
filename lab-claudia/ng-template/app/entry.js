@@ -60,7 +60,7 @@ context.keys().forEach( key => {
 context = require.context('./service/', true, /.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
-  let module = context(key); // value of module.exports
+  let module = context(key);
   demoApp.service(name, module);
 });
 
@@ -68,6 +68,14 @@ context.keys().forEach( key => {
 context = require.context('./component/', true, /.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
-  let module = context(key); // value of module.exports
+  let module = context(key);
   demoApp.component(name, module);
+});
+
+// Load filters
+context = require.context('./filter/', true, /.js$/);
+context.keys().forEach( key => {
+  let name = camelcase(path.basename(key, '.js'));
+  let module = context(key);
+  demoApp.filter(name, module);
 });

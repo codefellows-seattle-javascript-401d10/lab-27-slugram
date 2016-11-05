@@ -7,7 +7,7 @@ html, body {
   font-family: 'Lato', sans-serif;
 }
 
-.bg {
+body {
     background:
     linear-gradient(
       rgba(100, 5, 0, 0.9),
@@ -16,6 +16,13 @@ html, body {
     url(http://i65.tinypic.com/j183uc.jpg) no-repeat center center fixed;
     //url(http://i67.tinypic.com/x45c1g.jpg); - fruits background
     background-size: cover;
+}
+
+.has-error {
+  color: $app-error;
+}
+.has-success {
+  color: $app-success;
 }
 
 

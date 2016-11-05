@@ -33,15 +33,27 @@ describe('testing create-gallery controller', function(){
         desc: 'stuff',
       };
 
-      this.$httpBackend.expectPOST(url, {name:'exampleGallery', desc:'stuff'}, headers)
+      // Make a POST request to the server
+      this.$httpBackend.expectPOST(url, galleryData, headers)
       .respond(200);
 
+      // Create an instance of the createGalleryCtrl
       let createGalleryCtrl = this.$componentController('createGallery', null);
+
+      // this.gallery in the component is set to {}
+      // We pass it galleryData representing a created gallery
       createGalleryCtrl.gallery = galleryData;
-      createGalleryCtrl.createGallery(galleryData);
+
+      // Call createGallery on instance of controller
+      createGalleryCtrl.createGallery();
 
       // Flush the backend
       this.$httpBackend.flush();
+
+      // Make sure that the name and desc are set to null after a gallery has been created
+      expect(createGalleryCtrl.name).toEqual(null);
+      expect(createGalleryCtrl.desc).toEqual(null);
+
       this.$rootScope.$apply();
     });
   });

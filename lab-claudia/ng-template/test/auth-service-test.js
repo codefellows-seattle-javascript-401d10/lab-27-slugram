@@ -13,9 +13,15 @@ describe('testing authService', function(){
     });
   });
 
+  afterEach(() => {
+    this.authService.setToken(null);
+    this.$window.localStorage.clear();
+  });
+
   describe('testing authService.setToken()', () => {
     it('should return a token', () => {
       this.authService.token = 'myspecialtoken';
+
       this.authService.getToken()
       .then(token => {
         expect(token).toEqual('myspecialtoken');
@@ -24,22 +30,44 @@ describe('testing authService', function(){
       this.$rootScope.$apply();
     });
   });
+
+  describe('testing #getToken()', () => {
+    it('should return a token', () => {
+
+      this.authService.token = null;
+      this.$window.localStorage.setItem('token', 'tokensRus');
+
+      this.authService.getToken()
+      .then( token => {
+        expect(token).toEqual('tokensRus');
+      })
+      .catch( err => {
+        expect(err).toEqual(null);
+      });
+
+      this.$rootScope.$apply();
+    });
+  });
+
   describe('testing authService.login(user)', () => {
     it('should return a user', () => {
+
       let userData = {
         username: 'GooseMan',
         email:'bread@tasty.com',
         password: '1234567',
       };
+
+      // Basic auth says you set a base64 endcoded header with user and password
       let base64 = this.$window.btoa(`${userData.username}:${userData.password}`);
-      // set up test headers
+      // we are expecting to get this as the header
       let headers = {
         Accept: 'application/json',
         Authorization: `Basic ${base64}`,
       };
       this.$httpBackend.expectGET('http://localhost:3000/api/login', headers)
       // it should respond with the correct information
-      // this is what the backend would actually send you
+      // this is what the server would actually send you
       .respond(200, {_id:'5678', username: userData.username, email:userData.email});
 
       // make the request to the backend
@@ -51,23 +79,25 @@ describe('testing authService', function(){
 
   describe('testing authService.signup(user)', () => {
     it('should return a new user', () => {
+      // test userData
       let userData = {
         username: 'GooseMan',
         email:'bread@tasty.com',
       };
-      // set up test headers
+      // Test headers
       let headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       };
+
       this.$httpBackend.expectPOST('http://localhost:3000/api/signup', userData, headers)
-      // it should respond with the correct information
-      // this is what the backend would actually send you
+      // $http needs to be flushed to mock asynchronous requests
+      // It accumulates requests to the server and responds to everything at once
       .respond(200, {_id:'5678', username: userData.username, email:userData.email});
 
-      // make the request to the backend
+      // Make the request to the server
       this.authService.signup(userData);
-      //flush the backend
+      // Flush the backend
       this.$httpBackend.flush();
     });
   });
