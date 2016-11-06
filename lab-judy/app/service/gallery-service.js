@@ -61,7 +61,7 @@ function galleryService($q, $log, $http, authService){
           break;
         }
       }
-      return;
+      return $q.resolve('gallery deleted successfully');
     })
       .catch( err => {
         $log.error(err.message);

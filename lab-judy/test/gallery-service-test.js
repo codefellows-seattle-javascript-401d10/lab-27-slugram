@@ -40,7 +40,13 @@ describe('testing gallery service', function(){
       this.$httpBackend.expectPOST('http://localhost:3000/api/gallery', galleryData, headers)
       .respond(200, {_id: '5678', username: 'slugbyte',  name: galleryData.name, desc: galleryData.desc, pics: []});
 
-      this.galleryService.createGallery(galleryData);
+      this.galleryService.createGallery(galleryData)
+      .then((res) => {
+        expect(res._id).toBe('5678');
+        expect(res.username).toBe('slugbyte');
+        expect(res.name).toBe(galleryData.name);
+        expect(res.desc).toBe(galleryData.desc);
+      });
       this.$httpBackend.flush();
     });
   });
@@ -173,7 +179,7 @@ describe('testing gallery service', function(){
 
       this.galleryService.deleteGallery('helloworld')
       .then((res) => {
-        expect(res).toEqual(undefined);
+        expect(res).toEqual('gallery deleted successfully');
       });
 
       this.$httpBackend.flush();
