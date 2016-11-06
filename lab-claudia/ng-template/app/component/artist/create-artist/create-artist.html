@@ -1,0 +1,29 @@
+<section class="create-artist-container">
+
+  <form name="createArtistForm"
+    class="form-inline"
+    novalidate
+    ng-submit="createArtistCtrl.createArtist()">
+
+    <div class="form-group">
+      <input name="name"
+        class="form-control"
+        type="text"
+        placeholder="Name"
+        ng-model="createArtistCtrl.artist.name"
+        required>
+    </div>
+
+    <div class="form-group">
+      <input name="desc"
+        class="form-control"
+        type="text"
+        placeholder="Description"
+        ng-model="createArtistCtrl.artist.desc"
+        required>
+    </div>
+
+    <button class="btn" type="submit"> Create Profile </button>
+
+  </form>
+</section>
