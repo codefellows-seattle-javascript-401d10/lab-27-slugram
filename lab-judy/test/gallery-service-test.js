@@ -46,7 +46,6 @@ describe('testing gallery service', function(){
 
       this.galleryService.createGallery(galleryData)
       .then((res) => {
-        console.log('testing ID');
         expect(res._id).toBe('5678');
         expect(res.username).toBe('slugbyte');
         expect(res.name).toBe(galleryData.name);
