@@ -8,7 +8,7 @@ module.exports = {
   controllerAs: 'navbarCtrl',
   bindings: {
     // @ allows us to pass name in through attribute - string or boolean
-    appTitle: '@', // This property gets set on the controllers
+    appTitle: '@', // appTitle is a property that gets set on the controllers
   },
 };
 

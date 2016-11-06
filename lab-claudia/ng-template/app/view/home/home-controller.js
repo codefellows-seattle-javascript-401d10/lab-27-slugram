@@ -22,7 +22,7 @@ function HomeController($log, $rootScope, galleryService){
     });
   };
 
-//if you pass in function(gallery, unicorn) --> object would have another property 
+//if you pass in function(gallery, unicorn) --> object would have another property
   this.galleryDeleteDone = function(gallery){
     $log.debug('init homeCtrl.galleryDeleteDone()');
     if (this.currentGallery._id == gallery._id) {

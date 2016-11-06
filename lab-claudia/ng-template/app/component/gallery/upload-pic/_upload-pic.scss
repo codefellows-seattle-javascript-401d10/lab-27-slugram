@@ -2,18 +2,7 @@
 @import "vendor";
 
 .upload-pic{
-  .btn {
-    color: $app-black;
-  }
-  .show-form-btn {
-    border: 1px solid $app-black;
-    width: 20%;
-    margin: 3% 40%;
-  }
 
-  .btn-upload {
-      width: 20%;
-  }
   h2 {
     text-align: center;
   }
@@ -21,13 +10,22 @@
     width: 80%;
     margin: 2% 10%;
   }
-  label {
-    margin: 3% 10%;
-    padding: 1% 0;
+
+  .btn {
+    background-color: $app-secondary;
+    border: 1px solid $app-primary;
+    color: $app-black;
+    margin: 3%;
   }
+
+  .btn:hover {
+    background-color: $app-white;
+  }
+
   input,
   select {
-    width: 80%;
+    width: 90%;
+    margin: 0 5%;
     font-size: 100%;
     border:none;
     border: 1.5px solid $app-secondary;

@@ -1,7 +1,8 @@
 
 <nav class="navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{ navbarCtrl.appTitle }}</a>   <!-- Comes from bindings @-->
+    <a class="navbar-brand" href="#">{{ navbarCtrl.appTitle }}</a>
+     <!--navbarCtrl.appTitle comes from bindings (@)-->
 
     <div ng-hide="navbarCtrl.hideButtons">
       <button
@@ -10,7 +11,7 @@
         Logout
       </button>
 
-      <div class="btn-group mobile-nav-icon">
+      <div class="mobile-nav-icon">
         <button id="btn-append-to-body" type="button">
           <span class="fa fa-bars"></span>
         </button>

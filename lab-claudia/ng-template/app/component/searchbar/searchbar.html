@@ -1,11 +1,6 @@
-<div class = "row">
-  <div class="col span-1-of-2">
-    <input name="name"
-     placeholder: "Search"
-     ng-model="searchbarCtrl.searchTerm">
-  </div>
 
-    <div class="col span-1-of-2">
-      <button class="btn" ng-click="searchbarCtrl.searchTerm = null" ng-click=""> Clear </button>
-    </div>
+
+<div class="searchbar">
+  <input name="name" ng-model="searchbarCtrl.searchTerm">
+  <button class="btn" ng-click="searchbarCtrl.searchTerm = null" ng-click=""> Clear </button>
 </div>

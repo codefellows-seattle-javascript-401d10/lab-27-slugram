@@ -3,7 +3,6 @@
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
-  // these are all redirects
   // when you go to /signup- redirects to /join#signup
   // when you go to /login- redirects to /join#login
   $urlRouterProvider.when('' , '/join#signup');
@@ -18,16 +17,15 @@ function routerConfig($stateProvider, $urlRouterProvider){
       controllerAs: 'homeCtrl',
       controller: 'HomeController',
       template: require('../view/home/home.html'),
-      data: {
-        bodyClasses: 'bg',
-      },
     },
+
     {
       name: 'welcome',
       url: '/join',
       controllerAs: 'landingCtrl',
       controller: 'LandingController',
-      template: require('../view/landing/landing.html'), //shows this at /join
+      template: require('../view/landing/landing.html'),
+      //shows this at /join
     },
   ];
 
