@@ -1,15 +1,27 @@
 <main class="home">
-  <create-gallery> </create-gallery>
-
   <nav class="gallery-list-container">
-    <ul >
-      <gallery-li ng-repeat="item in homeCtrl.galleries"
+    <h2> <span ng-if"homeCtrl.galleries[0]">{{ homeCtrl.galleries[0].username }}'s</span> galleries</h2>
+
+    <input
+    class="form-control"
+    ng-model="homeCtrl.gallerySearchTerm" type="text"
+    placeholder="Search for a gallery">
+    <button
+    type="button"
+    class="btn btn-warning"
+    ng-click="homeCtrl.gallerySearchTerm = null">Clear</button>
+
+    <ul>
+        <gallery-li ng-repeat="item in homeCtrl.galleries | itemSearch:homeCtrl.gallerySearchTerm"
         gallery="item"
         delete-done="homeCtrl.galleryDeleteDone(galleryData)"
         ng-click="homeCtrl.currentGallery = item">
-      </gallery-li>
+        </gallery-li>
     </ul>
+    <create-gallery> </create-gallery>
   </nav>
+
+
 
   <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"> </thumbnail-container>
 </main>

@@ -40,11 +40,12 @@ describe('testing create-gallery controller', function(){
       let createGalleryCtrl = this.$componentController('createGallery', null);
 
       createGalleryCtrl.gallery = galleryData;
+      createGalleryCtrl.createGallery();
+
 
       expect(createGalleryCtrl.gallery.name).toBe(galleryData.name);
       expect(createGalleryCtrl.gallery.desc).toBe(galleryData.desc);
 
-      createGalleryCtrl.createGallery();
 
       this.$httpBackend.flush();
 

@@ -9,6 +9,7 @@ module.exports = {
   },
 };
 
+//TODO: Uploaded pic not showing up until after a refresh
 function UploadPicController($log, picService){
   $log.debug('init uploadPicCtrl');
   this.pic = {},

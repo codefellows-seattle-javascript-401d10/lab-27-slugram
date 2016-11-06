@@ -3,8 +3,11 @@
 .home {
 
   .gallery-list-container {
-    width: 15%;
+    width: 50%;
     background-color: $app-secondary;
+    margin: 0 auto;
+    padding: 2%;
+    border-radius: 2%;
 
     ul {
       padding: 0px;
