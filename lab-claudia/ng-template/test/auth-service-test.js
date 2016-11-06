@@ -35,11 +35,11 @@ describe('testing authService', function(){
     it('should return a token', () => {
 
       this.authService.token = null;
-      this.$window.localStorage.setItem('token', 'tokensRus');
+      this.$window.localStorage.setItem('token', '1234');
 
       this.authService.getToken()
       .then( token => {
-        expect(token).toEqual('tokensRus');
+        expect(token).toEqual('1234');
       })
       .catch( err => {
         expect(err).toEqual(null);

@@ -68,11 +68,11 @@ describe('testing edit-gallery controller', function(){
       let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
       // Mock updated name
       editGalleryCtrl.gallery.name = 'newname';
-      // Call updateGallery() on instance of editGalleryCtrl
+      // Call updateGallery() on instance of editGalleryCtrl-
       editGalleryCtrl.updateGallery();
       // Flush the backend - tells httpBackend to respond to the request
       this.$httpBackend.flush();
-      this.$rootScope.$apply(); // 
+      this.$rootScope.$apply(); //
     });
   });
 });

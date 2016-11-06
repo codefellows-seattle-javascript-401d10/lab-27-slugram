@@ -51,8 +51,8 @@ describe('testing create-gallery controller', function(){
       this.$httpBackend.flush();
 
       // Make sure that the name and desc are set to null after a gallery has been created
-      expect(createGalleryCtrl.name).toEqual(null);
-      expect(createGalleryCtrl.desc).toEqual(null);
+      expect(createGalleryCtrl.gallery.name).toEqual(null);
+      expect(createGalleryCtrl.gallery.desc).toEqual(null);
 
       this.$rootScope.$apply();
     });

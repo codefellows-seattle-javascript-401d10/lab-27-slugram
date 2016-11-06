@@ -105,7 +105,6 @@ describe('testing galleryService', function(){
       // 2. Mock server route
       this.$httpBackend.expectGET('http://localhost:3000/api/gallery/?sort=desc', headers)
 
-      // Use gallery/helloworld because that is the test ID we set
       .respond(200, galleries);
 
       // 3. Make request
@@ -121,12 +120,13 @@ describe('testing galleryService', function(){
 
   describe('testing galleryService.updateGallery(galleryData, galleryID)', () => {
     it('should return updated gallery', () => {
-
+      let url = 'http://localhost:3000/api/gallery/helloworld';
       // 1. Mock the request
       let galleryData = {
         name: 'exampleGallery',
         desc: 'stuff',
       };
+
       let galleryID = 'helloworld';
 
       let headers = {
@@ -136,17 +136,11 @@ describe('testing galleryService', function(){
       };
 
       // 2. Mock server route
-      this.$httpBackend.expectPUT('http://localhost:3000/api/gallery/helloworld', galleryData, headers)
-      .respond(200, {_id: 'helloworld', name: 'exampleGallery', desc: 'stuff'});
+      this.$httpBackend.expectPUT(url,  {name: 'exampleGallery', desc: 'stuff'}, headers)
+      .respond(200);
 
       // 3. Make request
-      this.galleryService.updateGallery(galleryData, galleryID)
-      .then (gallery => {
-        expect(gallery._id).toBe(galleryID);
-        expect(gallery.name).toBe(galleryData.name);
-        expect(gallery.desc).toBe(galleryData.desc);
-      });
-
+      this.galleryService.updateGallery(galleryData, galleryID);
       // 4. Flush the server mock
       this.$httpBackend.flush();
     });
