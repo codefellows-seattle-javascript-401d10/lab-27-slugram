@@ -1,17 +1,17 @@
 'use strict';
 
 module.exports = function(){
-  return function(galleries, searchTermName, searchTermDesc){
+  return function(items, searchTermName, searchTermDesc){
 
     let filterArray = [];
     let fuzzyRegex = generateFuzzyRegex(searchTermDesc);
-    filterArray =  galleries.filter(gallery => {
-      return fuzzyRegex.test(gallery.desc.toUpperCase());
+    filterArray =  items.filter(item => {
+      return fuzzyRegex.test(item.desc.toUpperCase());
     });
 
     fuzzyRegex = generateFuzzyRegex(searchTermName);
-    filterArray = filterArray.filter(gallery => {
-      return fuzzyRegex.test(gallery.name.toUpperCase());
+    filterArray = filterArray.filter(item => {
+      return fuzzyRegex.test(item.name.toUpperCase());
     });
 
     return filterArray;
