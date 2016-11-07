@@ -98,6 +98,7 @@ function galleryService($q, $log, $http, authService){
   //PUT method
   service.updateGallery = function(galleryID, galleryData){
     $log.debug('gallery-service.updateGalleries()');
+
     return authService.getToken()
     .then( token => {
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
@@ -108,6 +109,7 @@ function galleryService($q, $log, $http, authService){
           'Content-Type': 'application/json',
         },
       };
+      console.log('lallalala', url);
       return $http.put(url, galleryData, config);
     })
     .then( res => {
@@ -120,7 +122,7 @@ function galleryService($q, $log, $http, authService){
           break;
         }
       }
-      return res.data;
+      return $q.resolve(res.data);
     })
     .catch(err => {
       $log.error(err.message);

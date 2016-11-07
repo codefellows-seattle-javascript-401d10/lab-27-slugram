@@ -39,6 +39,7 @@ describe('testing edit-gallery controller', function (){
 
     it('should make a valid PUT requests', () => {
       let url ='http://localhost:3000/api/gallery/12345';
+
       let headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ describe('testing edit-gallery controller', function (){
       };
 
       this.$httpBackend.expectPUT(url, {_id: '12345', name: 'new name', desc: 'hello'}, headers)
-      .respond(200);
+      .respond(200, {_id: '12345', name: 'new name', desc: 'hello'});
 
       let mockBindings = {
         gallery: {
@@ -59,7 +60,11 @@ describe('testing edit-gallery controller', function (){
       let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
       editGalleryCtrl.gallery.name = 'new name';
 
-      editGalleryCtrl.updateGallery();
+      editGalleryCtrl.updateGallery()
+      .then((res) => {
+        console.log('test line 65', res);
+        expect(editGalleryCtrl.gallery.name).toBe('new name')
+      });
 
       this.$httpBackend.flush();
       this.$rootScope.$apply();
