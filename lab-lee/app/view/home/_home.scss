@@ -27,3 +27,19 @@
     }
   }
 }
+
+.gallery-list-container {
+  width: 15%;
+}
+
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+
+  * {
+    margin: 5px;
+  }
+  p {
+    margin-top: 1em;
+  }
+}
