@@ -2,15 +2,20 @@
 
   <create-gallery> </create-gallery>
 
-  <search-bar
-  class="name-search"
-  term="homeCtrl.name">
-  </search-bar>
+  <h2>Filter by gallery...</h2>
+  <div class="search-bar-container">
+    <p>Search by name</p>
+    <search-bar
+    class="name-search"
+    term="homeCtrl.name">
+    </search-bar>
 
-  <search-bar
-  class="desc-search"
-  term="homeCtrl.desc">
-  </search-bar>
+    <p>Search by description</p>
+    <search-bar
+    class="desc-search"
+    term="homeCtrl.desc">
+    </search-bar>
+  </div>
 
   <nav class="gallery-list-container">
 
@@ -23,4 +28,5 @@
   </nav>
 
   <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"> </thumbnail-container>
+
 </main>
