@@ -1,10 +1,14 @@
 <div class="thumbnail-container">
   <h2> {{thumbnailContainerCtrl.gallery.name}} </h2>
   <upload-pic gallery="thumbnailContainerCtrl.gallery"> </upload-pic>
+  <h3> Name: </h3>
+  <search-bar search-term="thumbnailContainerCtrl.searchName"> </search-bar>
+  <h3> Description: </h3>
+  <search-bar search-term="thumbnailContainerCtrl.searchDesc"> </search-bar>
 
   <div>
     <thumbnail class="thumbnail"
-      ng-repeat="pic in thumbnailContainerCtrl.gallery.pics"
+      ng-repeat="pic in thumbnailContainerCtrl.gallery.pics | searchFilter: thumbnailContainerCtrl.searchName: thumbnailContainerCtrl.searchDesc"
       pic="pic"
       gallery="thumbnailContainerCtrl.gallery"> </thumbnail>
   </div>

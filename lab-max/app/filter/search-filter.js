@@ -1,28 +1,28 @@
 'use strict';
 
 module.exports = function(){
-  return function(galleries, searchTermName, searchTermDesc){
-    if(!searchTermName && !searchTermDesc) return galleries;
+  return function(items, searchTermName, searchTermDesc){
+    if(!searchTermName && !searchTermDesc) return items;
 
     if(searchTermName && !searchTermDesc){
       let fuzzyRegex = generateFuzzyRegex(searchTermName);
-      return galleries.filter(gallery => {
-        return fuzzyRegex.test(gallery.name.toUpperCase());
+      return items.filter(item => {
+        return fuzzyRegex.test(item.name.toUpperCase());
       });
     }
 
     if(searchTermDesc && !searchTermName){
       let fuzzyRegex = generateFuzzyRegex(searchTermDesc);
-      return galleries.filter(gallery => {
-        return fuzzyRegex.test(gallery.desc.toUpperCase());
+      return items.filter(item => {
+        return fuzzyRegex.test(item.desc.toUpperCase());
       });
     }
 
     if(searchTermName && searchTermDesc){
       let fuzzyRegexName = generateFuzzyRegex(searchTermName);
       let fuzzyRegexDesc = generateFuzzyRegex(searchTermDesc);
-      return galleries.filter(gallery => {
-        return fuzzyRegexName.test(gallery.name.toUpperCase()) && fuzzyRegexDesc.test(gallery.desc.toUpperCase());
+      return items.filter(item => {
+        return fuzzyRegexName.test(item.name.toUpperCase()) && fuzzyRegexDesc.test(item.desc.toUpperCase());
       });
     }
   };
