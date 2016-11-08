@@ -1,0 +1,32 @@
+@import "theme";
+
+.home {
+
+  .gallery-list-container {
+    width: 50%;
+    background-color: $app-secondary;
+    margin: 0 auto;
+    padding: 2%;
+    border-radius: 2%;
+
+    ul {
+      padding: 0px;
+    }
+
+    li {
+      list-style: none;
+    }
+  }
+
+  .panel-heading {
+    background-color: $app-primary;
+    span {
+      font-weight: bold;
+      color: $app-secondary;
+    }
+
+    span:hover {
+      color: $app-black;
+    }
+  }
+}

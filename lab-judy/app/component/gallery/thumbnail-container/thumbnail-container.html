@@ -1,0 +1,13 @@
+<div class="thumbnail-container">
+  <h2> {{ thumbnailContainerCtrl.gallery.name }} </h2>
+  <upload-pic gallery="thumbnailContainerCtrl.gallery"> </upload-pic>
+
+  <!-- TODO: HOW DO I SEARCH PICS??? -->
+
+  <pic-filter gallery="thumbnailContainerCtrl.gallery"></pic-filter>
+
+  <div>
+    <thumbnail ng-repeat="item in thumbnailContainerCtrl.gallery.pics | itemSearch:homeCtrl.picSearchTerm
+    " pic="item" gallery="thumbnailContainerCtrl.gallery"></thumbnail>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+'use strict';
+
+module.exports = {
+  controllerAs: 'uploadPicCtrl',
+  template: require('./upload-pic.html'),
+  controller: ['$log', 'picService', UploadPicController],
+  bindings: {
+    gallery: '<',
+  },
+};
+
+//TODO: Uploaded pic not showing up until after a refresh
+function UploadPicController($log, picService){
+  $log.debug('init uploadPicCtrl');
+  this.pic = {},
+  this.uploadPic = function(){
+    console.log(this.gallery, this.pic);
+    return picService.uploadGalleryPic(this.gallery, this.pic)
+    .then(() => {
+      this.pic.name = null;
+      this.pic.file = null;
+      this.pic.desc = null;
+    });
+  };
+}
