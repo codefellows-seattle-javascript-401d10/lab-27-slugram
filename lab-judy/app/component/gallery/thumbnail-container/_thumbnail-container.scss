@@ -1,0 +1,19 @@
+@import "theme";
+
+.thumbnail-container{
+  // position:
+  // display:
+  // width hight
+  // margin
+  position: absolute;
+  display: inline-block;
+  width: 40%;
+  height: 90%;
+  padding: 5%;
+  margin-left: 5%;
+  // padding
+  padding: 2%;
+  // text
+  // color
+  background-color: $app-primary;
+}
