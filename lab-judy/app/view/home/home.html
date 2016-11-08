@@ -16,6 +16,9 @@
         gallery="item"
         delete-done="homeCtrl.galleryDeleteDone(galleryData)"
         ng-click="homeCtrl.currentGallery = item">
+        <!-- TODO: Figure out how to get the thumbnail container to show and hide according to clicks on pic glyphicon -->
+        <span class="glyphicon glyphicon-picture"
+        ng-click="thumbnailContainerCtrl.showThumbnailContainer = !thumbnailContainerCtrl.showThumbnailContainer"></span>
         </gallery-li>
     </ul>
     <create-gallery> </create-gallery>

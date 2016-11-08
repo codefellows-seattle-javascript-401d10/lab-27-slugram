@@ -1,18 +1,19 @@
 @import "theme";
 
-.gallery-li {
+.thumbnail-container{
   // position:
   // display:
   // width hight
   // margin
-  margin: 10%;
+  position: absolute;
+  display: inline-block;
+  width: 40%;
+  height: 90%;
+  padding: 5%;
+  margin-left: 5%;
   // padding
   padding: 2%;
   // text
   // color
   background-color: $app-primary;
-}
-
-.glyphicon {
-  cursor: pointer;
 }

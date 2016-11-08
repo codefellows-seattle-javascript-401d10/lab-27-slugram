@@ -3,9 +3,11 @@
 .home {
 
   .gallery-list-container {
+    display: inline-block;
+    position: relative;
     width: 50%;
     background-color: $app-secondary;
-    margin: 0 auto;
+    // margin-left: 5%;
     padding: 2%;
     border-radius: 2%;
 
