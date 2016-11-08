@@ -1,0 +1,11 @@
+
+<main class="container home">
+  <navbar btnTitle="Log out"></navbar>
+
+  <div class="list-group">
+    <a class="list-group-item disabled">
+      <create-gallery></create-gallery>
+    </a>
+    <gallery-items ng-repeat="item in homeCtrl.galleries" gallery="item"></gallery-items>
+  </div>
+</main>
