@@ -1,0 +1,13 @@
+<main class="landing">
+  <h1 class="landing-banner"> Welcome to Slugram </h1>
+  <div ng-if="!landingCtrl.showLogin">
+    <signup>
+    </signup>
+    <button ng-if="!landingCtrl.showLogin" ng-click="landingCtrl.loginToggle()" class="btn btn-error"> Already Signed Up? Login Here! </button>
+  </div>
+  <div ng-if="landingCtrl.showLogin">
+    <login>
+    </login>
+    <button ng-if="landingCtrl.showLogin" ng-click="landingCtrl.loginToggle()" class="btn btn-error"> Not Signed Up? Sign Up Here! </button>
+  </div>
+</main>

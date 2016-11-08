@@ -1,0 +1,13 @@
+@import "theme";
+
+.signup {
+  background-color: $app-secondary;
+
+  .app-invalid-signup {
+    border: 3px solid $app-error;
+  }
+
+  .app-valid-signup {
+    border: 3px solid $app-success;
+  }
+}

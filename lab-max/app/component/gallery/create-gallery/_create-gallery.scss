@@ -1,0 +1,9 @@
+@import "theme";
+
+.create-gallery-container {
+  background-color: $app-success;
+
+  button {
+    background-color: $app-warn;
+  }
+}

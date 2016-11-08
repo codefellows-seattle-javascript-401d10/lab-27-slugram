@@ -1,0 +1,29 @@
+<div class="upload-pic">
+  <form novalidate
+    name="uploadPicForm"
+    ng-submit="uploadPicCtrl.uploadPic()">
+
+    <input class="form-control"
+      type="text"
+      ng-model="uploadPicCtrl.pic.name"
+      placeholder="Name"
+      required>
+    <input class="form-control"
+      type="text"
+      ng-model="uploadPicCtrl.pic.desc"
+      placeholder="Description"
+      required>
+
+    <div class="btn btn-default"
+      ng-mouseover="uploadPicCtrl.dragPicOption = 'Or Drag n Drop'"
+      ng-mouseleave="uploadPicCtrl.dragPicOption = 'Select Image'"
+      ngf-drop
+      ngf-select
+      ng-model="uploadPicCtrl.pic.file"
+      required>
+      {{uploadPicCtrl.dragPicOption}}
+    </div>
+
+    <button ng-disabled="uploadPicForm.$invalid" class="btn btn-warn"> Upload Image </button>
+  </form>
+</div>

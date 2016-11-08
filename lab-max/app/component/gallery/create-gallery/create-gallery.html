@@ -1,0 +1,41 @@
+<section class="create-gallery-container">
+  <form name="galleryForm"
+    novalidate
+    class="form-inline"
+    ng-submit="createGalleryCtrl.createGallery()">
+
+    <div class="form-group"
+      ng-class="{
+        'has-error': galleryForm.name.$invalid && galleryForm.$submitted,
+        'has-success': gallerForm.name.$valid,
+      }">
+      <label for="name"> Name: </label>
+      <input name="name" class="form-control"
+        type="text" uib-tooltip="Name Required"
+        tooltip-enable="galleryForm.$submitted && galleryForm.name.$invalid"
+        tooltip-is-open="galleryForm.$submitted && galleryForm.name.$invalid && galleryForm.name.$focus"
+        tooltip-placement="bottom-right"
+        tooltip-trigger="'focus'"
+        ng-model="createGalleryCtrl.gallery.name"
+        required>
+    </div>
+
+    <div class="form-group"
+      ng-class="{
+      'has-error': galleryForm.desc.$invalid && galleryForm.$submitted,
+      'has-success': gallerForm.desc.$valid,
+      }">
+      <label for="desc"> Description: </label>
+      <input name="desc" class="form-control"
+        type="text" uib-tooltip="Description Required"
+        tooltip-enable="galleryForm.$submitted && galleryForm.desc.$invalid"
+        tooltip-is-open="galleryForm.$submitted && galleryForm.desc.$invalid && galleryForm.desc.$focus"
+        tooltip-placement="bottom-right"
+        tooltip-trigger="'focus'"
+        ng-model="createGalleryCtrl.gallery.desc"
+        required>
+    </div>
+
+    <button type="submit" class="btn btn-warn"> Add </button>
+  </form>
+</section>

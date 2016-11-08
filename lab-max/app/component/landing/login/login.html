@@ -1,0 +1,13 @@
+<section class="login">
+  <form
+  novalidate
+  ng-submit="loginCtrl.login(loginCtrl.user)">
+    <input class="form-control" type="text" placeholder="Username"
+    ng-model="loginCtrl.user.username">
+
+    <input class="form-control" type="password" placeholder="Password"
+    ng-model="loginCtrl.user.password">
+
+    <input type="submit" class="btn btn-info" value="Log In">
+  </form>
+</section>
