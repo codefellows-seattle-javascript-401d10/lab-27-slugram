@@ -3,6 +3,9 @@
 .thumbnail-container {
   display: flex;
   flex-direction: row;
-  width: 40px;
+  width: 40%;
 
+  thumbnail {
+    width: 40%;
+  }
 }
