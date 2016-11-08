@@ -1,0 +1,23 @@
+<section class="signup">
+  <form
+    ng-submit="signupCtrl.signup(signupCtrl.user)"
+    novalidate>
+
+      <input type="text" class="form-control"
+      placeholder="Username" ng-model="signupCtrl.user.username"
+      ng-minlength="6" required>
+
+      <input type="text" class="form-control"
+      placeholder="Email Address" ng-model="signupCtrl.user.email"
+      required>
+
+      <input type="password" class="form-control"
+      placeholder="Password" ng-model="signupCtrl.user.password"
+      ng-minlength="8" required>
+
+      <input type="submit" class="btn btn-primary nassir-btn"
+      value="Sign Up">
+
+    </form>
+
+</section>
