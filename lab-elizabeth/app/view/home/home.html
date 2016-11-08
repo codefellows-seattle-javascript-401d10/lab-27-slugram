@@ -1,0 +1,28 @@
+<main class="home">
+
+  <h1> {{"hello world" | toUpperCase:' :) '}}
+
+  <create-gallery></create-gallery>
+
+  <nav class="gallery-list-container">
+
+    <input
+      ng-model="homeCtrl.gallerySearchTerm"
+      type="text"
+      placeholder="search ...">
+
+    <ul>
+      <gallery-li
+        gallery="item"
+        ng-repeat="item in homeCtrl.galleries"
+        ng-click="homeCtrl.currentGallery = item"
+        delete-done="homeCtrl.galleryDeleteDone(galleryData)">
+      </gallery-li>
+    </ul>
+  </nav>
+
+  <thumbnail-container
+    ng-if="homeCtrl.currentGallery"
+    gallery="homeCtrl.currentGallery">
+  </thumbnail-container>
+</main>

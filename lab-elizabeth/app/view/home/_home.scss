@@ -1,0 +1,24 @@
+@import "theme";
+
+.home {
+  width: 70%;
+  font-family: $app-block;
+
+  .panel-heading {
+    background-color: $app-primary;
+
+    span {
+      font-weight: bold;
+      color: $app-black;
+    }
+
+    span:hover {
+      color: $app-white;
+    }
+  }
+
+  .panel-body {
+    background-color: $app-info;
+    font-family: $app-accent;
+  }
+}

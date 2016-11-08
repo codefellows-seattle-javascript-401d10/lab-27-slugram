@@ -1,0 +1,50 @@
+<section class="navbar navbar-default">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand"
+      href="#">
+      Demo App
+    </a>
+
+    <div ng-hide="navbarCtrl.hideButtons">
+      <button
+        class="btn pull-right btn-primary navbar-btn btn-logout">
+        Log Out
+      </button>
+
+      <div
+        class="btn-group pull-right"
+        uib-dropdown>
+
+        <button
+          id="btn-append-to-body"
+          type="button"
+          class="btn btn-dropdown btn-primary navbar-btn"
+          uib-dropdown-toggle>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+
+        <ul
+          class="dropdown-menu"
+          uib-dropdown-menu
+          role="menu">
+
+          <li role="menuitem">
+            <a
+              href="#"
+              ng-click="navbarCtrl.logout()">
+              Logout
+            </a>
+          </li>
+
+          <li role="menuitem">
+            <a href="#/home">
+              Home
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
