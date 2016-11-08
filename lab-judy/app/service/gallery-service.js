@@ -109,7 +109,6 @@ function galleryService($q, $log, $http, authService){
           'Content-Type': 'application/json',
         },
       };
-      console.log('lallalala', url);
       return $http.put(url, galleryData, config);
     })
     .then( res => {

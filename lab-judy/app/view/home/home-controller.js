@@ -2,23 +2,25 @@
 
 require('./_home.scss');
 
-module.exports = ['$log', '$rootScope', 'galleryService', HomeController ];
+module.exports = ['$log', '$q', '$rootScope', 'galleryService', HomeController ];
 
-function HomeController($log, $rootScope, galleryService){
+function HomeController($log, $q, $rootScope, galleryService){
   $log.debug('init homeCtrl');
   this.galleries = [];
 
   this.fetchGalleries = function(){
-    galleryService.fetchGalleries()
+    return galleryService.fetchGalleries()
     .then( galleries => {
       this.galleries = galleries;
       this.currentGallery = galleries[0];
+      return galleries;
     });
   };
 
   this.galleryDeleteDone = function(gallery){
     $log.debug('homeCtrl.galleryDeleteDone()');
-    if (this.currentGallery._id == gallery._id){
+    console.log('line 23,', this.currentGallery);
+    if (this.currentGallery._id === gallery._id){
       this.currentGallery = null;
     }
   };

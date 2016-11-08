@@ -69,7 +69,11 @@ describe('testing gallery-li controller', function() {
     .respond(204);
 
     let galleryLICtrl = this.$componentController('galleryLi', null, mockBindings);
-    galleryLICtrl.deleteGallery();
+
+    galleryLICtrl.deleteGallery()
+    .then((res) => {
+      expect(res).toBe('gallery successfully deleted');
+    });
 
     this.$httpBackend.flush();
     this.$rootScope.$apply();

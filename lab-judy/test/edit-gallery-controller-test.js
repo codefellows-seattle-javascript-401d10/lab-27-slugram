@@ -62,7 +62,6 @@ describe('testing edit-gallery controller', function (){
 
       editGalleryCtrl.updateGallery()
       .then((res) => {
-        console.log('test line 65', res);
         expect(editGalleryCtrl.gallery.name).toBe('new name')
       });
 

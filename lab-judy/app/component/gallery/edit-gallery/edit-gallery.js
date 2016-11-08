@@ -13,7 +13,6 @@ function EditGalleryController($log, $q, galleryService){
   $log.debug('init editGalleryCtrl');
 
   this.updateGallery = function(){
-    console.log('lalala working?');
     return galleryService.updateGallery(this.gallery._id, this.gallery).
     then((gallery) => {
       gallery = this.gallery;

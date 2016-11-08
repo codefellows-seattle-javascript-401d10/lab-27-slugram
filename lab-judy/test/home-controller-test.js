@@ -22,7 +22,7 @@ describe('testing home-controller', function(){
     this.authService.logout();
   });
 
-  describe('testing #fetchGalleries()', () => {
+  describe('testing homeCtrl#fetchGalleries()', () => {
     it('should return a gallery and set currentGallery to index[0]', () => {
       let galleries = [
         {
@@ -43,15 +43,13 @@ describe('testing home-controller', function(){
       this.$httpBackend.whenGET('http://localhost:3000/api/gallery/?sort=dsc', headers)
       .respond(200, galleries);
 
-
       let homeCtrl = this.$controller('HomeController', null);
-      console.log(homeCtrl.galleries);
-      console.log(homeCtrl.fetchGalleries);
-      homeCtrl.galleries = galleries;
 
-      homeCtrl.fetchGalleries();
-
-      expect(homeCtrl.galleries).toBe(galleries);
+      homeCtrl.fetchGalleries()
+      .then((res) => {
+        expect(res).toEqual(galleries);
+        expect(res[0]).toEqual(homeCtrl.currentGallery);
+      });
 
       this.$httpBackend.flush();
       this.$rootScope.$apply();
