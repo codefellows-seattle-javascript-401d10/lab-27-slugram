@@ -1,0 +1,14 @@
+
+<br/>
+<div class="media">
+  <div class="media-left">
+    <a ng-href="{{thumbnailCtrl.pic.imageURI}}">
+      <img class="media-object" ng-src="{{thumbnailCtrl.pic.imageURI}}" alt="{{thumbnailCtrl.pic.desc}}">
+    </a>
+  </div>
+  <div class="media-body">
+    <h5 class="media-heading">{{thumbnailCtrl.pic.name}}</h5>
+    <p class="media-heading">{{thumbnailCtrl.pic.desc}}</p>
+   <span ng-click="thumbnailCtrl.deletePic()" class="btn btn-xs btn-default glyphicon glyphicon-trash fa-4x"> </span>
+  </div>
+</div>
