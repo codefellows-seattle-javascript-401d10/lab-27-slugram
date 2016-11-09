@@ -1,4 +1,4 @@
-@import  "_theme";
+@import  "theme";
 
 .landing {
   background-color: $app-secondary;
@@ -18,4 +18,8 @@
 }
 img {
   max-width: 100px;
+}
+
+.navbar-nav{
+  margin-top:5px;
 }
