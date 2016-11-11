@@ -59,6 +59,11 @@ describe('testing edit-gallery controller', function(){
       editGalleryCtrl.gallery.name = 'new name';
 
       editGalleryCtrl.updateGallery();
+      //can't chain any thens because updateGallery method on editGalleryCtrl doesn't return anything? so can you not test a method unless it returns something?
+      // .then((thing) => {
+      //   expect(this.gallery.name).toBe('new name');
+      //   expect(thing).toBe('idk');
+      // });
 
       this.$httpBackend.flush();
       this.$rootScope.$apply();
