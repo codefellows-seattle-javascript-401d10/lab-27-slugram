@@ -35,11 +35,12 @@ describe('testing create-gallery-controller', function(){
       let exampleGallery = {
         name: 'dogs',
         desc: 'in parks',
+        pics: [{name: 'guppies', desc: 'in puppies'}],
       };
 
       //only if your call to the controller returns something do you need to do expect statements after .createGallery, otherwise the only expect statement is below?
       this.$httpBackend.expectPOST(url, exampleGallery, headers)
-
+      //the response is what the server would send back if we were making an actual request to it, but since we're mocking
       .respond(200, {name: 'dogs', desc: 'in parks', pics: [{name: 'guppies', desc: 'in puppies'}]});
 
       let createGalleryCtrl = this.$componentController('createGallery', null);

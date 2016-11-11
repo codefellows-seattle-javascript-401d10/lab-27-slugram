@@ -21,8 +21,8 @@ describe('testing edit-gallery controller', function(){
   it('testing component bindings', () => {
     let mockBindings = {
       gallery: {
-        name: 'lulwat',
-        desc: 'my cool beach adventure',
+        name: 'doges',
+        desc: 'hangin with prungs',
       },
     };
 
@@ -44,26 +44,24 @@ describe('testing edit-gallery controller', function(){
 
       //update the name with new name instead of lulwat
       this.$httpBackend.expectPUT(url, {_id: '12345', name: 'new name', desc: 'hello'}, headers)
-      .respond(200);
+      .respond(200, {_id: '12345', name: 'new name', desc: 'hello'});
 
       let mockBindings = {
         gallery: {
           _id: '12345',
-          name: 'lulwat',
+          name: 'old name',
           desc: 'hello',
         },
       };
-
       //editGalleryCtrl will be the gallery object and the updateGallery method
       let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
       editGalleryCtrl.gallery.name = 'new name';
 
-      editGalleryCtrl.updateGallery();
-      //can't chain any thens because updateGallery method on editGalleryCtrl doesn't return anything? so can you not test a method unless it returns something?
-      // .then((thing) => {
-      //   expect(this.gallery.name).toBe('new name');
-      //   expect(thing).toBe('idk');
-      // });
+      editGalleryCtrl.updateGallery()
+      .then(() => {
+        expect(editGalleryCtrl.gallery.name).toBe('new name');
+        expect(editGalleryCtrl.gallery.name).not.toBe('old name');
+      });
 
       this.$httpBackend.flush();
       this.$rootScope.$apply();
