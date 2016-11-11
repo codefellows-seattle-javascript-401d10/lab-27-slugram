@@ -1,0 +1,10 @@
+<main class="landing">
+  <section class ="form">
+    <signup ng-show="landingCtrl.showSignup"></signup>
+    <a href="/#/join#login" ng-click="landingCtrl.showSignup = false"
+    ng-show="landingCtrl.showSignup">Go to Login</a>
+
+    <login ng-hide="landingCtrl.showSignup"></login>
+    <a href="/#/join#signup" ng-click="landingCtrl.showSignup = true" ng-hide="landingCtrl.showSignup">Go to Signup</a>
+  </section>
+</main>

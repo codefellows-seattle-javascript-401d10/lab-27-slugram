@@ -1,0 +1,14 @@
+@import  "theme";
+
+.landing {
+  width: 40%;
+  margin: auto;
+  border: 1px solid $app-disabled;
+  padding: 2%;
+  background-color: $app-primary;
+
+  a {
+    color: $app-secondary;
+  }
+
+}

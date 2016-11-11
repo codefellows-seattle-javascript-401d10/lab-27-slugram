@@ -1,0 +1,58 @@
+@import "theme";
+
+.home {
+
+  .outer-container {
+    border: 1px solid $app-secondary;
+    background-color: $app-primary;
+    width: 60%;
+    margin: 2% auto;
+
+    p {
+      text-align: left;
+    }
+
+    create-gallery {
+      padding-top: 2%;
+      margin-top: 2%;
+    }
+  }
+
+  thumbnail-container {
+    width: 100px;
+  }
+
+  span {
+    margin-top: 500px;
+  }
+  //
+  // h3, p, form  {
+  //   text-align: center;
+  // }
+
+  h3 {
+    padding-top: 1.5%;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  hr {
+    width: 55%;
+    border: .7px solid;
+    color: $app-disabled;
+  }
+
+  .panel-heading {
+    background-color: $app-primary;
+    span {
+      font-weight: bold;
+      color: $app-secondary;
+    }
+
+    span:hover {
+      color: $app-black;
+    }
+  }
+}
