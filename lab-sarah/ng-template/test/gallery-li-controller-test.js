@@ -56,7 +56,7 @@ describe('testing gallery-li controller', function(){
       gallery: {
         _id: '65432ONE',
         name: 'hello',
-        desc: 'infomative',
+        desc: 'informative',
         pics: [],
       },
       deleteDone: function(data){

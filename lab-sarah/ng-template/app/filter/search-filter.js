@@ -1,34 +1,12 @@
 'use strict';
 
-module.exports = function(){
+module.exports = function() {
   return function(assets, nameSearchTerm, descSearchTerm){
-    let fuzzyRegex;
-
-    if (!nameSearchTerm && !descSearchTerm) {
-      fuzzyRegex = generateFuzzyRegex();
-      return assets.filter(asset => {
-        return fuzzyRegex.test(asset.name.toUpperCase());
-      });
-    }
-
-    if (nameSearchTerm && descSearchTerm){
-      return assets.filter(function(asset) {
-        return fuzzyRegex.test(asset.name.toUpperCase());
-      }).filter(function(asset){
-        return fuzzyRegex.test(asset.desc.toUpperCase());
-      });
-    }
-
-    if (!nameSearchTerm) {
-      fuzzyRegex = generateFuzzyRegex(descSearchTerm);
-      return assets.filter(asset => {
-        return fuzzyRegex.test(asset.desc.toUpperCase());
-      });
-    }
-
-    fuzzyRegex = generateFuzzyRegex(nameSearchTerm);
-    return assets.filter(asset => {
-      return fuzzyRegex.test(asset.name.toUpperCase());
+    return assets.filter(function(asset){
+      //create the fuzzyRegex string against which to test, and then use this test to test the assets name and description
+      return generateFuzzyRegex(nameSearchTerm).test(asset.name.toUpperCase());
+    }).filter(function(asset){
+      return generateFuzzyRegex(descSearchTerm).test(asset.desc.toUpperCase());
     });
   };
 };
