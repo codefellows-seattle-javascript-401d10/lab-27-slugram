@@ -1,0 +1,22 @@
+<li class="gallery-li">
+  <h2> {{galleryLiCtrl.gallery.name}} </h2>
+  <p> {{galleryLiCtrl.gallery.desc}} </p>
+  <button
+    class="btn btn-primary"
+    ng-click="galleryLiCtrl.showEditGallery = !galleryLiCtrl.showEditGallery">
+    <span
+    class="glyphicon glyphicon-pencil">
+  </span>
+  </button>
+  <button
+    class="btn btn-primary"
+    ng-click="galleryLiCtrl.deleteGallery(this.gallery._id)">
+    <span
+      class="glyphicon glyphicon-trash">
+    </span>
+  </button>
+  <edit-gallery
+    ng-if="galleryLiCtrl.showEditGallery"
+    gallery="galleryLiCtrl.gallery">
+  </edit-gallery>
+</li>

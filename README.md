@@ -10,20 +10,20 @@
 * write a question and observation on canvas
 
 # Directions
-* use the **ng-template** repo as your safolding for this project
-* inclde an .eslintrc
-* inclde an .eslintingore
-* inclde a .gitignore
+* use the **ng-template** repo as your scaffolding for this project
+* include an .eslintrc
+* include an .eslintingore
+* include a .gitignore
  * ignore the build directory
 * include a package.json
  * must have lint script
- * must have test script 
- * must have test-watch script 
- * must have build script 
- * must have build-watch script 
-* inclde a webpack.config.js
+ * must have test script
+ * must have test-watch script
+ * must have build script
+ * must have build-watch script
+* include a webpack.config.js
  * include all the production configurations
-* Create these directories to organize your code: 
+* Create these directories to organize your code:
  * app
  * app/config
  * app/view
@@ -33,10 +33,10 @@
  * app/service
  * app/component
  * app/component/\<your-component-dir\>
-* create a **_theme.scss** partial 
+* create a **_theme.scss** partial
 * create a **_vendor.scss** partial
  * build bootstrap from source
-* create a **main.scss** file 
+* create a **main.scss** file
  * `@import "theme"`
  * `@import "vendor"`
 * create a **entry.js**
@@ -47,9 +47,9 @@
 * create two views `/#/`, `/#/home/`
 * each view should have its own controller
 * the `/#/` view should be the default landing page
- * it should have a `<signup>` and `<login>` components 
+ * it should have a `<signup>` and `<login>` components
 * create an authService with for making http request to the slugram backend
- * should have methods for sigup and login routes
+ * should have methods for signup and login routes
  * should have methods to get and delete a token from local storage
  * all methods should return promises
 * create a signup component
